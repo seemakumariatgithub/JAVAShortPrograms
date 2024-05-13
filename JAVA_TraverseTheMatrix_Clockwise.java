@@ -36,3 +36,11 @@ class JAVA_TraverseTheMatrix_Clockwise {
         traverseMatrixClockwise(dimention,matrix);        
     }
 }
+/* Algorithm
+1. let k=0,i=0,j=0
+2. increament j till j<n-(k+1)
+3. increament i till i<n-(k+1)
+4. K++
+5. decrease j until j>=k
+6. decrease i until i>k
+    */
