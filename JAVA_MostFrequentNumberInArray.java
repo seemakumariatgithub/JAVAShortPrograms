@@ -1,3 +1,7 @@
+/*========AUTHOR===========
+      SEEMA KUMARI
+===========================*/
+
 import java.util.Arrays;
 
 class JAVA_MostFrequentNumberInArray {
@@ -23,3 +27,13 @@ class JAVA_MostFrequentNumberInArray {
         System.out.println(mostFrequent(arr));
     }
 }
+/*==============ALGORITHM=====================
+1. Sort the provided array.
+2. let count=0, maxCount=0, result=1st array element
+3. start checking for the same values
+4. increament count till the number in array changes
+5. check if maxCount is less than count
+  if yes then assign count to maxCount
+  and result = prevous array element
+6. result number is the required number
+*/
