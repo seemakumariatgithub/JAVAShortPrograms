@@ -1,0 +1,55 @@
+/*===========================
+AUTHOR: SEEMA KUMARI
+=============================*/
+class Thread5_UsingJoinAndIsAlive {
+    public static void main(String[] args) {
+        CreateThread threadObject1=new CreateThread("one");
+        CreateThread threadObject2=new CreateThread("two");
+        CreateThread threadObject3=new CreateThread("three");
+        System.out.println("Thread1 is alive: "+threadObject1.newThread.isAlive());
+        System.out.println("Thread2 is alive: "+threadObject2.newThread.isAlive());
+        System.out.println("Thread3 is alive: "+threadObject3.newThread.isAlive());
+        try{
+            //Thread.sleep(10000);
+            System.out.println("Main Thread");
+            threadObject1.newThread.join();
+             System.out.println("Thread1 is alive: "+threadObject1.newThread.isAlive());
+        System.out.println("Thread2 is alive: "+threadObject2.newThread.isAlive());
+        System.out.println("Thread3 is alive: "+threadObject3.newThread.isAlive());
+            threadObject2.newThread.join();
+            threadObject3.newThread.join();
+        }
+        catch(InterruptedException e){
+            System.out.println("Main thread interrupted.");
+        }
+            System.out.println("Thread1 is alive: "+threadObject1.newThread.isAlive());
+        System.out.println("Thread2 is alive: "+threadObject2.newThread.isAlive());
+        System.out.println("Thread3 is alive: "+threadObject3.newThread.isAlive());
+}
+}
+
+
+class CreateThread  implements Runnable{
+    Thread newThread;
+    String name;
+    
+    CreateThread(String threadName){
+        name=threadName;
+        newThread=new Thread(this,name);
+        System.out.println("Child Thread : "+newThread.getName());
+        newThread.start();
+    }
+    
+    public void run(){
+        try{
+            for(int i=5;i>0;i--){
+                System.out.println("Child: "+name+" => "+i);
+                Thread.sleep(1000);
+            }
+        }
+        catch(InterruptedException e){
+            System.out.println("Child Thread "+name+" Interrupted.");
+        }
+        System.out.println(" Exits the Child "+name+" Thread.");
+    }
+}
