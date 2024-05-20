@@ -7,7 +7,8 @@ class Thread4_CreateMultipleThread {
         new CreateThread("two");
         new CreateThread("three");        
         try{
-            Thread.sleep(1000);
+            Thread.sleep(10000);// this ensures that main thread finishes after all child threads. 
+            System.out.println("Main Thread");
         }
         catch(InterruptedException e){
             System.out.println("Main thread interrupted.");
