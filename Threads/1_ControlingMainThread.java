@@ -1,6 +1,6 @@
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
-
+/*========AUTHOR===========
+      SEEMA KUMARI
+===========================*/
 class ControlingMainThread {
     public static void main(String[] args) {
         
