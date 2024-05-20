@@ -1,6 +1,6 @@
-/*========AUTHOR===========
-      SEEMA KUMARI
-===========================*/
+/*==================================
+AUTHOR : SEEMA KUMARI
+=====================================*/
 class Thread1_ControlingMainThread {
     public static void main(String[] args) {
         
