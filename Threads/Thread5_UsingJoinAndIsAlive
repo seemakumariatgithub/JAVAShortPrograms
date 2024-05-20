@@ -1,11 +1,14 @@
 /*===========================
 AUTHOR: SEEMA KUMARI
 =============================*/
-class Thread5_UsingJoinAndIsAlive {
+
+class Thread4_UsingJoinAndIsAlive {
     public static void main(String[] args) {
         CreateThread threadObject1=new CreateThread("one");
         CreateThread threadObject2=new CreateThread("two");
         CreateThread threadObject3=new CreateThread("three");
+
+        System.out.println("====Before join method is called=====");
         System.out.println("Thread1 is alive: "+threadObject1.newThread.isAlive());
         System.out.println("Thread2 is alive: "+threadObject2.newThread.isAlive());
         System.out.println("Thread3 is alive: "+threadObject3.newThread.isAlive());
@@ -13,16 +16,14 @@ class Thread5_UsingJoinAndIsAlive {
             //Thread.sleep(10000);
             System.out.println("Main Thread");
             threadObject1.newThread.join();
-             System.out.println("Thread1 is alive: "+threadObject1.newThread.isAlive());
-        System.out.println("Thread2 is alive: "+threadObject2.newThread.isAlive());
-        System.out.println("Thread3 is alive: "+threadObject3.newThread.isAlive());
             threadObject2.newThread.join();
             threadObject3.newThread.join();
         }
         catch(InterruptedException e){
             System.out.println("Main thread interrupted.");
         }
-            System.out.println("Thread1 is alive: "+threadObject1.newThread.isAlive());
+        System.out.println("====After join method is called=====");
+        System.out.println("Thread1 is alive: "+threadObject1.newThread.isAlive());
         System.out.println("Thread2 is alive: "+threadObject2.newThread.isAlive());
         System.out.println("Thread3 is alive: "+threadObject3.newThread.isAlive());
 }
@@ -50,6 +51,7 @@ class CreateThread  implements Runnable{
         catch(InterruptedException e){
             System.out.println("Child Thread "+name+" Interrupted.");
         }
+        System.out.println("Thread "+name+" is alive: "+newThread.isAlive());
         System.out.println(" Exits the Child "+name+" Thread.");
     }
 }
