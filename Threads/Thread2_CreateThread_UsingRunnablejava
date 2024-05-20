@@ -1,4 +1,6 @@
-
+/*==================================
+AUTHOR : SEEMA KUMARI
+=====================================*/
 class Thread2_CreateThread_UsingRunnable {
     public static void main(String[] args) {
         new CreateThread();
