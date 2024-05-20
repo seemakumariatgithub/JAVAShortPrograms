@@ -1,7 +1,7 @@
 /*========AUTHOR===========
       SEEMA KUMARI
 ===========================*/
-class ControlingMainThread {
+class Thread1_ControlingMainThread {
     public static void main(String[] args) {
         
         Thread t= Thread.currentThread();
