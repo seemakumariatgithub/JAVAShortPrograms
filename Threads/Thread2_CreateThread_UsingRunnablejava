@@ -1,5 +1,5 @@
 
-class 2_CreateThread_UsingRunnable {
+class Thread2_CreateThread_UsingRunnable {
     public static void main(String[] args) {
         new CreateThread();
         try{
