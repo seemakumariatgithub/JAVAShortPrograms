@@ -22,14 +22,14 @@ class CreateThread  implements Runnable{
         // New Thread is created here
         name=threadName;
         newThread=new Thread(this,name);
-        System.out.println("Child Thread : "+newThread.getName());
+        System.out.println("Child Thread: "+newThread.getName());
         newThread.start();// Starts the new thread
     }
     
     public void run(){
         try{
             for(int i=5;i>0;i--){
-                System.out.println("Child : "+name+" => "+i);
+                System.out.println("Child: "+name+" => "+i);
                 Thread.sleep(500);
             }
         }
