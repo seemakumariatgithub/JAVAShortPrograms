@@ -1,3 +1,6 @@
+/*==================================
+AUTHOR : SEEMA KUMARI
+=====================================*/
 class Thread6_WithSynchMethod{
     public static void main(String args[]){
         CallMe target=new CallMe();
