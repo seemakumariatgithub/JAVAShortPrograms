@@ -19,8 +19,8 @@ class Thread1_ControlingMainThread {
        // Suspend thread using sleep method
        // sleep() method throws InterruptedException
        // it has been defined as => 
-       // static void sleep(long milliseconds) hrows InterruptedException
-       // static void sleep(long milliseconds, int nanoseconds) hrows InterruptedException
+       // static void sleep(long milliseconds) throws InterruptedException
+       // static void sleep(long milliseconds, int nanoseconds) throws InterruptedException
         try{
             for(int n=0;n<5;n++){
                 System.out.println(n);
