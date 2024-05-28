@@ -1,4 +1,4 @@
-class Thread6_Withoutynch{
+class Thread6_NotWithSynchMethod{
     public static void main(String args[]){
         CallMe target=new CallMe();
         Caller caller1=new Caller(target,"Hello");
