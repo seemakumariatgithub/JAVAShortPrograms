@@ -1,6 +1,18 @@
 /*==================================
 AUTHOR : SEEMA KUMARI
 =====================================*/
+/*
+//wait(), notify(), notifyAll(), All three methods can be called only from within a synchronized context
+//general form of these method is :
+//final void wait()
+//final void wait(long millisec)
+//final void wait(long millisec,int nanosec)
+
+//final void notify()
+//final void notifyAll()
+
+//These methods are defined in object class
+*/
 
 class Thread7_waitAndNotify {
     public static void main(String[] args) {
