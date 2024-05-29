@@ -55,6 +55,34 @@ Callable Interface: This interface is basically a new one that was introduced as
                     enum, static imports, variable argument method, etc. It uses generics to define the return type of object.
 
 
+                        public interface Runnable  
+                        {   
+                          public abstract void run(); 
+                        }  
+                        public interface Callable<V>  
+                        {    
+                        V call() throws Exception;  
+                        } 
+                        Runnable Interface	
+                        Callable Interface 
+                              It does not return any result and therefore, cannot throw a checked exception. 	
+                              It returns a result and therefore, can throw an exception.
+                              
+                              It cannot be passed to invokeAll method. 	
+                              It can be passed to invokeAll method.
+                              
+                              It was introduced in JDK 1.0.	
+                              It was introduced in JDK 5.0, so one cannot use it before Java 5. 
+                              
+                              It simply belongs to Java.lang.	
+                              It simply belongs to java.util.concurrent. 
+                              
+                              It uses the run() method to define a task.	
+                              It uses the call() method to define a task. 
+                              
+                              To use this interface, one needs to override the run() method. 	
+                              To use this interface, one needs to override the call() method.
+
 
 
 
