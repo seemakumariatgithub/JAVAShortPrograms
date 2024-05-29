@@ -3,5 +3,3 @@
 //There are basically two methods available in thread class for daemon thread: setDaemon() and isDaemon(). 
 // In Java, daemon threads are basically referred to as a service provider that provides services and support to user threads. 
 /*=================*/
-
-
