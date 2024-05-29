@@ -83,6 +83,327 @@ Callable Interface: This interface is basically a new one that was introduced as
                               To use this interface, one needs to override the run() method. 	
                               To use this interface, one needs to override the call() method.
 
+Q4: Explain thread pool?
+Ans: A Thread pool is simply a collection of pre-initialized or worker threads at the start-up that can be used to 
+      execute tasks and put back in the pool when completed. 
+      It is referred to as pool threads in which a group of fixed-size threads is created.  
+      By reducing the number of application threads and managing their lifecycle,
+      one can mitigate the issue of performance using a thread pool.
+      Using threads, performance can be enhanced and better system stability can occur.
+      To create the thread pools, java.util.concurrent.Executors class usually provides factory methods
+
+
+=============Arrange below Q n As
+Multithreading Interview Questions in Java for Experienced
+1. What is the synchronization process? Why use it?
+Synchronization is basically a process in java that enables a simple strategy for avoiding thread interference and memory consistency errors. This process makes sure that resource will be only used one thread at a time when one thread tries to access a shared resource. It can be achieved in three different ways as given below: 
+
+By the synchronized method
+By synchronized block
+By static synchronization
+Syntax:  
+
+synchronized (object) 
+{        
+   //statement to be synchronized 
+} 
+2. What is synchronized method and synchronized block? Which one should be preferred?
+Synchronized Method: In this method, the thread acquires a lock on the object when they enter the synchronized method and releases the lock either normally or by throwing an exception when they leave the method.  No other thread can use the whole method unless and until the current thread finishes its execution and release the lock. It can be used when one wants to lock on the entire functionality of a particular method. 
+
+Synchronized Block: In this method, the thread acquires a lock on the object between parentheses after the synchronized keyword, and releases the lock when they leave the block. No other thread can acquire a lock on the locked object unless and until the synchronized block exists. It can be used when one wants to keep other parts of the programs accessible to other threads.
+ 
+Synchronized blocks should be preferred more as it boosts the performance of a particular program. It only locks a certain part of the program (critical section) rather than the entire method and therefore leads to less contention.
+
+3. What is thread starvation?
+Thread starvation is basically a situation or condition where a thread won’t be able to have regular access to shared resources and therefore is unable to proceed or make progress. This is because other threads have high priority and occupy the resources for too long. This usually happens with low-priority threads that do not get CPU for its execution to carry on. 
+
+
+4. What is Livelock? What happens when it occurs?
+Similar to deadlock, livelock is also another concurrency problem. In this case, the state of threads changes between one another without making any progress. Threads are not blocked but their execution is stopped due to the unavailability of resources.
+
+5. What is BlockingQueue?
+BlockingQueue basically represents a queue that is thread-safe. Producer thread inserts resource/element into the queue using put() method unless it gets full and consumer thread takes resources from the queue using take() method until it gets empty. But if a thread tries to dequeue from an empty queue, then a particular thread will be blocked until some other thread inserts an item into the queue, or if a thread tries to insert an item into a queue that is already full, then a particular thread will be blocked until some threads take away an item from the queue. 
+
+
+Example: 
+
+package org.arpit.java2blog; 
+ 
+import java.util.concurrent.ArrayBlockingQueue; 
+import java.util.concurrent.BlockingQueue; 
+ 
+public class BlockingQueuePCExample { 
+ 
+   public static void main(String[] args) { 
+ 
+       BlockingQueue<String> queue=new ArrayBlockingQueue<>(5); 
+       Producer producer=new Producer(queue); 
+       Consumer consumer=new Consumer(queue); 
+       Thread producerThread = new Thread(producer); 
+       Thread consumerThread = new Thread(consumer); 
+ 
+       producerThread.start(); 
+       consumerThread.start(); 
+ 
+   } 
+ 
+   static class Producer implements Runnable { 
+ 
+       BlockingQueue<String> queue=null; 
+ 
+       public Producer(BlockingQueue queue) { 
+           super(); 
+           this.queue = queue; 
+       } 
+ 
+       @Override 
+       public void run() { 
+ 
+               try { 
+                   System.out.println("Producing element 1"); 
+                   queue.put("Element 1"); 
+                   Thread.sleep(1000); 
+                   System.out.println("Producing element 2"); 
+                   queue.put("Element 2"); 
+                   Thread.sleep(1000); 
+                   System.out.println("Producing element 3"); 
+                   queue.put("Element 3"); 
+               } catch (InterruptedException e) { 
+ 
+                   e.printStackTrace(); 
+               } 
+       } 
+   } 
+ 
+   static class Consumer implements Runnable { 
+ 
+       BlockingQueue<String> queue=null; 
+ 
+       public Consumer(BlockingQueue queue) { 
+           super(); 
+           this.queue = queue; 
+       } 
+ 
+       @Override 
+       public void run() { 
+ 
+           while(true) 
+           { 
+               try { 
+                   System.out.println("Consumed "+queue.take()); 
+               } catch (InterruptedException e) { 
+                   e.printStackTrace(); 
+               } 
+           } 
+       } 
+ 
+   } 
+} 
+Output: 
+
+Producing element 1 
+Consumed Element 1 
+Producing element 2 
+Consumed Element 2 
+Producing element 3 
+Consumed Element 3
+6. Can you start a thread twice?
+No, it's not at all possible to restart a thread once a thread gets started and completes its execution. Thread only runs once and if you try to run it for a second time, then it will throw a runtime exception i.e., java.lang.IllegalThreadStateException. 
+
+Example: 
+
+public class TestThreadTwice1 extends Thread{   
+public void run(){   
+System.out.println(" thread is executing now........");   
+}   
+public static void main(String args[]){   
+TestThreadTwice1 t1=new TestThreadTwice1();   
+t1.start();   
+t1.start();   
+}   
+}   
+Output:
+
+thread is executing now........ 
+Exception in thread "main" java.lang.IllegalThreadStateException  
+7. Explain context switching.
+Context switching is basically an important feature of multithreading. It is referred to as switching of CPU from one thread or process to another one. It allows multiple processes to share the same CPU. In context switching, the state of thread or process is stored so that the execution of the thread can be resumed later if required. 
+
+8. What is CyclicBarrier and CountDownLatch?
+CyclicBarrier and CountDownLatch, both are required for managing multithreaded programming. But there is some difference between them as given below: 
+
+CyclicBarrier: It is a tool to synchronize threads processing using some algorithm. It enables a set of threads to wait for each other till they reach a common execution point or common barrier points, and then let them further continue execution. One can reuse the same CyclicBarrier even if the barrier is broken by setting it. 
+
+CountDownLatch: It is a tool that enables main threads to wait until mandatory operations are performed and completed by other threads. In simple words, it makes sure that a thread waits until the execution in another thread completes before it starts its execution. One cannot reuse the same CountDownLatch once the count reaches 0. 
+
+
+9. What do you mean by inter-thread communication?
+Inter-thread communication, as the name suggests, is a process or mechanism using which multiple threads can communicate with each other. It is especially used to avoid thread polling in java and can be obtained using wait(), notify(), and notifyAll() methods. 
+
+10. What is Thread Scheduler and Time Slicing?
+Thread Scheduler: It is a component of JVM that is used to decide which thread will execute next if multiple threads are waiting to get the chance of execution. By looking at the priority assigned to each thread that is READY, the thread scheduler selects the next run to execute. To schedule the threads, it mainly uses two mechanisms: Preemptive Scheduling and Time slicing scheduling.  
+
+Time Slicing: It is especially used to divide CPU time and allocate them to active threads. In this, each thread will get a predefined slice of time to execute. When the time expires, a particular thread has to wait till other threads get their chances to use their time in a round-robin fashion. Every running thread will get executed for a fixed time period. 
+
+11. What is a shutdown hook?
+A shutdown hook is simply a thread that is invoked implicitly before JVM shuts down. It is one of the most important features of JVM because it provides the capacity to do resource cleanup or save application state JVM shuts down.  By calling the halt(int) method of the Runtime class, the shutdown hook can be stopped. Using the following method, one can add a shutdown hook. 
+
+public void addShutdownHook(Thread hook){}     
+Runtime r=Runtime.getRuntime();   
+r.addShutdownHook(new MyThread());
+12. What is busy spinning?
+Busy Spinning, also known as Busy-waiting, is a technique in which one thread waits for some condition to happen, without calling wait or sleep methods and releasing the CPU. In this condition, one can pause a thread by making it run an empty loop for a certain time period, and it does not even give CPY control. Therefore, it is used to preserve CPU caches and avoid the cost of rebuilding cache.
+
+13. What is ConcurrentHashMap and Hashtable? In java, why is ConcurrentHashMap considered faster than Hashtable?
+ConcurrentHashMap: It was introduced in Java 1.5 to store data using multiple buckets. As the name suggests, it allows concurrent read and writes operations to the map. It only locks a certain portion of the map while doing iteration to provide thread safety so that other readers can still have access to the map without waiting for iteration to complete.  
+
+Hashtable: It is a thread-safe legacy class that was introduced in old versions of java to store key or value pairs using a hash table.  It does not provide any lock-free read, unlike ConcurrentHashMap. It just locks the entire map while doing iteration. 
+
+ConcurrentHashMap and Hashtable, both are thread-safe but ConcurrentHashMap generally avoids read locks and improves performance, unlike Hashtable. ConcurrentHashMap also provides lock-free reads, unlike Hashtable. Therefore, ConcurrentHashMap is considered faster than Hashtable especially when the number of readers is more as compared to the number of writers. 
+
+14. Explain thread priority.
+Thread priority simply means that threads with the highest priority will get a chance for execution prior to low-priority threads. One can specify the priority but it's not necessary that the highest priority thread will get executed before the lower-priority thread. Thread scheduler assigns processor to thread on the basis of thread priority. The range of priority changes between 1-10 from lowest priority to highest priority. 
+
+
+15. What do you mean by the ThreadLocal variable in Java?
+ThreadLocal variables are special kinds of variables created and provided by the Java ThreadLocal class. These variables are only allowed to be read and written by the same thread. Two threads cannot be able to see each other’s ThreadLocal variable, so even if they will execute the same code, then there won't be any race condition and the code will be thread-safe.  
+
+Example:  
+
+public class ThreadLocalExp   
+{   
+     public static class MyRunnable implements Runnable    
+   {   
+       private ThreadLocal<Integer> threadLocal =   
+              new ThreadLocal<Integer>();   
+      @Override   
+       public void run() {   
+           threadLocal.set( (int) (Math.random() * 50D) );   
+           try    
+           {   
+               Thread.sleep(1000);   
+           } catch (InterruptedException e) {   
+           }   
+           System.out.println(threadLocal.get());   
+       }   
+   }   
+   public static void main(String[] args)    
+   {   
+       MyRunnable runnableInstance = new MyRunnable();    
+       Thread t1 = new Thread(runnableInstance);   
+       Thread t2 = new Thread(runnableInstance);   
+      // this will call run() method    
+       t1.start();   
+       t2.start();   
+   }   
+} 
+Output: 
+
+10 
+33 
+10 33 
+16. What is semaphore?
+Semaphore is regarded as a thread synchronization construct that is usually required to control and manage the access to the shared resource using counters. It simply sets the limit of the thread. The semaphore class is defined within the package java.util.concurrent and can be used to send signals between threads to avoid missed signals or to guard critical sections. It can also be used to implement resource pools or bounded collection.
+
+17. Explain Thread Group. Why should we not use it?
+ThreadGroup is a class that is used to create multiple groups of threads in a single object. This group of threads is present in the form of three structures in which every thread group has a parent except the initial thread. Thread groups can contain other thread groups also. A thread is only allowed to have access to information about its own thread group, not other thread groups. 
+
+Previously in the old version of Java, the only functionality that did not work without a thread group was uncaughtException( Thread t, Throwable e). But now in Java 5 versions, there is Thread.setUncaughtExceptionHandler(UncaughtExceptionHandler). So now even that works without thread groups and therefore, there is no need to use thread groups.  
+
+t1.setUncaughtExceptionHandler(new UncaughtExceptionHandler() 
+{ 
+@Override  
+public void uncaughtException(Thread t, Throwable e)  
+{  
+System.out.println("exception occured:"+e.getMessage()); 
+}  
+}; 
+18. What is the ExecutorService interface?
+ExecutorService interface is basically a sub-interface of Executor interface with some additional methods or features that help in managing and controlling the execution of threads. It enables us to execute tasks asynchronously on threads.
+
+
+Example: 
+
+import java.util.concurrent.ExecutorService;   
+import java.util.concurrent.Executors;   
+import java.util.concurrent.TimeUnit;   
+  
+public class TestThread {   
+                                   public static void main(final String[] arguments) throws InterruptedException {   
+ExecutorService e = Executors.newSingleThreadExecutor();   
+ 
+     try {   
+       e.submit(new Thread());   
+        System.out.println("Shutdown executor");   
+        e.shutdown();   
+        e.awaitTermination(5, TimeUnit.SECONDS);   
+  } catch (InterruptedException ex) {   
+       System.err.println("tasks interrupted");   
+  } finally {   
+  
+        if (!e.isTerminated()) {   
+           System.err.println("cancel non-finished tasks");   
+     }   
+        e.shutdownNow();   
+        System.out.println("shutdown finished");   
+  }   
+  }   
+  
+  static class Task implements Runnable {   
+        
+     public void run() {   
+          
+        try {   
+        Long duration = (long) (Math.random() * 20);   
+           System.out.println("Running Task!");   
+           TimeUnit.SECONDS.sleep(duration);   
+     } catch (InterruptedException ex) {   
+           ex.printStackTrace();   
+     }   
+  }   
+ }          
+}   
+Output:
+
+Shutdown executor 
+shutdown finished
+19. What will happen if we don’t override the thread class run() method?
+Nothing will happen as such if we don’t override the run() method. The compiler will not show any error. It will execute the run() method of thread class and we will just don’t get any output because the run() method is with an empty implementation. 
+
+Example:  
+
+class MyThread extends Thread { 
+  //don't override run() method 
+} 
+public class DontOverrideRun { 
+  public static void main(String[] args) { 
+         System.out.println("Started Main."); 
+         MyThread thread1=new MyThread(); 
+      thread1.start(); 
+         System.out.println("Ended Main."); 
+  } 
+} 
+Output: 
+
+Started Main. 
+Ended Main.  
+20. What is the lock interface? Why is it better to use a lock interface rather than a synchronized block.?
+Lock interface was introduced in Java 1.5 and is generally used as a synchronization mechanism to provide important operations for blocking.  
+
+Advantages of using Lock interface over Synchronization block: 
+
+Methods of Lock interface i.e., Lock() and Unlock() can be called in different methods. It is the main advantage of a lock interface over a synchronized block because the synchronized block is fully contained in a single method.  
+Lock interface is more flexible and makes sure that the longest waiting thread gets a fair chance for execution, unlike the synchronization block.
+21. Is it possible to call the run() method directly to start a new thread?
+No, it's not possible at all. You need to call the start method to create a new thread otherwise run method won't create a new thread. Instead, it will execute in the current thread.
+
+22. Is it possible that each thread can have its stack in multithreaded programming?
+Of course, it is possible. In multithreaded programming, each thread maintains its own separate stack area in memory because of which every thread is independent of each other rather than dependent.
+
+Conclusion
+1. Conclusion
+Overall, multithreading is a very essential part of Java and modern software development. It is very helpful in making the program more efficient and also reduces the usage of storage resources. In this article, we have discussed important interview questions related to multithreading along with answers that were asked mostly in the Interviews and will help you to crack your interviews.
+
 
 
 
