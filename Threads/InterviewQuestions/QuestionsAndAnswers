@@ -29,7 +29,7 @@ Ans : Class Lock: In java, each and every class has a unique lock usually referr
                }
             } 
 
-Q2: User Thread	Daemon Thread 
+Q2: User Thread	AND Daemon Thread 
 Ans :JVM waits for user threads to finish their tasks before termination. 	
     JVM does not wait for daemon threads to finish their tasks before termination.
 
@@ -50,21 +50,24 @@ Ans: Both the interfaces are generally used to encapsulate tasks that are needed
 
 Running Interface: This interface is basically available in Java right from the beginning.
                     It is simply used to execute code on a concurrent thread.  
+
 Callable Interface: This interface is basically a new one that was introduced as a part of the concurrency package.
                     It addresses the limitation of runnable interfaces along with some major changes like generics,
-                    enum, static imports, variable argument method, etc. It uses generics to define the return type of object.
-
+                    enum, static imports, variable argument method, etc.
+                    It uses generics to define the return type of object.
 
                         public interface Runnable  
                         {   
                           public abstract void run(); 
                         }  
+
                         public interface Callable<V>  
                         {    
                         V call() throws Exception;  
                         } 
-                        Runnable Interface	
-                        Callable Interface 
+
+                        Runnable Interface AND  Callable Interface 
+
                               It does not return any result and therefore, cannot throw a checked exception. 	
                               It returns a result and therefore, can throw an exception.
                               
@@ -93,36 +96,57 @@ Ans: A Thread pool is simply a collection of pre-initialized or worker threads a
       To create the thread pools, java.util.concurrent.Executors class usually provides factory methods
 
 
-=============Arrange below Q n As
-Multithreading Interview Questions in Java for Experienced
-1. What is the synchronization process? Why use it?
-Synchronization is basically a process in java that enables a simple strategy for avoiding thread interference and memory consistency errors. This process makes sure that resource will be only used one thread at a time when one thread tries to access a shared resource. It can be achieved in three different ways as given below: 
+Q5. What is the synchronization process? Why use it?
+Ans:  Synchronization is basically a process in java that enables a simple strategy 
+      for avoiding thread interference and memory consistency errors. 
+      This process makes sure that resource will be only used one thread at a time 
+      when one thread tries to access a shared resource.
 
-By the synchronized method
-By synchronized block
-By static synchronization
-Syntax:  
+      It can be achieved in three different ways as given below: 
+            By synchronized method
+            By synchronized block
+            By static synchronization
+      
+      Syntax:  
 
-synchronized (object) 
-{        
-   //statement to be synchronized 
-} 
-2. What is synchronized method and synchronized block? Which one should be preferred?
-Synchronized Method: In this method, the thread acquires a lock on the object when they enter the synchronized method and releases the lock either normally or by throwing an exception when they leave the method.  No other thread can use the whole method unless and until the current thread finishes its execution and release the lock. It can be used when one wants to lock on the entire functionality of a particular method. 
+            synchronized (object) 
+            {        
+               //statement to be synchronized 
+            } 
 
-Synchronized Block: In this method, the thread acquires a lock on the object between parentheses after the synchronized keyword, and releases the lock when they leave the block. No other thread can acquire a lock on the locked object unless and until the synchronized block exists. It can be used when one wants to keep other parts of the programs accessible to other threads.
+Q6. What is synchronized method and synchronized block? Which one should be preferred?
+Ans: Synchronized Method: 
+            In this method, the thread acquires a lock on the object when they enter the synchronized method 
+            and releases the lock either normally or by throwing an exception when they leave the method. 
+            No other thread can use the whole method unless and until the current thread finishes its execution 
+            and release the lock. 
+            
+            It can be used when one wants to lock on the entire functionality of a particular method. 
+
+      Synchronized Block: 
+            In this method, the thread acquires a lock on the object between parentheses after the synchronized keyword,
+            and releases the lock when they leave the block. 
+            No other thread can acquire a lock on the locked object unless and until the synchronized block exists. 
+            It can be used when one wants to keep other parts of the programs accessible to other threads.
  
-Synchronized blocks should be preferred more as it boosts the performance of a particular program. It only locks a certain part of the program (critical section) rather than the entire method and therefore leads to less contention.
+      Synchronized blocks should be preferred more as it boosts the performance of a particular program. 
+      It only locks a certain part of the program (critical section) rather than the entire method 
+      and therefore leads to less contention.
 
-3. What is thread starvation?
-Thread starvation is basically a situation or condition where a thread won’t be able to have regular access to shared resources and therefore is unable to proceed or make progress. This is because other threads have high priority and occupy the resources for too long. This usually happens with low-priority threads that do not get CPU for its execution to carry on. 
+Q7. What is thread starvation?
+Ans: Thread starvation is basically a situation or condition where a thread won’t be able to have regular access 
+      to shared resources and therefore is unable to proceed or make progress. 
+      This is because other threads have high priority and occupy the resources for too long.
+      This usually happens with low-priority threads that do not get CPU for its execution to carry on. 
 
 
-4. What is Livelock? What happens when it occurs?
-Similar to deadlock, livelock is also another concurrency problem. In this case, the state of threads changes between one another without making any progress. Threads are not blocked but their execution is stopped due to the unavailability of resources.
+Q8. What is Livelock? What happens when it occurs?
+Ans: Similar to deadlock, livelock is also another concurrency problem. 
+      In this case, the state of threads changes between one another without making any progress. 
+      Threads are not blocked but their execution is stopped due to the unavailability of resources.
 
-5. What is BlockingQueue?
-BlockingQueue basically represents a queue that is thread-safe. Producer thread inserts resource/element into the queue using put() method unless it gets full and consumer thread takes resources from the queue using take() method until it gets empty. But if a thread tries to dequeue from an empty queue, then a particular thread will be blocked until some other thread inserts an item into the queue, or if a thread tries to insert an item into a queue that is already full, then a particular thread will be blocked until some threads take away an item from the queue. 
+Q9. What is BlockingQueue?
+Ans: BlockingQueue basically represents a queue that is thread-safe. Producer thread inserts resource/element into the queue using put() method unless it gets full and consumer thread takes resources from the queue using take() method until it gets empty. But if a thread tries to dequeue from an empty queue, then a particular thread will be blocked until some other thread inserts an item into the queue, or if a thread tries to insert an item into a queue that is already full, then a particular thread will be blocked until some threads take away an item from the queue. 
 
 
 Example: 
