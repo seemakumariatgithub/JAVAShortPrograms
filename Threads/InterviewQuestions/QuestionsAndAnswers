@@ -146,7 +146,12 @@ Ans: Similar to deadlock, livelock is also another concurrency problem.
       Threads are not blocked but their execution is stopped due to the unavailability of resources.
 
 Q9. What is BlockingQueue?
-Ans: BlockingQueue basically represents a queue that is thread-safe. Producer thread inserts resource/element into the queue using put() method unless it gets full and consumer thread takes resources from the queue using take() method until it gets empty. But if a thread tries to dequeue from an empty queue, then a particular thread will be blocked until some other thread inserts an item into the queue, or if a thread tries to insert an item into a queue that is already full, then a particular thread will be blocked until some threads take away an item from the queue. 
+Ans: BlockingQueue basically represents a queue that is thread-safe. 
+      Producer thread inserts resource/element into the queue using put() method unless it gets full 
+      and consumer thread takes resources from the queue using take() method until it gets empty. 
+      But if a thread tries to dequeue from an empty queue, then a particular thread will be blocked until 
+      some other thread inserts an item into the queue, or if a thread tries to insert an item into a queue 
+      that is already full, then a particular thread will be blocked until some threads take away an item from the queue. 
 
 
 Example: 
@@ -250,47 +255,89 @@ Output:
 
 thread is executing now........ 
 Exception in thread "main" java.lang.IllegalThreadStateException  
-7. Explain context switching.
-Context switching is basically an important feature of multithreading. It is referred to as switching of CPU from one thread or process to another one. It allows multiple processes to share the same CPU. In context switching, the state of thread or process is stored so that the execution of the thread can be resumed later if required. 
-
-8. What is CyclicBarrier and CountDownLatch?
-CyclicBarrier and CountDownLatch, both are required for managing multithreaded programming. But there is some difference between them as given below: 
-
-CyclicBarrier: It is a tool to synchronize threads processing using some algorithm. It enables a set of threads to wait for each other till they reach a common execution point or common barrier points, and then let them further continue execution. One can reuse the same CyclicBarrier even if the barrier is broken by setting it. 
-
-CountDownLatch: It is a tool that enables main threads to wait until mandatory operations are performed and completed by other threads. In simple words, it makes sure that a thread waits until the execution in another thread completes before it starts its execution. One cannot reuse the same CountDownLatch once the count reaches 0. 
 
 
-9. What do you mean by inter-thread communication?
-Inter-thread communication, as the name suggests, is a process or mechanism using which multiple threads can communicate with each other. It is especially used to avoid thread polling in java and can be obtained using wait(), notify(), and notifyAll() methods. 
+Q10. Explain context switching.
+Nas: Context switching is basically an important feature of multithreading. 
+      It is referred to as switching of CPU from one thread or process to another one. 
+      It allows multiple processes to share the same CPU. In context switching, 
+      the state of thread or process is stored so that the execution of the thread can be resumed later if required. 
 
-10. What is Thread Scheduler and Time Slicing?
-Thread Scheduler: It is a component of JVM that is used to decide which thread will execute next if multiple threads are waiting to get the chance of execution. By looking at the priority assigned to each thread that is READY, the thread scheduler selects the next run to execute. To schedule the threads, it mainly uses two mechanisms: Preemptive Scheduling and Time slicing scheduling.  
+Q11. What is CyclicBarrier and CountDownLatch?
+Ans: CyclicBarrier and CountDownLatch, 
+      both are required for managing multithreaded programming. 
+      But there is some difference between them as given below: 
 
-Time Slicing: It is especially used to divide CPU time and allocate them to active threads. In this, each thread will get a predefined slice of time to execute. When the time expires, a particular thread has to wait till other threads get their chances to use their time in a round-robin fashion. Every running thread will get executed for a fixed time period. 
+      CyclicBarrier: It is a tool to synchronize threads processing using some algorithm. 
+                  It enables a set of threads to wait for each other till they reach a common execution point       
+                  or common barrier points, and then let them further continue execution. 
+                  One can reuse the same CyclicBarrier even if the barrier is broken by setting it. 
 
-11. What is a shutdown hook?
-A shutdown hook is simply a thread that is invoked implicitly before JVM shuts down. It is one of the most important features of JVM because it provides the capacity to do resource cleanup or save application state JVM shuts down.  By calling the halt(int) method of the Runtime class, the shutdown hook can be stopped. Using the following method, one can add a shutdown hook. 
-
-public void addShutdownHook(Thread hook){}     
-Runtime r=Runtime.getRuntime();   
-r.addShutdownHook(new MyThread());
-12. What is busy spinning?
-Busy Spinning, also known as Busy-waiting, is a technique in which one thread waits for some condition to happen, without calling wait or sleep methods and releasing the CPU. In this condition, one can pause a thread by making it run an empty loop for a certain time period, and it does not even give CPY control. Therefore, it is used to preserve CPU caches and avoid the cost of rebuilding cache.
-
-13. What is ConcurrentHashMap and Hashtable? In java, why is ConcurrentHashMap considered faster than Hashtable?
-ConcurrentHashMap: It was introduced in Java 1.5 to store data using multiple buckets. As the name suggests, it allows concurrent read and writes operations to the map. It only locks a certain portion of the map while doing iteration to provide thread safety so that other readers can still have access to the map without waiting for iteration to complete.  
-
-Hashtable: It is a thread-safe legacy class that was introduced in old versions of java to store key or value pairs using a hash table.  It does not provide any lock-free read, unlike ConcurrentHashMap. It just locks the entire map while doing iteration. 
-
-ConcurrentHashMap and Hashtable, both are thread-safe but ConcurrentHashMap generally avoids read locks and improves performance, unlike Hashtable. ConcurrentHashMap also provides lock-free reads, unlike Hashtable. Therefore, ConcurrentHashMap is considered faster than Hashtable especially when the number of readers is more as compared to the number of writers. 
-
-14. Explain thread priority.
-Thread priority simply means that threads with the highest priority will get a chance for execution prior to low-priority threads. One can specify the priority but it's not necessary that the highest priority thread will get executed before the lower-priority thread. Thread scheduler assigns processor to thread on the basis of thread priority. The range of priority changes between 1-10 from lowest priority to highest priority. 
+      CountDownLatch: It is a tool that enables main threads to wait until mandatory operations are performed 
+                  and completed by other threads. In simple words, it makes sure that a thread waits until the 
+                  execution in another thread completes before it starts its execution.
+                  One cannot reuse the same CountDownLatch once the count reaches 0. 
 
 
-15. What do you mean by the ThreadLocal variable in Java?
-ThreadLocal variables are special kinds of variables created and provided by the Java ThreadLocal class. These variables are only allowed to be read and written by the same thread. Two threads cannot be able to see each other’s ThreadLocal variable, so even if they will execute the same code, then there won't be any race condition and the code will be thread-safe.  
+Q12. What do you mean by inter-thread communication?
+Ans: Inter-thread communication, is a process or mechanism using which multiple threads can
+      communicate with each other. It is especially used to avoid thread polling in java 
+      and can be obtained using wait(), notify(), and notifyAll() methods. 
+
+Q13. What is Thread Scheduler and Time Slicing?
+Ans: Thread Scheduler: It is a component of JVM that is used to decide which thread will execute next
+      if multiple threads are waiting to get the chance of execution. 
+      By looking at the priority assigned to each thread that is READY, 
+      the thread scheduler selects the next run to execute. To schedule the threads, 
+      it mainly uses two mechanisms: Preemptive Scheduling and Time slicing scheduling.  
+
+      Time Slicing: It is especially used to divide CPU time and allocate them to active threads. In this, each thread will get a predefined slice of time to execute. When the time expires, a particular thread has to wait till other threads get their chances to use their time in a round-robin fashion. Every running thread will get executed for a fixed time period. 
+
+Q14. What is a shutdown hook?
+Ans: A shutdown hook is simply a thread that is invoked implicitly before JVM shuts down.
+      It is one of the most important features of JVM because it provides the capacity to do resource 
+      cleanup or save application state JVM shuts down.  By calling the halt(int) method of the Runtime class,
+      the shutdown hook can be stopped. Using the following method, one can add a shutdown hook. 
+
+      public void addShutdownHook(Thread hook){}     
+      Runtime r=Runtime.getRuntime();   
+      r.addShutdownHook(new MyThread());
+
+Q15. What is busy spinning?
+Ans: Busy Spinning, also known as Busy-waiting, is a technique in which one thread waits for some condition to happen, 
+      without calling wait or sleep methods and releasing the CPU. In this condition, 
+      one can pause a thread by making it run an empty loop for a certain time period, 
+      and it does not even give CPY control. Therefore, it is used to preserve CPU caches a
+      nd avoid the cost of rebuilding cache.
+
+Q16. What is ConcurrentHashMap and Hashtable? In java, why is ConcurrentHashMap considered faster than Hashtable?
+Ans: ConcurrentHashMap: 
+            It was introduced in Java 1.5 to store data using multiple buckets. 
+            As the name suggests, it allows concurrent read and writes operations to the map. 
+            It only locks a certain portion of the map while doing iteration to provide thread safety so
+            that other readers can still have access to the map without waiting for iteration to complete.  
+
+      Hashtable: 
+            It is a thread-safe legacy class that was introduced in old versions of java to store key 
+            or value pairs using a hash table.  It does not provide any lock-free read, unlike ConcurrentHashMap. 
+            It just locks the entire map while doing iteration. 
+
+            ConcurrentHashMap and Hashtable, both are thread-safe 
+            but ConcurrentHashMap generally avoids read locks and improves performance, unlike Hashtable. 
+            ConcurrentHashMap also provides lock-free reads, unlike Hashtable. 
+            Therefore, ConcurrentHashMap is considered faster than Hashtable especially 
+            when the number of readers is more as compared to the number of writers. 
+
+Q17. Explain thread priority.
+Ans: Thread priority simply means that threads with the highest priority will get a chance for execution prior to low-priority
+      threads. One can specify the priority but it's not necessary that the highest priority
+      thread will get executed before the lower-priority thread. Thread scheduler assigns processor to 
+      thread on the basis of thread priority. The range of priority changes between 1-10 
+      from lowest priority to highest priority. 
+
+
+Q18. What do you mean by the ThreadLocal variable in Java?
+Ans: ThreadLocal variables are special kinds of variables created and provided by the Java ThreadLocal class. These variables are only allowed to be read and written by the same thread. Two threads cannot be able to see each other’s ThreadLocal variable, so even if they will execute the same code, then there won't be any race condition and the code will be thread-safe.  
 
 Example:  
 
