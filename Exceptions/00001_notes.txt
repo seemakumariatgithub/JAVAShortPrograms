@@ -59,8 +59,10 @@ try/catch block:
   The goal of a well contruced catch clause is to resolve the exception condition and then continue the program as if the error had never occured.
 
 
-Displaying the erro of Exception:
-    
+Displaying the error of Exception:
+    Since the Throwable class has overwrited nthe toString(), the error message can by displaed simply by passing the Exception as argument.
+
+  while using multiple catch blocks, the subclass Exception should aways be writtenn before the Superclass Exception.
 
   
 
