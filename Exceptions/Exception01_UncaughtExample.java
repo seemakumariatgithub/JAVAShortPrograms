@@ -1,4 +1,4 @@
-class Exception1_UncaughtExample{
+class Exception01_UncaughtExample{
     public static void main(String[] args){
         int a=0;
         int b=67;
