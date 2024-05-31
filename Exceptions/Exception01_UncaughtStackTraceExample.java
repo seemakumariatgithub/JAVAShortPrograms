@@ -1,4 +1,4 @@
-class Exception1_UncaughtStackTraceExample{
+class Exception01_UncaughtStackTraceExample{
     public static void main(String[] args){
         anAction();
     }
