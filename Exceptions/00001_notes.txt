@@ -46,6 +46,24 @@ Subclasses of Throwable: Immediatly below thrwable are two branches/subclasses
         This type of exceptions are used by JAVA Runtime system.
             One example of this type is " Stack overflow".
 
+try/catch block:
+  Once the exception occurs the control is thrown out of the try block, and it is transfered to the catch block.
+  And the line of code in try block, after the line that have thrwn the exception will never be executed.
+
+  In other word, since the catch block is not called, the control will never be returned.
+
+  Once the catch block is executed, the program control will continue to the next line in the program following the try/catch block.
+
+  The scope of catch block is restricted to the immediatly preceeded try block.
+
+  The goal of a well contruced catch clause is to resolve the exception condition and then continue the program as if the error had never occured.
+
+
+Displaying the erro of Exception:
+    
+
+  
+
 
 
 
