@@ -110,6 +110,8 @@ throws:
     <type> <methodName> (<Parameter list>) thorws <Exception lists>{
       // method body
     }
+
+Code Example: Exception04_throwsClause.java
 ========================================================================
 
 
