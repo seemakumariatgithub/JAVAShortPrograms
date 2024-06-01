@@ -261,4 +261,11 @@ Exception handlng with method overriding
     2.c.If superclass declares exception and subclass declares no exception superclass
         - compiler will give no error
 
+Conclusion : 
+    1. If superClass declares no exception, then subclass can decalre only unchecked exception while overriding a method.
+    2. If superClass declares exceptio, then subclass can declare, same class exception, childclass exception, or unchecked exceptions while overriding a method.
+    3. If superClass declares exception, then subclass may override, without declaring exception as well, while overridng a method.
+
+========================================================================
+
 
