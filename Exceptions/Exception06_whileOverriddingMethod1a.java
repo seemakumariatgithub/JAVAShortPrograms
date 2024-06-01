@@ -12,3 +12,10 @@ class Exception06_whileOverriddingMethod1a extends Exception06_superClass{
        superObject.methodA();
     }
 }
+
+class Exception06_superClass{
+     //In this the method no exception is declared
+    void methodA(){
+            System.out.println("In Superclass methodA()");
+    }
+}
