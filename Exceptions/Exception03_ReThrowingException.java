@@ -16,7 +16,7 @@ class Exception03_ReThrowingException{
     static void anAction(){
         try{
              System.out.println("Inside the called method.\n This is before the called method threw exception.\n");            
-             throw new NullPointerException("demo"); // Here the argument specified in string, describs the exception            
+             throw new NullPointerException("demo"); // Here the argument specified in string, that describes the exception            
             //System.out.println("Inside the called method.\n This is after the called method threw exception.\n");
             // The above line will throw compile time error as  error: unreachable statement
         }catch(NullPointerException e){
