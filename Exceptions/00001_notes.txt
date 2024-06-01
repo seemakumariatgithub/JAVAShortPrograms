@@ -113,6 +113,10 @@ throws:
 
 Code Example: Exception04_throwsClause.java
 ========================================================================
+finally
+
+  This clause is optional
+  However the try clause must have at least one catch or one finally caluse.
 
 
   
