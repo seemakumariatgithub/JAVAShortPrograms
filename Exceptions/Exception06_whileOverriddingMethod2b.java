@@ -1,10 +1,8 @@
 import java.lang.*;
 
-//2a.If superclass declares exception and subclass declares child exception of exception declared in superclass
-//   OR same exception type
-//    OR any new RuntimeException type(unchecked exception)
+//2b.If superclass declares exception and subclass declares exception that is not subclass of exception declared in superclass
 
-class Exception06_whileOverriddingMethod2a extends Exception06_superClass{
+class Exception06_whileOverriddingMethod2b extends Exception06_superClass{
     void methodA() throws Exception{
         System.out.println("In Subclass methodA()");
     }
