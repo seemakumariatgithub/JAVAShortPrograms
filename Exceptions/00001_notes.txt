@@ -118,6 +118,9 @@ finally
   This clause is optional
   However the try clause must have at least one catch or one finally caluse.
 
+NOTE: If a finally block is associate with a try block, the finally block will be executed on completion of try block.
+
+Code Example :Exception05_finallyClause.java
 
   
 
