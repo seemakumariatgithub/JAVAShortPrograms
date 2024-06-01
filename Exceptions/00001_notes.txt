@@ -243,6 +243,8 @@ Exception handlng with method overriding
       2. When method in superclass declares/hanldes/throws the exception
              Here now three cases exits:
               a.If superclass declares exception and subclass declares child exception of exception declared in superclass
+                  OR same exception type
+                  OR any new RuntimeException type
               b.If superclass declares exception and subclass declares exception that is not subclass of exception declared in superclass
               c.If superclass declares exception and subclass declares no exception superclass
 
@@ -251,6 +253,8 @@ Exception handlng with method overriding
     1.b.If superclass doesnot declares exception and subclass declares unchecked exception
          - compiler will give no error
     2.a.If superclass declares exception and subclass declares child exception of exception declared in superclass
+          OR same exception type
+          OR any new RuntimeException type
          - compiler will give no error
     2.b.If superclass declares exception and subclass declares exception that is not subclass of exception declared in superclass
          - compiler will give error
