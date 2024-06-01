@@ -1,6 +1,6 @@
 An Exception in java is the object, that describes the Exceptional conditions, that have occured during the execution of piece of code.
 
-========================================================================
+=======================================================================
 ALgorithm for Exception handling in JAVA
 1. When an exceptional condition occurs
 2. Create an exception object, that describes/represents this exceptional conditions
