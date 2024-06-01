@@ -207,6 +207,9 @@ EventException,
 FileSystemNotFoundException, 
 IllegalArgumentException,
 IllegalStateException,
+IndexOutOfBoundsException
+      ArrayIndexOutOfBoundsException, 
+      StringIndexOutOfBoundsException
 NegativeArraySizeException,
 NoSuchElementException, 
 NullPointerException,
