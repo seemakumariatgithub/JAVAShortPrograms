@@ -90,8 +90,27 @@ We can obtain Throwable object in TWO ways:
   The nearest enclosing try block is inspected to see for the catch statement that matches the exception type thrown.
   If it does find the match, the control is transfered to that catch statement. If match is not  found then next enclosing try statement is inspected, and so on. 
   If still no match is found, then the default exception handler halts the program, and stack trace is being printed.
+
   Code Example : Exception03_ReThrowingException and Exception03_ReThrowingException2 
 
+========================================================================
+throws:
+
+  If a method is capable of causing an exception but it does not handles an exception, or the method is not capable of handling the excpetion, 
+  Then in that case the called method must specify this behaviour to the caller method, so that  the caller method can gaurd themselves against exception.
+  This is done by using throws clause in the method's declaration.
+
+  throws caluse lists all the posible exceptions that this method might throw.
+
+  It is necessessary to list these exceptions, otherwise complie time error will be thrown.
+  All exceptions should be mentioned in the throws clause list, except of error type, RuntimeException type or their subclass type.
+
+  General Form is :
+
+    <type> <methodName> (<Parameter list>) thorws <Exception lists>{
+      // method body
+    }
+========================================================================
 
 
   
