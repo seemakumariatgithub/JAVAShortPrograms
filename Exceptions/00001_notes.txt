@@ -34,7 +34,7 @@ JAVA Exceptions are managed by using five keywords:
 Exception Types:
   All Exception types are the subclass of build-in class Throwable.
 
-Subclasses of Throwable: Immediatly below thrwable are two branches/subclasses
+Subclasses of Throwable: Immediatly below throwable are two branches/subclasses
   1. Exception
   2. Error
 
