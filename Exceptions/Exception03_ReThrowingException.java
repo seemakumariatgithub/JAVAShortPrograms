@@ -13,7 +13,7 @@ class Exception03_ReThrowingException{
             throw new NullPointerException("demo");
         }catch(NullPointerException e){
             System.out.println("caught inside the called method:"+e);
-            throw new NullPointerException("new demo");
+            throw new NullPointerException("new demo"); // rethrow the new exception bject
         }
     }
 }
