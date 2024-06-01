@@ -61,6 +61,7 @@ try/catch block:
 
   The goal of a well construced catch clause is to resolve the exception condition and then continue the program as if the error had never occured.
 
+Code Example: Exception02_TryCatchExm and Exception02_TryCatchExm2
 ========================================================================
 Displaying the error of Exception:
     Since the Throwable class has overwriten the toString(), the error message can by displayed simply by passing the Exception as an argument.
@@ -89,6 +90,7 @@ We can obtain Throwable object in TWO ways:
   The nearest enclosing try block is inspected to see for the catch statement that matches the exception type thrown.
   If it does find the match, the control is transfered to that catch statement. If match is not  found then next enclosing try statement is inspected, and so on. 
   If still no match is found, then the default exception handler halts the program, and stack trace is being printed.
+  Code Example : Exception03_ReThrowingException and Exception03_ReThrowingException2 
 
 
 
