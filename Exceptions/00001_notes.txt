@@ -226,6 +226,35 @@ Custom Exception or Creating your own exception
       This can be done by extending the Exception class.
       Your custom class donot need to actually implement anything. It is their existence in the type system that allows us to use them as exception.
      
+==============================
+Chained Exception
+==============================
+Exception handlng with method overriding
 
+    With method overridding two types of problems exist:
+      1. When method in super class dosenot handles/declares/throws the exception
+      2. When method in superclass declares/hanldes/throws the exception
+
+      1. When method in super class dosenot handles/declares/throws the exception
+            Here now two cases exits:
+              a.If superclass doesnot declares exception and subclass declares checked exception
+              b.If superclass doesnot declares exception and subclass declares unchecked exception
+          
+      2. When method in superclass declares/hanldes/throws the exception
+             Here now three cases exits:
+              a.If superclass declares exception and subclass declares child exception of exception declared in superclass
+              b.If superclass declares exception and subclass declares exception that is not subclass of exception declared in superclass
+              c.If superclass declares exception and subclass declares no exception superclass
+
+    1.a.If superclass doesnot declares exception and subclass declares checked exception
+         - compiler will give error
+    1.b.If superclass doesnot declares exception and subclass declares unchecked exception
+         - compiler will give no error
+    2.a.If superclass declares exception and subclass declares child exception of exception declared in superclass
+         - compiler will give no error
+    2.b.If superclass declares exception and subclass declares exception that is not subclass of exception declared in superclass
+         - compiler will give error
+    2.c.If superclass declares exception and subclass declares no exception superclass
+        - compiler will give no error
 
 
