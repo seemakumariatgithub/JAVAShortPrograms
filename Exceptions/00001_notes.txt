@@ -121,7 +121,22 @@ finally
 NOTE: If a finally block is associate with a try block, the finally block will be executed on completion of try block.
 
 Code Example :Exception05_finallyClause.java
+========================================================================
+Checked and Unchecked Exceptions:
 
+  1. Unchecked Exceptions:
+          Commpiler doesnot checks whether these exceptions are handled or thrown by the method, hence they are called unchecked exceptions. 
+          These exceptions are not checked by compiler at compile time.
+          The methods that may throw these types of exceptions are not expected to handle them or mention them in throws list.
+
+          Unchecked Exception types are of type RuntimeException or its subclasses, or Error type or its subclass.
+
+          
+  2. Checked Exceptions:
+        Commpiler expects these exceptions to be handled or thrown by the method, hence they are called checked exceptions. 
+          These exceptions are checked by compiler at compile time.
+          The methods that may throw these types of exceptions are expected to handle them or mention them in throws list.
+          
   
 
 
