@@ -20,3 +20,4 @@ class Exception06_superClass{
     void methodA() throws RuntimeException{
             System.out.println("In Superclass methodA()");
     }
+}
