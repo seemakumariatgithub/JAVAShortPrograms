@@ -10,12 +10,7 @@ class Exception07_customException03{
     
 }
 
-class MyCustomException extends Exception{
-    
-    // MyCustomException(String exMsg){
-    //     super(exMsg);
-    // }
-    
+class MyCustomException extends Exception{  
 }
 
 /*OUTPUT :  will be 
