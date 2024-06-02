@@ -224,9 +224,18 @@ UncheckedIOException,
 =========================================================================
 Custom Exception or Creating your own exception
 
-      This can be done by extending the Exception class.
+      This can be done by extending the Exception class or any subclass of this class.
+          The idea is to have the custom exception class to be of type Throwable.
+          So we can extend Throwable class as well, it will work.
       Your custom class donot need to actually implement anything. It is their existence in the type system that allows us to use them as exception.
-     
+
+
+Code Example: 
+        Exception07_customException01.java
+        Exception07_customException02.java
+        Exception07_customException03.java
+        Exception07_customException04.java
+
 ==============================
 Chained Exception
 ==============================
