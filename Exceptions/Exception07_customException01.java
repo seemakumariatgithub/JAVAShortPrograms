@@ -18,3 +18,11 @@ class MyCustomException extends Exception{
 In Main: caught null
 
 */
+
+/*
+This wil also work with 
+class MyCustomException extends Error{
+    }
+class MyCustomException extends RuntimeException{
+    }
+*/
