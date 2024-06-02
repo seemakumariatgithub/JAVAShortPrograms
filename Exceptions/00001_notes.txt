@@ -50,7 +50,8 @@ Subclasses of Throwable: Immediatly below throwable are two branches/subclasses
             One example of this type is " Stack overflow".
 ==========================================================================
 try/catch block:
-  Once the exception occurs the control is thrown out of the try block, and it is transfered to the catch block.
+  Once the exception occurs (or the exception is explicitly thorwn by throw keyword) the control is thrown out of the try block,
+  and it is transfered to the catch block.
   And the line of code in try block, after the line that have thrown the exception will never be executed.
 
   In other word, since the catch block is not called, the control will never be returned.
@@ -100,7 +101,7 @@ throws:
   Then in that case the called method must specify this behaviour to the caller method, so that  the caller method can gaurd themselves against exception.
   This is done by using throws clause in the method's declaration.
 
-  throws caluse lists all the posible exceptions that this method might throw.
+  throws caluse must lists all the posible exceptions that this method might throw.
 
   It is necessessary to list these exceptions, otherwise complie time error will be thrown.
   All exceptions should be mentioned in the throws clause list, except of error type, RuntimeException type or their subclass type.
