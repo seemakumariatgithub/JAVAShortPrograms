@@ -284,6 +284,9 @@ Ans: Inter-thread communication, is a process or mechanism using which multiple 
       communicate with each other. It is especially used to avoid thread polling in java 
       and can be obtained using wait(), notify(), and notifyAll() methods. 
 
+Q13: What is the use of keywords or modifiers, transient, volatile and atomic
+Ans : 
+
 
 =============Arrange below Q n As
 Multithreading Interview Questions in Java for Experienced
