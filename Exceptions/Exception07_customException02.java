@@ -1,4 +1,4 @@
-class Exception07_customException1{
+class Exception07_customException02{
     
     public static void main(String[] args){
         try{
@@ -6,20 +6,16 @@ class Exception07_customException1{
         }catch(MyCustomException ex){
             System.out.println("In Main: caught "+ex.getMessage());
         }
-    }
-    
+    }    
 }
-
-class MyCustomException extends Exception{
-    
-    // MyCustomException(){
-    //     super();
-    // }
-    
+class MyCustomException extends Exception{    
     MyCustomException(String exMsg){
         super(exMsg);
-    }
-    
+    }    
 }
 
-/*Out put will be "In Main: caught throw custom exception" */
+/*Out put will be 
+
+"In Main: caught throw custom exception" 
+
+*/
