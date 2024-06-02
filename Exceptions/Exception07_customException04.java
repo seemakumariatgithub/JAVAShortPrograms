@@ -1,4 +1,4 @@
-class Exception07_customException03{
+class Exception07_customException04{
     
     public static void main(String[] args){
         try{
