@@ -19,7 +19,7 @@ In Main: caught null
 
 */
 
-/*
+/*NOTE:
 This wil also work with 
 class MyCustomException extends Error{
     }
