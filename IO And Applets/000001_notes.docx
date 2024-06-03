@@ -1,0 +1,26 @@
+There are two main packages for IO in java :
+  1. io 
+  2. applet
+
+  1. io  : - This supports java's basic input and output system, like file IO, 
+  2. applet : - This supports applets
+
+====================================================
+Streams:
+    Java perfomrs the IO through STREAMS.
+    A Stream in java is an abstract that either produces or consumes information.
+    A stream is linked to physical devices by java I/O system.
+    All streams behave same even though the actual devices they are connect is different.
+          Hence same I/O classes and methods in java can be applied to different devices.
+  An input stream can abstract many different kinds of input from, disk, file , keyboard, network connectons.
+  An output stream can refer to console, disk file,or ,network connections.
+
+  Streams are cleaner way to deal with input and output without having everypart of program t understand the difference between a keyboard and network. 
+
+     Java implements streams within class hierarchies defined in the
+java.io package.
+    
+      
+
+  
+
