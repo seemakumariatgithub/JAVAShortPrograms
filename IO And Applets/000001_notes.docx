@@ -15,12 +15,18 @@ Streams:
   An input stream can abstract many different kinds of input from, disk, file , keyboard, network connectons.
   An output stream can refer to console, disk file,or ,network connections.
 
-  Streams are cleaner way to deal with input and output without having everypart of program t understand the difference between a keyboard and network. 
+  Streams are cleaner way to deal with input and output without having everypart of program to understand the difference between a keyboard and network. 
+  Java implements stream in java.io package.
 
-     Java implements streams within class hierarchies defined in the
-java.io package.
+====================================================
+
+Byte Stream and Character Stream:
+
+Byte Stream:
+    These are defined by two abstract classes InputStream and OutputStream
+    Several concrete subclasses have been defined from this, that handles different types of devices, like, disk file, network connections, memory buffers.
+
     
-      
 
   
 
