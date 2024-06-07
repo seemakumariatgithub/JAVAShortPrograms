@@ -1,4 +1,4 @@
-class IO01_ReadingByteStream{
+class IOandApplet01_ReadingByteStream{
     
     public static void main(String[] args) {
         
