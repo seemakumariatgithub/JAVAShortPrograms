@@ -1,0 +1,14 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+class IOandApplet02_ReadingCharacterStream{
+    public static void main(String[] args) {
+        
+        BufferedReader myStringReader=new BufferedReader(new InputStreamReader(System.in));
+        try{
+             System.out.println(myStringReader.readLine());
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+}
