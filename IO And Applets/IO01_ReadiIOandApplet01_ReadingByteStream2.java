@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-class IOandApplet01_ReadingByteStream{
+class IOandApplet01_ReadingByteStream2{
     
     public static void main(String[] args) {
         
