@@ -26,7 +26,14 @@ Byte Stream:
     These are defined by two abstract classes InputStream and OutputStream
     Several concrete subclasses have been defined from this, that handles different types of devices, like, disk file, network connections, memory buffers.
 
-    
+=========================================
+Try with recourse:
+
+    It is important to understand that the resource declared in the try statement is implicitly final. 
+    This means that you can’t assign to the resource after it has been created. 
+    The scope of the resource is limited to the try-with-resources statement.
+    You can manage more than one resource within a single try statement. To do so, simply
+    separate each resource specification with a semicolon
 
   
 
