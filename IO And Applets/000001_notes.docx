@@ -35,5 +35,14 @@ Try with recourse:
     You can manage more than one resource within a single try statement. To do so, simply
     separate each resource specification with a semicolon
 
+        There is one other aspect to try-with-resources that needs to be mentioned. 
+    In general, when a try block executes, it is possible that an exception inside the try block will lead to
+    another exception that occurs when the resource is closed in a finally clause. 
+    In the case of a “normal” try statement, the original exception is lost, being preempted by the second
+    exception. 
+    However, when using try-with-resources, the second exception is suppressed. It
+    is not, however, lost. Instead, it is added to the list of suppressed exceptions associated
+    with the first exception. 
+    The list of suppressed exceptions can be obtained by using the getSuppressed( ) method defined by Throwable.
   
 
