@@ -118,19 +118,54 @@ static import:
   It is used to import the static member of a class or interface.
   It is posible to refer to the static member by their names, without class name.
   It is used as :
+      1. 1st form:
+        import static <pkg-name>.<type name>.<static member name>;
 
-        import static java.<package name>.<static member name>
-
-If we use only package name, but not statci member name in import, we will get
+If we use only package name, but not static member name in import, we will get
 
 error: static import only from classes and interfaces
 
+    1. 2nd form:
 
+      import static <pkg-name>.<type name>.*;
+
+    This will imprt all the static members
+Example program:
+
+        import static java.lang.Math.pow;
+        import static java.lang.Math.sqrt;
+        // Compute the hypotenuse of a right triangle.
+        class Hypot {
+             public static void main(String args[]) {
+                 double side1, side2;
+                 double hypot;
+                 side1 = 3.0;
+                 side2 = 4.0;
+                 // Here, sqrt() and pow() can be called by themselves,
+                 // without their class name.
+                 hypot = sqrt(pow(side1, 2) + pow(side2, 2));
+                 System.out.println("Given sides of lengths " +
+                 side1 + " and " + side2 +" the hypotenuse is " +hypot);
+             }
+        }
+
+    Static import can also be done for the user defined statci members of user defined classes or interfaces
+
+Note: do not abuse the static import.
+      Use static import only in the situations where we are using static member repeatedly.
+
+============================================================
+
+invoking the overloaded constructor using this() 
+
+    The general form is :
+      this(arg-list);
 
   
+      The this() is executed, the oveloaded constructed that matches the parameter list specified byb arg-list is executed first.
+      Then  if there is any statement inside the original constructor, they are execute.
+      The call to this() must be the first statement within the constructor.
 
-
-
-
+ 
 
 
