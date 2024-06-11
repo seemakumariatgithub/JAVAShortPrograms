@@ -112,6 +112,24 @@ assert keyword:
       Any non-void expresion is allowed for 'expr', as long as it can be converted to string.
 
 
+====================================================================
+static import: 
+
+  It is used to import the static member of a class or interface.
+  It is posible to refer to the static member by their names, without class name.
+  It is used as :
+
+        import static java.<package name>.<static member name>
+
+If we use only package name, but not statci member name in import, we will get
+
+error: static import only from classes and interfaces
+
+
+
+  
+
+
 
 
 
