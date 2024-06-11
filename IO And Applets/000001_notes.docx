@@ -46,3 +46,62 @@ Try with recourse:
     The list of suppressed exceptions can be obtained by using the getSuppressed( ) method defined by Throwable.
   
 
+==============================================
+Transient modifier:
+
+    Whenever an instance variable is declared as trasnsient, 
+    when we try to store the object data the value of this transient variable will not be saved.
+
+    That's why such variable data is not persisted.
+
+eg class T{
+ transient int a;
+int b;
+}
+
+Here whenever the object of type T is wrrten to persistent storage area, 
+the value of a will not be saved.
+While the value of bb will be saved.
+
+========================================================
+
+Volatile modifer:
+
+  This modifier tells the compiler that the variable can be modifed by any part of program unexpectedly.
+
+  Especially in case of Multithreading, 
+  every thread saves its prived copy of shared variable for fast access.
+  Whenever a volatile variable value is changed by any part of program, 
+  the compiler makes sure that every thread have the updated value for this volatile variable.
+
+==========================================================
+instanceof
+
+  This provides the run-time type information of an object.
+  This is useful when we are generating generalized routines that operate on objects of a complex class hierarchy.
+===========================================================
+
+strictfp modifier:
+
+  This modifier ensures that the floating point calculation takes place preciesly.
+
+  When a class is modified with strictfp, all of its method is modified by strictfp automatically.
+
+=================================================================
+assert keyword:
+
+  This is used during program develpment to create an assertion.
+  Assertion is a condition that should be true during program execution.
+  Asserions are often used during testing to verify that sme expected condition is met.
+  Assert are not used for release or production
+
+  Assert keyword have two forms:
+    1. 
+        assert condition ; 
+
+    2.
+        assert condition: expr;
+
+
+
+
