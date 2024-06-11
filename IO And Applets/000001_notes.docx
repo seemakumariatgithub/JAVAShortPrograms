@@ -97,10 +97,21 @@ assert keyword:
 
   Assert keyword have two forms:
     1. 
-        assert condition ; 
+        assert condition ;
+
+        Here, the 'condition' is an expression that must evaluate to boolean result.
+        If the result is true, then the assertion is true and no action will take place.
+        If the result is false, then assertion fails and a default AssertionError object is thrown.
 
     2.
         assert condition: expr;
+
+      Here 'expr' is the value that is passed to the AssertionError Constructor.
+      This value is converted to its string form and displayed if an assertion fails.
+      Mostly we use this to specify as string 
+      Any non-void expresion is allowed for 'expr', as long as it can be converted to string.
+
+
 
 
 
