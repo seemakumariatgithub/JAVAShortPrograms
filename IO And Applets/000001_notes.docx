@@ -166,6 +166,12 @@ invoking the overloaded constructor using this()
       Then  if there is any statement inside the original constructor, they are execute.
       The call to this() must be the first statement within the constructor.
 
+      One reason to use this, is it prevents duplication of code.
+
+    There are 2 restrictions:
+      1. You cannot use instance variable of the constructor's class in the call to 'this()'.
+      2. You cnnot use 'super()' and 'this()', in the same constructor, as each must be the first statement in the contructor.
+
  
 
 
