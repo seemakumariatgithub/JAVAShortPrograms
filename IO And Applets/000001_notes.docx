@@ -172,6 +172,16 @@ invoking the overloaded constructor using this()
       1. You cannot use instance variable of the constructor's class in the call to 'this()'.
       2. You cnnot use 'super()' and 'this()', in the same constructor, as each must be the first statement in the contructor.
 
+NOTE: if we use super() and next statement as this() :
+        We will get:
+               error: call to this must be first statement in constructor
+
+      if we use this() and next statement as super() :
+              We will get:
+                     error: call to super must be first statement in constructor
+
+
+
  
 
 
