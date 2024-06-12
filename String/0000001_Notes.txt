@@ -12,6 +12,18 @@
 
     For the cases where we need modifyable strings we have 'StringBuffer' and 'StringBuilder'.
 
+==========================================================================================
+String, StringBuilder, StringBuffer are defined in java.lang package
+All these three classes are declared final.
+All these three classes implement 'CharSequence' Interface.
+
+=========================================================================================
+NOTE:  The Object of type String are unchangeable, 
+        means the contents of 'String' instance cannot be changed after it has been created.
+
+        But ,the variable declared as String reference can be changed to point at some other String Object at any time.
+
+
 
 
 
