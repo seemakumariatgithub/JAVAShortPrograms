@@ -1,0 +1,18 @@
+    Java implements string as objects of type 'String'.
+    Implementing strings as objects allows Java to full provide full complement of features that make string handling convenient.
+    as string object can be constructed in various ways, makes it easy to obtain string whenever is needed.
+
+    Now:
+    In java the string object that we create, once created cannot be changed.
+        Means the string object that is being created, the characters that it comprise of cannot be changed.
+    So whenever we try to change the content as new string object gets created with the modifed characters.
+    The original string remains unchanged.
+
+    This approach is used, because the fixed, immutable string can be implemented more efficiently.
+
+    For the cases where we need modifyable strings we have 'StringBuffer' and 'StringBuilder'.
+
+
+
+
+    
