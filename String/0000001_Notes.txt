@@ -24,6 +24,25 @@ NOTE:  The Object of type String are unchangeable,
         But ,the variable declared as String reference can be changed to point at some other String Object at any time.
 
 
+==========================================================================================
+Special String Operations:
+
+    1. String Literals:
+
+    2. String Concatination
+
+    3. String Concatination with other data types
+
+    4. toString() and String Conversion:
+        Java converts data to its string representation during concatination,
+        by calling one of the overloaded versions of the string conversion method 'valueOf() defined by String class.
+
+        The 'valueOf()' is overloaded for all the primitive types and for type Object.
+
+            The Overridden toString( ) method is automatically invoked when a Box object is
+used in a concatenation expression or in a call to println( ).
+
+
 
 
 
