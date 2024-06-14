@@ -38,8 +38,10 @@ Special String Operations:
         by calling one of the overloaded versions of the string conversion method 'valueOf() defined by String class.
 
         The 'valueOf()' is overloaded for all the primitive types and for type Object.
+        For primmitive types, 'valueOf()' returns the string that contain human readable formate.
+        For Object types,'valueOf()' calls the 'toString()' method on the object.
 
-            The Overridden toString( ) method is automatically invoked when a Box object is
+        The Overridden toString( ) method is automatically invoked when a class's object is
 used in a concatenation expression or in a call to println( ).
 
 
