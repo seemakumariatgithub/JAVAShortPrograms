@@ -43,6 +43,48 @@ Special String Operations:
 
         The Overridden toString( ) method is automatically invoked when a class's object is
 used in a concatenation expression or in a call to println( ).
+==========================================================================================
+
+CHARACTER EXTRACTION:
+
+1. charAt():
+    general form is :
+        char charAt(int where)
+2. getChars(): 
+    general form is:
+        char getChars(int sourceStartIndex, int sourceEndIndex,char[] target, int targetStartIndex )
+3. getBytes():
+    general form is :
+        byte[] getBytes()
+
+4. toCharArray():
+    general form is:
+        char[] toCharArray()
+
+============================================================================================
+
+STRING COMPARISON:
+
+1. equals() 
+
+    General form is:
+        boolean equals(Object str)
+
+    Here, str is the String Object that is being compaired with the invoking String Object.
+    This method returns true if the string contains same characters and in same order.
+    This comparison is case sensitive.
+
+2. equalsIgnoreCase()
+
+     General form is:
+        boolean equalsIgnoreCase(String str)
+
+    Here, str is the String Object that is being compaired with the invoking String Object.
+    This method returns true if the string contains same characters and in same order.
+    This comparison is not case sensitive.
+
+
+
 
 
 
