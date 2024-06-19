@@ -83,6 +83,20 @@ STRING COMPARISON:
     This method returns true if the string contains same characters and in same order.
     This comparison is not case sensitive.
 
+3. regionMatches()
+
+    There are two forms for this method
+        General form are:
+           1. boolean regionMatches(int startIndex, String str2, int str2StartIndex, int numChar)
+            2. boolean regionMatches(boolean ignoreCase, int StartIndex, String str2, intstr2StartIndex, int numChar)
+
+            Here 'startIndex' specifies the starting index from where the region begins in the invoking String object.
+            'str2' specfies the string being compared with.
+            'str2StartIndex' specifies the starting index in the str2, at which the comparison will start in str2.
+            'numChar' specifies the length of substring being compared.
+
+
+4. startsWith () and endsWith():
 
 
 
