@@ -97,6 +97,22 @@ STRING COMPARISON:
 
 
 4. startsWith () and endsWith():
+5. comapreTo()
+
+        General form is:
+            int compareTo(String str)
+
+        Here str is the String being compared with the invoking String.
+        This method compares the ACSII values and returns the result as less than zero, 0, greater than zero.
+        result of comarision will be :
+            1. Less than zero   => this is reurned when invoking string come before the 'str' in dictionary order.
+            2. zero  => this is reurned when invoking string is same as 'str' in dictionary order.
+            3. more that zero   => this is reurned when invoking string come after the 'str' in dictionary order.
+
+
+        This method is specified in Comparator<T> interface, which is implemented by String .
+
+        Another version is compareToIgnoreCase(String str)
 
 
 
