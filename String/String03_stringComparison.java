@@ -1,4 +1,4 @@
-public class String03_toStringComparison{
+public class String03_stringComparison{
     public static void main(String[] args){
         String s1="hello";
         String s2="Hello";
