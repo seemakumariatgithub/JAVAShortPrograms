@@ -130,7 +130,40 @@ SEARCHING STRINGS
         Here, 'startIndex specifies the inddex at which point the search begines.
         For indexOf(), the search runs from 'startIndex' to the end of the string.
         For lastIndexOf(), the sesarch runs from 'startIndex' to zero.
-    
+
+=================================================================================
+
+MODIFY STRING
+
+    1.substring():
+        We can extract substring using this method.
+        It have two forms:
+            1. String substring(int startIndex)
+            2. String substring(int startIndex, int endIndex)
+
+            'startIndex' specifies the index at which substring will begin.
+            This returns the copy of substring.
+
+
+            first form starts the subsrting at 'startIndex' and runs to the end of invoking string
+            second form starts the substring at 'startIndex' and stops at 'endIndex', but doesnot include the endIndex.
+
+
+    2. concat()
+
+        String concat(String str)
+
+    3. replace()
+
+        String replace(char originalChar, char replacement)
+
+
+
+
+Because String objects are immutable, whenever you want to modify a String, you must
+either copy it into a StringBuffer or StringBuilder, or use a String method that constructs a
+new copy of the string with your modifications complete. A sampling of these methods are
+described here
         
 
 
