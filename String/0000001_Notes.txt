@@ -114,6 +114,19 @@ STRING COMPARISON:
 
         Another version is compareToIgnoreCase(String str)
 
+===============================================================================
+SEARCHING STRINGS
+
+    String class has provided two overloaded methods for this:
+        1. indexOf()
+                int indexOf(int ch)
+                int indexOf(String str)
+                int indexOf(int ch, int startIndex)
+                
+        2. lastIndexOf()
+                int lastIndexOf(int ch)
+                int lastIndexOf(String str)
+                int lastIndexOf(int ch, int startIndex)
 
 
 
