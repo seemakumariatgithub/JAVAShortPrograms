@@ -121,7 +121,7 @@ static import:
       1. 1st form:
         import static <pkg-name>.<type name>.<static member name>;
 
-If we use only package name, but not static member name in import, we will get
+If we use only package name, but not static member name or .*, in import, we will not get static member.
 
 error: static import only from classes and interfaces
 
