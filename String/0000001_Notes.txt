@@ -127,6 +127,11 @@ SEARCHING STRINGS
                 int lastIndexOf(int ch)
                 int lastIndexOf(String str)
                 int lastIndexOf(int ch, int startIndex)
+        Here, 'startIndex specifies the inddex at which point the search begines.
+        For indexOf(), the search runs from 'startIndex' to the end of the string.
+        For lastIndexOf(), the sesarch runs from 'startIndex' to zero.
+    
+        
 
 
 
