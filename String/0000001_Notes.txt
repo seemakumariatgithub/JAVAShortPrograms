@@ -165,7 +165,7 @@ MODIFY STRING
                 This replace all the occurence of the 'originalChar' with the 'replacement' in the invoking string.
 
         String replace(CharSequence originalChar, CharSequence replacement)
-                This replace one characterSequence 'originalChar' with the 'replacement' in the invoking string.
+                This replace all the occurance of a characterSequence 'originalChar' with the 'replacement' in the invoking string.
 
     4. trim()
 
