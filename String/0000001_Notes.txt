@@ -135,6 +135,10 @@ SEARCHING STRINGS
 
 MODIFY STRING
 
+    NOTE: Since the String objects are immutable, so whenever we want to modify a String,
+          we must either copy it into a StrngBuffer, StringBuilder, or use a String method that constructs a new copy of the string with our modifications complete.
+         Such String methods are as below.
+
     1.substring():
         We can extract substring using this method.
         It have two forms:
@@ -158,14 +162,12 @@ MODIFY STRING
     3. replace()
 
         String replace(char originalChar, char replacement)
+        String replace(CharSequence originalChar, CharSequence replacement)
 
 
 
 
-Because String objects are immutable, whenever you want to modify a String, you must
-either copy it into a StringBuffer or StringBuilder, or use a String method that constructs a
-new copy of the string with your modifications complete. A sampling of these methods are
-described here
+
         
 
 
