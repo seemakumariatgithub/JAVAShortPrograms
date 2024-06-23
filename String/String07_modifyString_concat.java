@@ -1,5 +1,5 @@
 import static java.lang.System.out;
-public class String07_modifyString2{
+public class String07_modifyString_concat{
     public static void main(String[] args){
          String myString="Now is ";
          String myString2="the time.";
