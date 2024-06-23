@@ -153,6 +153,8 @@ MODIFY STRING
 
         String concat(String str)
 
+        This method creates a new string object, that contains content of invoking string, with the content of str appended at the end of it.
+
     3. replace()
 
         String replace(char originalChar, char replacement)
