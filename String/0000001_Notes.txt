@@ -162,7 +162,14 @@ MODIFY STRING
     3. replace()
 
         String replace(char originalChar, char replacement)
+                This replace all the occurence of the 'originalChar' with the 'replacement' in the invoking string.
+
         String replace(CharSequence originalChar, CharSequence replacement)
+                This replace one characterSequence 'originalChar' with the 'replacement' in the invoking string.
+
+    4. trim()
+
+            This methd returns the copy invoking string with all its leading and trailing white spaces trimed.
 
 
 
