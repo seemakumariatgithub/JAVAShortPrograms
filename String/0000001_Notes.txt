@@ -172,6 +172,37 @@ MODIFY STRING
             This methd returns the copy invoking string with all its leading and trailing white spaces trimed.
 
 
+=======================================================================================================
+DATA CONVERSION USING valueOf():
+
+    This is a static method defined in String class.
+    This is overloaded for all Java's build in types.
+            - so that each type can be conerted properly to String.
+    This is als overlaoded for Object type.
+    This method convertes an object from its internal formate to human readable form.
+
+    NOTE: this method is called when string representation of other datatype is needed.
+
+    When an obect of passed to 'valueOf()', it will return result of call to object's toString().
+    Calling directly toString() will give same result too.
+
+    few general forms are:
+        static String valueOf(double num)
+        static String valueOf(char char[])
+        static String valueOf(Object obj)
+
+=================================================================================
+join() 
+
+    JDK8 adds this new method
+    It is static method defined in String
+    This method joins two or more strings, seperating each string with delimiter.
+    This also lets to join a list of strings together.
+    This method have two forms:
+        1. static String join(charSequence delim,charSequence... str)
+        2. static String join()
+
+
 
 
 
