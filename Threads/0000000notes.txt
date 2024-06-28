@@ -62,6 +62,44 @@ MESSAGING:
 
 Thread Class and Runnable Interface:
 
+        Java's multithreading system is built upon the:
+            1. 'Thread' class,
+            2. Its methods and
+            3. its companion interface 'Runnable.
+
+        Thread encapsulates a thread of execution.
+        Since you can't directly refer to the ethreal state of thread, this is done through its proxy.
+        thas is the 'Thread instance' , that spawned it.
+
+        To create a new thread, our program will have to do either of below :
+              1. extend Thread class. 
+           OR 2. implement 'Runnable' interface
+
+      There are sevveral methods defined inside the Thread class that help to manage the thread.
+      Few of these methods are:
+
+        1. getName() :  Obtain a thread’s name.
+        2. getPriority() : Obtain a thread’s priority.
+        3. isAlive() : Determine if a thread is still running.
+        4. join() : Wait for a thread to terminate.
+        5. run() :  Entry point for the thread.
+        6. sleep() : Suspend a thread for a period of time.
+        7. start() : Start a thread by calling its run method.
+
+========================================================================================================
+MAIN THREAD:
+    
+  When a java program starts, one thread start running immediatly , that is 'main thread'.
+
+
+
+
+
+
+
+
+
+
       
 
 
