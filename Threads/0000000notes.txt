@@ -1,0 +1,36 @@
+Thread
+============================================================================================
+
+THREAD STATES:
+
+  A thread can be in any of the following states:
+     1.  A thread can be 'running'.
+      2. It can be 'ready to run' as soon as it gets CPU time.
+      3. A running thread can be 'suspended',this temporarily halts its activiy.
+      4. A 'suspended' thread cn then be 'resumed', allowing it to pick up where it left off.
+      5. A thread can be 'blocked' when waiting for a resource.
+      6. At ay time, a thread can be 'terminated', which halts all its execution immediately.
+            Once a thread is terminated it cannot be resumed.
+===============================================================================================
+
+THREAD PRIORITIES:
+
+    This defines how a thread should be treated with respect to other threads.
+    Thread priority is the integer value, that defines the reltive priority of one thread to other.
+    As an absolute value, a thread priority is meaningless.
+    A higher-priority thread doesn't rum any faster than a lower-priority thread, if it is the only thread running.
+    Instead, a thread's priority is used to decide when to switch from one running thread to the next thread.
+        This switching is called context switch.
+        The rules that determines whhen a context switch will take place is simple:
+            1. "A thread can voluntarily relinquish control".
+            2. "A thread can be preempted by a higher- priority thread".
+
+            1. "A thread can voluntarily relinquish control".:
+                    This can be done by eplicitly yeilding, sleeping, or blocking on pending I/O operations.
+                    After this all the threads are examined and the thread with higher-priority wil be given the CPU.
+            2. "A thread can be preempted by a higher- priority thread".
+                    In this case the lower-priority thread that does not yeild the processor is simply preempted,
+                    (No matter what it is doing) by higher-priority thread.
+
+NOTE:  For OS like Windows, the threads of equal priorities are time-sliced automatically in rund robin fashion.
+
