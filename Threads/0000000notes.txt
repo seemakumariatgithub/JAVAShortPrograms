@@ -34,3 +34,38 @@ THREAD PRIORITIES:
 
 NOTE:  For OS like Windows, the threads of equal priorities are time-sliced automatically in rund robin fashion.
 
+===============================================================================================
+
+SYNCHRONIZATION:
+
+    To enforce the synchronouw behaviour in the multithread environment, Java used a control mchanism, called 'the monitor'.
+    This mechanism was first defined by C.A.R Hoare.
+
+    Monitor can be thought of as a small box, that can hold only one thread.
+    Once  thread enters a monitor, all other threads mut wait until that thread exits the monitor.
+    In this way monitor can be used to protect a shared asset from being manipulated by more than one thread at a time.
+
+    In Java, there is no class as "Monitor".
+    So this mechanism is implemented as below:
+          Each object has it own implicit monitor,
+            that is automatically entered when one of the object's snchronized methods is called.
+          Once a thread is inside a synchronied method no other thread can call any other synchronized method on the same object.
+
+================================================================================================
+MESSAGING:
+    Java have defined a clean, and low-cost way for two or more threads to communicate to each other.
+    This is done by calls to the predefined methods that all objects have.
+    This allows a thread to enter a synchronized method on a object ,
+        and then wait there until some other thread explicitly notifies it to come out.
+
+=================================================================================================
+
+Thread Class and Runnable Interface:
+
+      
+
+
+
+
+
+
