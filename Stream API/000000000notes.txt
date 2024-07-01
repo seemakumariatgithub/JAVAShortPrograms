@@ -82,8 +82,117 @@ STREAM INTERFACES:
                               interface Stream<T>
 
                         As this is generic, stream is used for all reference type.
+======================================================================================================================
+Type of operation in stream:
 
-LINK : https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamOps
+1. Terminal Operations:
+            A terminal operation consumes the stream.
+            Once a stream has been consumed , it cannot be reused.
+            This operation is used to produce a result.
+                  like: finding minimum or maximum in the stream.
+                        to execute some action, in case with forEach() method.
+2. Intermediate operations:
+            An intermediate perations produces another stream.
+            This operation shows 'lazy behaviour'.
+                  Means , they do not take place immediately.
+                        The specified action is perfomrmed when terminal operation is executed on the new stream created by an intermediate operation.
+            This lazy behaviour provides more efficiency to the the strem API.
+
+            Some intermediate operations are :
+                        1. stateless
+                        2. stateful
+
+                        1. stateless:
+                              In this each element is processed independently of other.
+                              Eg:
+                                    filtering an element based on stateless predicate is stateless, as  elements are handled individually.
+                                    so filter() method's operation is stateless operation.
+                              
+                        2. stateful
+                              In this the processing of an element depends on the aspects of other element.
+                              Eg: 
+                                    sorting is statefule operation as elements order depends on the value of other element.
+                                    so sorted() method's operation is stateful operation.
+
+
+NOTE: This differentiation between stateful and stateless is important while dealing with parallel stream.
+      As stateful process may require more than one pass to complete.
+
+============================================================================================================================
+NOTE: 
+1. stream operates on Object reference.
+2. As stream operates on Object reference, hence it cannot operate directly on primitive data type.
+3. To operate on premitive type stream, Stream API have defined different interfaces, that are:
+            DoubleStream
+            IntStream
+            LongStream
+4. All of above interface have extended BaseStream interface.
+5. These interfaces have all the capability same as Stream interface, 
+            except that these donot operate on reference, rather they operate on primitive data types.
+6.These interfaces have also provided few additional methods like boxed().
+
+============================================================================================================================
+METHODS OF Stream interface:
+
+            <R, A> R collect(Collector<? super T, A, R> collectorFunc): 
+                        Collects elements into a container, which is changeable, and returns the container. 
+                        This is called a mutable reduction operation. 
+                        Here:
+                             R specifies the type of the resulting container 
+                             T specifies the element type of the invoking stream. 
+                             A specifies the internal accumulated type. 
+                             The collectorFunc specifies how the collection process works. 
+                             (Terminal operation.)
+
+            long count( ):
+                        Counts the number of elements in the stream and returns the result. 
+                        (Terminal operation.)
+
+            void forEach(Consumer<? super T> action):
+                        For each element in the invoking stream, the code specified by action is executed. 
+                        (Terminal operation.)
+
+            Optional<T> max( Comparator<? super T> comp):
+                        Using the ordering specified by comp, finds and returns the maximum element in the invoking stream. 
+                        (Terminal operation.)
+            
+            Optional<T> min(Comparator<? super T> comp):
+                        Using the ordering specified by comp, finds and returns the minimum element in the invoking stream. 
+                        (Terminal operation.)
+
+            T reduce(T identityVal, BinaryOperator<T> accumulator):
+                        Returns a result based on the elements in the invoking stream. This is called a reduction operation. 
+                        (Terminal operation.)
+
+            Object[] toArray( ): 
+                        Creates an array from the elements in the invoking stream. 
+                        (Terminal operation.)
+
+=============================
+
+            Stream<T> filter(Predicate<? super T> pred) :
+                         Produces a stream that contains those elements from the invoking stream that satisfy the predicate specified by pred. 
+                        (Intermediate operation.) 
+
+            <R> Stream<R> map(Function<? super T,? extends R> mapFunc):
+                        Applies mapFunc to the elements from the invoking stream, yielding a new stream that contains those elements. 
+                        (Intermediate operation.)
+
+            DoubleStream mapToDouble(ToDoubleFunction<? super T> mapFunc):
+                        Applies mapFunc to the elements from the invoking stream, yielding a new DoubleStream that contains those elements. 
+                        (Intermediate operation.)
+
+            IntStream mapToInt(ToIntFunction<? super T> mapFunc):
+                        Applies mapFunc to the elements from the invoking stream, yielding a new IntStream that contains those elements. 
+                        (Intermediate operation.)
+
+            LongStream mapToLong( ToLongFunction<? super T> mapFunc):
+                        Applies mapFunc to the elements from the invoking stream, yielding a new LongStream that contains those elements. 
+                        (Intermediate operation.)          
+
+            Stream<T> sorted( ): 
+                        Produces a new stream that contains the elements of the invoking stream sorted in natural order. 
+                        (Intermediate operation.)
 ====================================================================================================================================
 
 
