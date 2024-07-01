@@ -1,0 +1,17 @@
+INTRODUCTION==============================================================================
+
+This was Introduced as part of JDK8.
+Stream API is designed with lambda expressions in mind.
+The Key aspects of stream API is its ability to perform sophisticated operations:
+      1. search
+      2. filter
+      3. map
+      4. data manipulation and handling in efficient way
+
+===========================================================================================
+STREAM:
+
+    The term 'stream' here means conduit of data
+    Thus stream here reresents sequence of data.
+    A stream operates on data source, like: an array or a collection
+
