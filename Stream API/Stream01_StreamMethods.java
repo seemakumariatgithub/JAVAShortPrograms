@@ -9,13 +9,25 @@ public class Stream01_StreamMethods {
     List<Integer> myList=Arrays.asList(11,21,33,14,25,6,27,51,67,99);
     out.println("Original List: "+myList);
  
-    out.println("Maximum Value in list : "+myList.stream().max(Integer::compare));
-    out.println("Count element in list : "+myList.stream().count());
-    out.print("Sorted list :");
+    out.println("\nMaximum Value in list : "+
+                myList.stream()
+                .max(Integer::compare));
+    out.println("Minimum value in list: "+
+                myList.stream()
+                .min(Integer::compare));
+    out.println("\nCount element in list : "+
+                myList.stream()
+                .count());
+    out.print("\nSorted list :"); 
     myList.stream()
     .sorted()
     .forEach(n -> out.print(n+", "));
     
+    out.print("\nSorted Array :");
+    Object[] myArrayList=myList.stream().sorted().toArray();
+    for(Object i : myArrayList){
+        out.print(i+", ");
+    }
     out.print("\n\nFilter the even values : ");
     myList.stream()
     .filter(n -> n%2==0)
@@ -26,6 +38,10 @@ public class Stream01_StreamMethods {
     .filter(n -> n%2!=0)
     .filter(n -> n>30)
     .forEach(n -> out.print(n+", "));  
+    
+    out.print("\n\nAdding elements using reduce() : "+
+    myList.stream()
+    .reduce(0,(a,b) -> (a+b)));
  
    } 
 } 
