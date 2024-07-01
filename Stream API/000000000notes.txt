@@ -15,3 +15,81 @@ STREAM:
     Thus stream here reresents sequence of data.
     A stream operates on data source, like: an array or a collection
 
+NOTE:
+      1. A stream itself never provide storage of data.
+            It just movs the data, or filters the data, or sorts the data or operats on the dat suring process.
+      2. A stream operation by itself doesnot modifies the data.
+             For example:
+                  Sorting the data doesnot change the data at source.
+                  Infact sorting the stream will create a new stream with soreted result in it.
+
+                  
+      3. THE TERM STREAM AS USED HERE, differes from the use of stream word in I/O Classes.
+            Although conceptual these two seems same, but they are not same.
+===============================================================================================
+
+STREAM INTERFACES:
+      Stream API have defined several stream interfaces in the package:
+
+                  java.util.stream
+
+      1. BaseStream Interface:
+                  This is at the foundation level.
+                  It defines the basic functionality that are available for all the streams.
+                  This is the generaic interface.
+                  It is defined as :
+
+                        interface BaseStream<T, S extends BaseStream<T,S>>
+
+                  Here :
+                        T -> specifies the type of element in the stream.
+                        S -> specifies the type of stream that extends BaseStrea interface.
+
+
+                  BaseStream extends AutoClosable interface.
+                        Hence a stream can be managed in 'try-with-resource' statement.
+
+
+                  Methods defined in BaseStream interfaces:
+
+                        void close( ): Closes the invoking stream, calling any registered close handlers. (As few streams need to be closed.)
+                        boolean isParallel( ): Returns true if the invoking stream is parallel. Returns false if the stream is sequential.
+
+                        Iterator<T> iterator( ): Obtains an iterator to the stream and returns a reference to it.
+                                                (Terminal operation.)
+                        Spliterator<T> spliterator( ): Obtains a spliterator to the stream and returns a reference to it.
+                                                (Terminal operation.)
+
+                        S onClose(Runnable handler): Returns a new stream with the close handler specified by handler. 
+                                                      This handler will be called when the stream is closed.
+                                                (Intermediate operation.)
+                        S parallel( ): Returns a parallel stream based on the invoking stream. 
+                                    If the invoking stream is already parallel, then that stream is returned.                                                                                                             (Intermediate operation.)
+                        S sequential( ): Returns a sequential stream based on the invoking stream. 
+                                          If the invoking stream is already sequential, then that stream is returned.
+                                          (Intermediate operation.)                        
+                        S unordered( ): Returns an unordered stream based on the invoking stream. 
+                                         If the invoking stream is already unordered, then that stream is returned. 
+                                          (Intermediate operation.)
+
+
+      There are many interfaces derived from BaseStream interface:
+            1. Stream
+
+            2. Stream interface:
+                        This is derived from the BaseStream interface.
+                        It is declared as :
+                              interface Stream<T>
+
+                        As this is generic, stream is used for all reference type.
+
+LINK : https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamOps
+====================================================================================================================================
+
+
+
+
+
+
+      
+
