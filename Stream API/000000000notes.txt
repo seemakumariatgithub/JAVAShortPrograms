@@ -198,7 +198,13 @@ METHODS OF Stream interface:
                         Produces a new stream that contains the elements of the invoking stream sorted in natural order. 
                         (Intermediate operation.)
 ====================================================================================================================================
+OBTAINING a STREAM:
 
+      A Stream be obtained by any of the below way:
+      1.
+      2.
+      3.
+      4.
 
 
 
