@@ -11,10 +11,10 @@ public class Stream01_StreamMethods {
  
     out.println("\nMaximum Value in list : "+
                 myList.stream()
-                .max(Integer::compare));
+                .max(Integer::compare).get());
     out.println("Minimum value in list: "+
                 myList.stream()
-                .min(Integer::compare));
+                .min(Integer::compare).get());
     out.println("\nCount element in list : "+
                 myList.stream()
                 .count());
