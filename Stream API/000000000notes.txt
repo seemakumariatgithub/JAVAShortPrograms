@@ -91,6 +91,10 @@ Type of operation in stream:
             This operation is used to produce a result.
                   like: finding minimum or maximum in the stream.
                         to execute some action, in case with forEach() method.
+      NOTE: If we try to reuse the cosumed stream we will get error msg as:
+                  ERROR!
+                  Exception in thread "main" java.lang.IllegalStateException: stream has already been operated upon or closed
+            
 2. Intermediate operations:
             An intermediate perations produces another stream.
             This operation shows 'lazy behaviour'.
