@@ -226,6 +226,47 @@ OBTAINING a STREAM:
       3.
       4.
 
+===================================================================================================================================
+Reduction Operation:
+
+      In the Stream API language, reduction operation means any operation that reduces the  stream to a single value.
+      Few reduction methods in stream are:
+            min()
+            max()
+            count()
+      stream API have generalized this concept by proiding a method:
+            reduce()
+            This method returns a value from the stream based on any criteria.
+
+      By default all reduction operations are 'TERMINAL OPERATION'.
+
+      Stream have defined three version of reduce():
+            1. Optional<T> reduce(BinaryOperator<T> accumulator):
+                  Performs a reduction on the elements of this stream, 
+                  using an associative accumulation function, 
+                  and returns an Optional describing the reduced value, if any.
+
+            2. T	reduce(T identity, BinaryOperator<T> accumulator):
+                  Performs a reduction on the elements of this stream, 
+                  using the provided identity value and an associative accumulation function, 
+                  and returns the reduced value.
+
+            3. <U> U reduce(U identity, BiFunction<U,? super T,U> accumulator, BinaryOperator<U> combiner):
+                  Performs a reduction on the elements of this stream, 
+                  using the provided identity, accumulation and combining functions.
+
+
+            Here, 'val' will contain the previous result and val2 will contain the next element.
+            In its first invocation, val will contain either the identity value or the first element, depending on which version of reduce( ) is used.
+
+            Here, the accumulator operator must satify the below three conditions:
+                  1. Stateless
+                  2. Non-interfering
+                  3. Associative
+
+                  1. Stateless : means, the operation shouldnot rely on any state information.Thus each element is processed independently.  
+                  2. Non-interfering : means, data source is not modified by the operation.
+                  3. Associative : means, in normal arithematic sense, that is it doesnot matter which pair of operand is processed first.
 
 
 
