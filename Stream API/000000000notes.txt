@@ -352,6 +352,21 @@ MAPPING
             2. non-interfering
       Since it returns stream, it is intermediate function
 
+      OTHER versions of map():
+            IntStream mapToInt(ToIntFunction<? super T> mapFunc)
+            LongStream mapToLong(ToLongFunction<? super T> mapFunc)
+            DoubleStream mapToDouble(ToDoubleFunction<? super T> mapFunc
+
+
+FLAT MAP:
+
+      1. flatMap()
+      2. flatMapToInt()
+      3. flatMapToDouble()
+      4. flatMapToLong()
+
+
+
 
 
 
