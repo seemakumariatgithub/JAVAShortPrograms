@@ -1,7 +1,7 @@
 import static java.lang.System.out;
 import java.util.stream.*;
 
-public class Stream02_mapWithFilter {  
+public class Stream02_map03mapWithFilter {  
    public static void main(String[] args) {
  
     out.println("List of name, phone and emails: ");
