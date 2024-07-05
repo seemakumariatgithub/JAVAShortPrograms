@@ -221,10 +221,29 @@ METHODS OF Stream interface:
 OBTAINING a STREAM:
 
       A Stream be obtained by any of the below way:
-      1.
-      2.
-      3.
-      4.
+      1. from Collection: 
+      2. from Array:
+      3. Stream operation that returns new stream. 
+      4. Stream to I/O source by calling line() of BufferedReader
+      5. And many other way.
+
+      1. for a Collection:
+            There are two methods defined in Collection interface for obtaining stream:
+                  1. default Stream<E> stream() :  This returns a sequential stream.
+                  2. default Stream<E> parallelStream(): This returns the parallel stream.
+      As the Collection interface is implemented by every collection, these methods can be used to obtain the stream of any collection class.
+
+      2. from Arrays: 
+            Arrays class have added a static method to obtain stream.
+                  1. static <T> Stream <T> stream(T[] array)
+                  2. other overloaded method of stream to handle primitive type. 
+                     They return stream of type IntStream, DoubleStream and LongStream.
+
+      3. Stream operation that returns new stream:
+            Like :
+                  1. of()
+                  2. stream()
+      
 
 ===================================================================================================================================
 Reduction Operation:
@@ -268,8 +287,85 @@ Reduction Operation:
                   2. Non-interfering : means, data source is not modified by the operation.
                   3. Associative : means, in normal arithematic sense, that is it doesnot matter which pair of operand is processed first.
 
+============================================================================================================
+Using Parallel Stream:
+
+      MoreOver, a Parallel programing can be complex and errr prone.
+      One benefit that stream library provides for parallel programing is, ablity to easily and reliably paralle process certian operations.
+
+      Parallel processing is quite simple, just use parallel stream.
+
+      Obtaining Parallel Stream:
+            1. from Collections : using parallelStream() method defined in Collection.
+            2. from sequential stream: call parallel method on sequential stream.
+            3.
+
+      parallel() method is defined in BaseStream interface as :      
+
+            S parallel()
+
+      This method returnd a parallel stream based on the sequential stream invoked.
+      If stream is already parallel, then the invoking stream will be returned.
+
+      NOTE: that even with parallel stream, parallelism can be achieved only if the environment supports it.
+      Once the parallel stream is obtained, the operation on the stream can occur in parallel, assuming that the environment supports the parallelism.
+
+      As a general RULE:
+      Any parallel operation should be:
+            1. Stateless
+            2. non-interfering
+            3. associative
+      This ensures that the result obtained by parallel stream is same as those obtained by sequential stream.
+      With parallel below version of reduce is helpful:
+
+            <U> U reduce(U identityVal, BiFunction<U, ? super T, U> accumulator BinaryOperator<U> combiner)
+
+      Here :
+      combiner: is function that combines tow values, produced by accumulator function.
+      accumulaator: This defines the action to be performed on elements.
+
+      OTHER RELATED MEthODS:
+
+      1. S sequential() : this convverts a parallel stream back to sequentail.
+      2. U unodrered(): 
+      3. forEachOrderd(): it performs operation os parallel stream while preserving the order.
+
+
+==========================================================================================================
+MAPPING
+
+      It is often useful to map the elements of one stream to another.
+      Or sometime we might want to apply some transformation to the elements of stream.
+            For this we can map the transformed element to a new Stream.
+      Stream API have build-in suppport for mapping.
+      The most general method is map(), it is defined as:
+
+                  <R> Stream<R> map(Function<? super T, ? extends R> mapFunc)
+      Here :
+      R : specifies type of element of the new stream 
+      T : specifies type of element of the invoking stream.
+      mapFunc: is the instance of 'Function' interface (a functional interface declared in java.util.function), that does the mapping.
+
+      This method is:
+            1. stateless
+            2. non-interfering
+      Since it returns stream, it is intermediate function
 
 
 
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
