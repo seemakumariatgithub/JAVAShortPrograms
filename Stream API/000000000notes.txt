@@ -365,9 +365,46 @@ FLAT MAP:
       3. flatMapToDouble()
       4. flatMapToLong()
 
+===========================================================================================================================
+COLLECTING:
+
+      To obtain collection from stream, Stream API have proided a method called 'collect()' method.
+      There are two forms of it:
+            1. <R, A> R collect(Collector<? super T, A, R> collectorFunc)
+            2. <R> R collect(Supplier<R> target, BiConsumer<R, ? super T> accumulator, BiConsumer <R, R> combiner)
+
+Here:
+      R : specifies the type of result.
+      T : specfies the type of invoking stream.
+      A : specifies internal accumulated type.
+      collectorFunc: specfies how collection process will work.
+
+      collect is terminal operation
+
+      Collector inteface is declared in java.util.stream package.
+            It have defined several methods.
+      'Collectors' class has defined many 'static collector' methods
+
+      Few collectors methods are:
+            toList() : static <T> Collector<T, ?, List<T>> toList( )
+            toSet() : static <T> Collector<T, ?, Set<T>> toSet( )
+NOTE: ONE LAST POINT:
+            In the language of stream API, the collect() method performs 'mutable reduction'.
+            This is because the result of the reduction is mutable storage object, such as a collection.
+            Here mutable storage object means, changeable object.
+=============================================================================================================
+ITERATORS AND STERAMS:
+
+      Although stream is not an data storage, we can still use iterator to cycle through its element, 
+            in much same way as we use iterator to cycle through elements of Collection.
+
+      Stream API supports two types of iterator:
+            1. Iterator
+            2. Spliterator
+      
 
 
-
+      
 
 
 
