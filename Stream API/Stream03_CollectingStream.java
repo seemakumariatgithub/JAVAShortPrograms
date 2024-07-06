@@ -3,7 +3,7 @@ import java.util.stream.*;
 import java.util.List;
 import java.util.Set;
 
-public class Stream02_CollectingStream {  
+public class Stream03_CollectingStream {  
    public static void main(String[] args) {
  
     out.println("List of name, phone and emails: ");
