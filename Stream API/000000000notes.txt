@@ -398,10 +398,41 @@ ITERATORS AND STERAMS:
       Although stream is not an data storage, we can still use iterator to cycle through its element, 
             in much same way as we use iterator to cycle through elements of Collection.
 
-      Stream API supports two types of iterator:
+      Stream API supports two types of iterators:
             1. Iterator
-            2. Spliterator
+            2. Spliterator : this was introduced in JDK8.
+                              It provide few advantages when used with paralle stream.
+
+            1. Iterator
+            2. Spliterator :
+                  There are many methods defined in Spliterator, but here three are useful:
+                        1. tryAdvance() : 
+                                    boolean tryAdvance(Consumer<? super T> action)
+
+                                    This performs action on next element, and then advances the iterator.
+                                    This method returns true if there is next element, returns false if there is no element remain.
+                                    Here: 
+                                          action : specifies the action that needed to be performed on the next element.
+                                    tryAdvance() consolidates the purpose of hasNext() and next() methods, provided by Iterator.
+                                    This mproes the efficiency of iteration.
+
+                        Example code : Stream04_Spliterator.java
       
+                        2. forEachRemaining():
+                                    default void forEachRemaining(Consumer<? super T> action)
+
+                                    This method performs some action on all the elements collectivily instead of one at a time.
+                        Example Code : Stream04_Spliterator2.java
+
+                        3. trySplit():
+                                    Spliterator<T> trySplit( )
+
+                                    This method splits the iterating elements into two 
+                                    Retrun one new spliterator for first patition.
+                                    Second partition is accessible by original spliterator.
+                                    
+      
+                        Example Code: Stream04_Spliterator2.java
 
 
       
