@@ -1,0 +1,18 @@
+Intoduction:
+
+    JDK8, added Lambda Expressions, that significantly ehance Java , beacuse of the tw reasons:
+      1. This added new syntax, that increased the expressive power of languge.
+          This streamline the way some common constructs ar implemented.
+      2. Addition of this added new capacbilities being incorporated into the API Library.
+          Among these capability one is Paralle processing to take advantage of multicore processor,
+          and second is new 'stream' API, which supposrt pipeline operation on data.
+      3. THis expression also acted as catalyst for some features like:
+              default method in interface
+              method referencing
+
+==================================================================
+There are two important contructs here:
+
+1. Lambda Expression
+2. Functional Interface
+    
