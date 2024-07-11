@@ -82,6 +82,48 @@ NOTE:
 Example Code: Lambda01_firstExample.java  
               Lambda02_withParameter.java
         
+========================================================================================================================
+BLOCK LAMBDA EXPRESSION:
+
+    The lambda body, that consists of single expression is called 'expression bodies'.
+    The lambda that have these expressions is called, 'expression lambda'.
+
+    The lambda in which right side of '->' operator consists of block of codes, i.e multiple line of codes,
+        is called as 'block lambda'.
+    Body of such lambda is called 'block body'.
+
+    Unlike the lambda expression, a block lambda, ust explicitly use return statement to retrun a value.
+=================================================================================================================
+GENERIC FUNCTIONAL INTERFACE:
+
+    Since lambda function iteself cannot specify the type parameter, it cannot be generic.
+    However the functional interface associated with lambda expressions can be Generc.
+            In this case the target type of lambda expression is determined, 
+                in part, by the type arguments/argument specified when a functional interface reference is declared.
+
+    Here, instead of having two different funcitonal interfaces whose method differ only in their data types, 
+        it is possible to declare one generic interface, that can be used to hande both the circumstances.
+
+Example code:Lambda03_genericLambdaExpr.java
+===================================================================================================================
+
+PASSING LAMBDA EXPRESSION AS AN ARGUMENT:
+    To pass a lmabda expression as an argument, 
+        the type of the parameter recieveing the lambda expression as argument,
+            must be of a functional interface type compatible with the lambda.
+
+===================================================================================================================
+
+LAMBDA EXPRESSION AND EXCEPTIONS: 
+
+        Lambda expressions can throw an exception.
+        1. if lambda expression throws checked exception, 
+            then this must be compatible with the exceptions listed in the throws list of abstract method of functional interface.
+
+===================================================================================================================
+LAMBDA EXPRESSION AND VARiABLE CAPTURE:
+
+
 
 
 
