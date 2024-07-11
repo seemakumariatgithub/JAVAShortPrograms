@@ -12,7 +12,94 @@ Intoduction:
 
 ==================================================================
 There are two important contructs here:
-
-1. Lambda Expression
-2. Functional Interface
     
+    1. Lambda Expression
+    2. Functional Interface
+
+    1. Lambda Expression:
+            A Lambda Expression is an anonymous method.
+            This method doesnot execute on its own.
+            Instead this method is used to implement a method, defined by functional Interface.
+            Thus result of labmda expresion is a form of anonymous class.
+            Lambda expression is also known as 'closures'. 
+
+    2. Functional Interface:
+            A functional interface is an interface that contains, one and ony one abstract method.
+            Normally this method specifies the intended perpose of interface.
+            Thus a functional interface typically represents a single action.
+                Example: 
+                        Runnnable, that hace only one method run().
+
+            A functional interface specifies the 'target type' of lambda expression.
+            A functional interface is also referred to as 'SAM type', 'Single Abstract Method'
+
+NOTE: 
+        1. A lambda expression can only be used in the context in which its target type is specified.
+        2. A functional interface, can specify any public method defined in Object, without effecting its 'functional interface' status.
+
+===========================================================================================================
+LAMBDA EXPRESSION FUNDAMENTALS:
+
+    Lambda Expression has intorduced a new 'syntax element' and 'operator' in JAVA language.
+        new operator: 
+                This is called lambda operator or arrow operator.
+                This is ->
+                ->, can be verbalized as 'goes to' or 'becomes'.
+                This operator divides the lambda expression into two parts.
+                     left side of '->', specifies the parameters required by lambda expression.
+                     right side of '->',specifies the action of lambda expression, this is called 'lambda body'.
+                lmbda body are of two types:
+                    1. That have single line of code or expression.
+                    2. That have a block of code.
+                
+        
+        new syntax Element:
+==============================================================================================================
+FUNCTIONAL INTERFACE:
+
+    After JDK8, an interface method is abstract only if it is not specified with default implementation.
+    Nondefault methods are implicitly abstract.
+    As mentioned earlier, a lambda expression can be specified only in a context in which a target type is defeined.
+    One of these contests is created when a lambda expression is assigned to a functional interface reference.
+    Other target type contexts include:
+                variable initialization.
+                return statements
+                method arguments etc.
+    When lambda expression occurs in a taget type context, an instance of a class is automatically created.
+        This implements the functional interface, with the lambda expression defininf the behavior of the abstract method decares by functional interface.
+    When that method is called through the target, the lambda expression is executed.
+    Thus lambda expression gives us way to transform a code segment into an object.
+
+NOTE: 
+        In order for an lambda expression to be used in a target context, the type of abstract method and the type of lambda expression must be compatible.
+        In general:
+            1. the type and number of the lambda expression's parameters must be compatible with the method's parameter.
+            2. the return types must be compatible
+            3. any exceptions thrown by the lambda expression must be acceptable to the method.
+
+Example Code: Lambda01_firstExample.java
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
