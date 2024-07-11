@@ -145,8 +145,29 @@ NOTE:
         
 =====================================================================================================================
 METHOD REFERENCE:
+        This provides a way to refer to a method without executing it.
+        When evaluating the method reference it creates the instance of functional interface.
+        Just like lmbda expressions this too requires the target type context to be campatible with the functional interface.
+
+        Different types of method references:
+        1. reference to static method.
+        2. refernece to instance method.
+        3. refenrece with Generic.
+
+        1. reference to static method:
+            To create a static method reference the general syntax is:
+                ClassName::MethodName
+
+        2. refernece to instance method:
+
+        3. refenrece with Generic:
+    
 =====================================================================================================================
 CONSTRUCTOR REFERENCE:
+
+            className::new
+
+            based on the abstract method of functional interface, the appropriate constructor will be called.
 =====================================================================================================================
 PREDEFIENED FUNCTIONAL INTERFACES:
 
