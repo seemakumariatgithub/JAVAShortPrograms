@@ -121,14 +121,61 @@ LAMBDA EXPRESSION AND EXCEPTIONS:
             then this must be compatible with the exceptions listed in the throws list of abstract method of functional interface.
 
 ===================================================================================================================
-LAMBDA EXPRESSION AND VARiABLE CAPTURE:
+LAMBDA EXPRESSIONS AND VARiABLE CAPTURE:
 
+        A variable defined by the enclosing scope of lambda function, is accessible from within the lambda expression.
+            for example a lambda expression can use an instance or static variable defiened by its enclosing class.
+        A lambda expression, also have access to 'this'(both explicitly and implicitly),
+            'this' here referes to the invoking instance of the lambda expression's enclosing class.
+        A lambda expression can:
+            1. obtain or set the value of an instance or static variable 
+            2. Call a method defined by its enclosing class.
 
+NOTE:
+        When a lambda expression uses local variable from its enclosing scope,
+            a special situation is created that is referred to as a 'variable capture'.
+        For this case, a lambda can only use a local variable that are 'effectivly final'.
 
+        An EFFECTIVLY FINAL Variable is one whose value doesnot changes after it is assigned.
+            such varaibles are not needed to explicitly declared as final.
+            although doing so will not create an error.
+        A local variable of enclosing scope, cannot be modfied by lambda.
+            As this will remove the effectively final status of variable, thus it cannot be captured.
+            This will throw compile time error.
+        
+=====================================================================================================================
+METHOD REFERENCE:
+=====================================================================================================================
+CONSTRUCTOR REFERENCE:
+=====================================================================================================================
+PREDEFIENED FUNCTIONAL INTERFACES:
 
+    JDK 8 have provided many (43)prdefined functional interfaces in 
 
+            'java.uitl.function' package
 
+Interfaces and their Purpose:
+       1. UnaryOperator<T> : Apply a unary operation to an object of type T.
+                             Return the result, which is also of type T. 
+                             Its method is called apply( ).
 
+       2. BinaryOperator<T> : Apply an operation to two objects of type T.
+                              Return the result, which is also of type T. 
+                              Its method is called apply( ).
+
+       3. Consumer<T> : Apply an operation on an object of type T. 
+                        Its method is called accept( ).
+
+       4. Supplier<T> : Return an object of type T. 
+                        Its method is called get( ).
+
+       5. Function<T, R> : Apply an operation to an object of type T. 
+                           Return the result as an object of type R. 
+                           Its method is called apply( ).
+
+       6. Predicate<T> : Determine if an object of type T fulfills some constraint. 
+                         Return a boolean value that indicates the outcome. 
+                         Its method is called test( ).
 
 
 
