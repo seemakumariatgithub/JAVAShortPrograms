@@ -1,6 +1,6 @@
 import static java.lang.System.out;
 
-public class Lambda0_genericLambdaExpr{
+public class Lambda03_genericLambdaExpr{
     public static void main(String[] args){
         SomeAction<String> myStringAction=(str)->{
             String result="";
