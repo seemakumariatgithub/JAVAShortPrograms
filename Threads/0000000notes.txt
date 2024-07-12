@@ -27,12 +27,12 @@ THREAD PRIORITIES:
 
             1. "A thread can voluntarily relinquish control".:
                     This can be done by eplicitly yeilding, sleeping, or blocking on pending I/O operations.
-                    After this all the threads are examined and the thread with higher-priority wil be given the CPU.
+                    After this all the threads are examined and the thread with higher-priority will be given the CPU.
             2. "A thread can be preempted by a higher- priority thread".
                     In this case the lower-priority thread that does not yeild the processor is simply preempted,
                     (No matter what it is doing) by higher-priority thread.
 
-NOTE:  For OS like Windows, the threads of equal priorities are time-sliced automatically in rund robin fashion.
+NOTE:  For OS like Windows, the threads of equal priorities are time-sliced automatically in round robin fashion.
 
 ===============================================================================================
 
