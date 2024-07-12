@@ -38,7 +38,7 @@ NOTE:  For OS like Windows, the threads of equal priorities are time-sliced auto
 
 SYNCHRONIZATION:
 
-    To enforce the synchronouw behaviour in the multithread environment, Java used a control mchanism, called 'the monitor'.
+    To enforce the synchronous behaviour in the multithread environment, Java used a control mechanism, called 'the monitor'.
     This mechanism was first defined by C.A.R Hoare.
 
     Monitor can be thought of as a small box, that can hold only one thread.
