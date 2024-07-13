@@ -1,7 +1,7 @@
 /*========AUTHOR===========
       SEEMA KUMARI
 ===========================*/
-class JAVA_TraverseTheMatrix_Clockwise {
+public class JAVA001_TraverseTheMatrix_Clockwise {
     public static void traverseMatrixClockwise(int n,int[][] matrix){        
         int k=0;
         int i=0,j=0;        
