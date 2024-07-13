@@ -4,7 +4,7 @@
 
 import java.util.Arrays;
 
-class JAVA_MostFrequentNumberInArray {
+class JAVA002_MostFrequentNumberInArray {
   
     public static int mostFrequent(int[] array){
         int count=0,maxCount=0,result=array[0];        
