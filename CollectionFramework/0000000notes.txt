@@ -1,1 +1,137 @@
+java.util PACKAGE:
+===============================================================================================
+This is versy powerful package, that contains large assortment of classes and interfaces,
+That support a broad range of functionality.
+For Example:
+    To name few: classes that can :
+        1. generate pseudorandom number
+        2. manage date and time
+        3. observve events
+        4. manipulate sets of bits
+        5. tokenize strings
+        6. handle formatted data
+
+java.util package also containes one ot the Java's most powerful subsystems: 
+    The COLLECTIONS Framewwork.
+
+A list of top level Classes in java.util package is:
+
+AbstractCollection 
+AbstractList 
+AbstractMap 
+AbstractQueue 
+AbstractSequentialList 
+AbstractSet 
+ArrayDeque 
+ArrayList
+Arrays 
+Base64 (Added by JDK 8.) 
+BitSet 
+Calendar 
+Collections 
+Currency 
+Date 
+Dictionary 
+DoubleSummaryStatistics(Added by JDK 8.)
+EnumMap 
+EnumSet 
+EventListenerProxy
+EventObject 
+FormattableFlags 
+Formatter 
+GregorianCalendar 
+HashMap 
+HashSet 
+Hashtable 
+IdentityHashMap 
+IntSummaryStatistics(Added by JDK 8.)
+LinkedHashMap 
+LinkedHashSet 
+LinkedList 
+ListResourceBundle 
+Locale 
+LongSummaryStatistics(Added by JDK 8.)
+Objects 
+Observable 
+Optional (Added by JDK 8.) 
+OptionalDouble (Added by JDK 8.)
+OptionalInt (Added by JDK 8.) 
+OptionalLong (Added by JDK 8.) 
+PriorityQueue 
+Properties
+PropertyPermission
+PropertyResourceBundle
+Random
+ResourceBundle
+Scanner
+ServiceLoader
+SimpleTimeZone
+Spliterators (Added by JDK 8.)
+SplitableRandom (Added by JDK 8.)
+Stack
+StringJoiner (Added by JDK 8.)
+StringTokenizer
+Timer
+TimerTask
+TimeZone
+TreeMap
+TreeSet
+UUID
+Vector
+WeakHashMap
+
+
+Important interface defined in java.uitl package :
+
+Collection 
+Comparator 
+Deque 
+Enumeration 
+EventListener 
+Formattable 
+Iterator 
+List 
+ListIterator 
+Map 
+Map.Entry 
+NavigableMap 
+NavigableSet 
+Observer 
+PrimitiveIterator (Added by JDK 8.) 
+PrimitiveIterator.OfDouble(Added by JDK 8.) 
+PrimitiveIterator.OfInt (Added by JDK 8.) 
+PrimitiveIterator.OfLong (Added by JDK 8.) 
+Queue
+RandomAccess
+Set
+SortedMap
+SortedSet
+Spliterator (Added by JDK 8.)
+Spliterator.OfDouble(Added by JDK 8.)
+Spliterator.OfInt (Added by JDK 8.)
+Spliterator.OfLong (Added by JDK 8.)
+Spliterator.OfPrimitive (Added by JDK 8.)
+
+
+
+=================================================================================================
+COLLECTIONS FRAMEWORK:
+      The collections framework is a sophisticated hierarchy of interfaces and classes,
+          that provide state-of-the-art technology for managing groups of objects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
