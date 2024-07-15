@@ -135,13 +135,63 @@ GOAL for defining COLLETIONS FRAMEWORK:
             This Alogorithms have provided a standard way to manipulate the data in collections.
             Algorithms here operate on collections.
     5. Iterator interface:
-        An iterator have defined a generalized and standard way for accssing the elements in the collections
+        An iterator have defined a generalized and standard way for accessing the elements in the collections
                 one at a time.
+        An iterator provides the means of enumerating the content of collection.
+        Each collection have provided iterator, 
+            hence elements of any colections can be accessed through the methods provided by Iterator.
 
 We can also implement our own collection.
 Various special purpose implementations are created for convineince of use,
 And along with it some partial implementationss are provded that make creating our own collection class easier.
 And a mechanism were added, in Collections Framwork that allow the integration of standard arrays into the Colletions Framework
+
+
+    6. In addition to collections, Collections Framework has also defined seeral map Interfaces and classes.
+            Although maps are part of Collections Framework, thy are not 'collections'.
+
+====================================================================================================
+JDK5 has changed the Collections Framework:
+
+    Some fundamental changes were done are, addition of:
+        1. generics
+        2. Autoboxing/unboxing
+        3. for-each style of 'for' loop.
+
+        1. generics:
+                Generic has fundamentaly changed the collections framework.
+                All Collections are now generic.
+
+                Genercis added the 'type Safety' feature to collections.
+                Proir to generics, all collections stored Objects references, 
+                    which meant that any collection could store any type of object.
+                Doing this resulted in run-time type mismatch errors, when type mismatch occured.
+                Now with generic, it s possible to explicitly state the type of data being stored, 
+                    and thus run-time type mismatch erros can be avoided.
+
+
+
+        2. Autoboxing/unboxing
+        3. for-each style of 'for' loop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
