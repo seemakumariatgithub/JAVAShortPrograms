@@ -116,8 +116,50 @@ Spliterator.OfPrimitive (Added by JDK 8.)
 
 =================================================================================================
 COLLECTIONS FRAMEWORK:
-      The collections framework is a sophisticated hierarchy of interfaces and classes,
+    The collections framework is a sophisticated hierarchy of interfaces and classes,
           that provide state-of-the-art technology for managing groups of objects.
+    This framework has standardized the way in which group of objects can be handled by a programs.
+    This framework was added in JDK1.2
+    Prior to this java provided ad hoc classes, 'Dictionary','Vector','Stack, 'Properties', to store 
+            and manipulate the group of objects.
+
+
+GOAL for defining COLLETIONS FRAMEWORK:
+    1. To be highly efficient and provide high performance
+    2. To allow different types of collections to work in simillar manner.
+            To have high degree of interoperability.
+    3. Extending and adapting a collections whould be easy.
+    4. Algorithm is also an important part of Collection Farmaework.
+            These are defined as static method within the Collections class.
+                Hence they are available to all collections.
+            This Alogorithms have provided a standard way to manipulate the data in collections.
+            Algorithms here operate on collections.
+    5. Iterator interface:
+        An iterator have defined a generalized and standard way for accssing the elements in the collections
+                one at a time.
+
+We can also implement our own collection.
+Various special purpose implementations are created for convineince of use,
+And along with it some partial implementationss are provded that make creating our own collection class easier.
+And a mechanism were added, in Collections Framwork that allow the integration of standard arrays into the Colletions Framework
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
