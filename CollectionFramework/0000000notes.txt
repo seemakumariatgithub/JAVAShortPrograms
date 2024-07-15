@@ -169,10 +169,84 @@ JDK5 has changed the Collections Framework:
                 Now with generic, it s possible to explicitly state the type of data being stored, 
                     and thus run-time type mismatch erros can be avoided.
 
+        2. Autoboxing/unboxing:
+                Autoboxing Facilitates the Use of Primitive Datatypes.
+                Autoboxing/unboxing faclitates the storing of primtive datatypes in collections.
+                A collection can store only references, not the prmitive types value.
+
+        3. for-each style of 'for' loop:
+                
+==============================================================================================================
+THE COLLECTION INTERFACES:
+
+        Here we will discuss the core Interfaces.
+        These interfaces determines the fundamental nature of the collection classes.
+        And the concrete classes simply provide different implementation of standard interfaces.
+
+        The interfaces that underpin the Collections Framework are:
+
+       |=> Collection:
+           |=> List
+           |=> Set:
+                   |=> SortedQueue
+                   |=> NavigableQueue
+           |=> Queue
+                   |=> Deque
 
 
-        2. Autoboxing/unboxing
-        3. for-each style of 'for' loop.
+       |=> Collection: This Interface is the top level of collections hierarchy
+                       This interface enables to work with group of objects.
+
+           |=> List: handles sequences.
+           |=> Set: handles sets, i.e unique elements in group.
+
+                   |=> SortedQueue : handles sorted sets
+                       |=> NavigableQueue: handles retrieval of elements based on closest match.
+
+           |=> Queue : handles special type of list, that removes elements from head.
+                   |=> Deque : handles double-ended queue.
+
+NOTE : Along with these, collections also have below important interfaces:
+        1. Comparator
+        2. RandomAccess
+        3. Iterator
+        4. ListIterator
+        5. Spliterator ( from JDK8)
+
+
+        1. Comparator => defines how two objects are compared
+        2. RandomAccess => by implementing this, a list indicates that it supports efficient and random access to its elements.
+
+        3. Iterator =>
+        4. ListIterator =>
+        5. Spliterator ( from JDK8) => All these three enumerate the object within the collection.
+
+
+To provide general flexibility, collection have few methods defind as Optional.
+Optional method enables us to modify the content of collection. 
+Collection that support such methods are called as 'modifiable".
+Collection that do not support such methods are called 'unmodifiable'.
+
+If an attempt is made to use one of this method on an unmodifiable collection, an exception 'UnsupportedOperationException' is thrown.
+
+
+
+NOTE : ALL BUILT-IN COLLECTIONS ARE MODIFIABLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
