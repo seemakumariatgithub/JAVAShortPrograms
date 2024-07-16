@@ -379,21 +379,99 @@ SortedSet interface:
         interface SortedSet<E>
     Here E specfies the type of object it will hold.
 
-    THis interface have defined few of its own methods:
+    This interface have defined few of its own methods:
 
-    first()
-    last()
-    subSet()
-    headSet()
-    tailSet()
+    E first()
+    E last()
+    SortedSet<E> subSet(E start,E end)
+    SortedSet<E> headSet(E end)
+    SortedSet<E> tailSet(E start)
 
 ====================================================================================================================
+NavigableSet interface:
 
+    This interface extends SortedSet interface.
+    This declares the behaviour of collection that ,
+        supports the retrival of elements based on closest match of a given value or values. 
+    Navigable is the generc interface:
 
+        interface NavigableSet<E> 
     
+    Here E specfies the type of object it will hold.
+    This interface have defined few of its own methods.
 
+    ceiling()
+    floor()
+    descendingIterator()
+    descendingSet()
+    headSet()
+    higher()
+    lower()
+    pollFirst()
+    pollLast()
+    subSet()
+    tailSet()
+===================================================================================================================
+Queue interface:
 
+    This interface extends the Collection interface.   
+    This interface declares the behaviour of queue, which is first-in-first-out List.
+    NOTE: There exist queue in whic ordering based on certain criteria.
 
+    Queue is generic interface.
+
+        interface Queue<E>
+    Here E specfies the type of object it will hold.
+    Methods defined by Queue interface are:
+
+    Few interesting points about queue:
+    1. Elements can only be removed from head.
+    2. There are two methods to obtain and remove the element fom queue remove() and poll()
+            remove(): thorws exception when queue is empty.
+            poll(): retruns null when queue is empty
+    3. There are two methos to obtain but not remove elements from queue element() and peek().
+            element(): throws exception if queue is empty.
+            peek(): returns null if queue is empty.
+    4. offer(): This only attempts to add a value.
+                If queue of fixed length is full it simply fails.
+====================================================================================================================
+Deque inerface:
+
+    This interface extends Queue interface.
+    This declares the behaviour of double ended queue.
+    THis is  generic interface.
+
+        interface Deque<E>
+    Here E specfies the type of object it will hold.
+    Methods defined by Deque interface are:
+=========================================================================================================================
+
+THE COLLECTION CLASSES:
+
+    Some collection classes have full implementation of bove interfaces and the y can be used as-is.
+    Others classes are abstract, they have provided sckeleton implementation,
+            That can be used as starting pint for creating concrete classes.
+
+NOTE: In general collections classes are not synchronized.
+        But it is possible to obtain the synchronized version. 
+
+The Core Collection Classes are :              <-- Collection Interfaces -->
+                                                          <=| Iterable <=|
+|=> AbstractCollection                             <=|Collection <=|
+    |=> AbstractList                          <=| List <=|
+        |=> ArrayList
+        |=> AbstractSequentialList
+            |=> LinkedList                    <=| Deque <=|
+    |=> AbstractQueue                         <=| Queue <=|
+        |=> PriorityQueue
+    |=> AbstractSet                           <=| Set   <=|
+        |=> TreeSet <=| NevigableSet<=| SortedSet <=|
+        |=> EnumSet
+        |=> HashSet
+            |=>LinkedHashSet
+    |=> ArrayDeque
+
+======================================================================================================================
 
 
 
