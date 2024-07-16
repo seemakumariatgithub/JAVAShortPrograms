@@ -317,7 +317,88 @@ Collection Interface:
 
  
  =================================================================================================================
+    Remeber the structure:
+
+ |=> Collection:
+           |=> List
+           |=> Set:
+                   |=> SortedQueue
+                   |=> NavigableQueue
+           |=> Queue
+                   |=> Deque
+===============================================================================================================
+List Interface:
+
+    This interface extends 'Collection' interface.
+    This interface declares the behaviour of collection that stores a sequence of elements.
+    Here Elements can be inserted and accessed by their position, using 'zero-based' index.
+    A List can contain duplicate elements.
+    List is a Generic interface:
+
+            interface List<E>
+
+    Here E: specifies the type of object that List will hold.
+
+    In addition to methods defined in Collection interface, List have defined few of its own methods.
+
+    Add(int index,E)
+    Add(int index,Collection<?Extends E> C)
+    ReplaceAll(UnaryOprator<E> Operator)
+    sort()
+    get(int index)
+    set(int index,E)
+    indexOf(Object O)
+    lastIndexOf(Object O)
+    subList(int fromIndex,int toIndex)
+
+
+REFERENCE LINK For methods defined by List:
+        https://docs.oracle.com/javase/8/docs/api/java/util/List.html
     
+======================================================================================================================
+
+Set Interface:
+    This interface extends Collection interface.
+    set inteface defines set.
+    This interface specifies the behaviour of collection, that does not allow duplicate elements.
+    set interface have not defined any methods of it own.
+    set is a generic interface.
+
+            interface Set<E>
+
+    Here E specfies the type of object it will hold.
+
+======================================================================================================================
+
+SortedSet interface:
+
+    This interface extends Set interface.
+    This specifies the behaviour of collection(i.e set), as sorted set in ascending order.
+    SortedSet is a generic interface.
+
+        interface SortedSet<E>
+    Here E specfies the type of object it will hold.
+
+    THis interface have defined few of its own methods:
+
+    first()
+    last()
+    subSet()
+    headSet()
+    tailSet()
+
+====================================================================================================================
+
+
+    
+
+
+
+
+
+
+    
+
 
 
 
