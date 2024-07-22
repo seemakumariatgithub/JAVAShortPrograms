@@ -1,0 +1,28 @@
+THE COLLECTION CLASSES:
+
+    Some collection classes have full implementation of bove interfaces and the y can be used as-is.
+    Others classes are abstract, they have provided sckeleton implementation,
+            That can be used as starting pint for creating concrete classes.
+
+NOTE: In general collections classes are not synchronized.
+        But it is possible to obtain the synchronized version. 
+
+The Core Collection Classes are :              <-- Collection Interfaces -->
+                                                          <=| Iterable <=|
+|=> AbstractCollection                             <=|Collection <=|
+    |=> AbstractList                          <=| List <=|
+        |=> ArrayList
+        |=> AbstractSequentialList
+            |=> LinkedList                    <=| Deque <=|
+    |=> AbstractQueue                         <=| Queue <=|
+        |=> PriorityQueue
+    |=> AbstractSet                           <=| Set   <=|
+        |=> TreeSet <=| NevigableSet<=| SortedSet <=|
+        |=> EnumSet
+        |=> HashSet
+            |=>LinkedHashSet
+    |=> ArrayDeque
+
+======================================================================================================================
+
+
