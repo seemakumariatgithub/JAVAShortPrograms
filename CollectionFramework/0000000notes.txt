@@ -188,8 +188,8 @@ THE COLLECTIONS FRAMEWORK's INTERFACES:
        |=> Collection:
            |=> List
            |=> Set:
-                   |=> SortedQueue
-                   |=> NavigableQueue
+                   |=> SortedSet
+                   |=> NavigableSet
            |=> Queue
                    |=> Deque
 
@@ -200,8 +200,8 @@ THE COLLECTIONS FRAMEWORK's INTERFACES:
            |=> List: handles sequences.
            |=> Set: handles sets, i.e unique elements in group.
 
-                   |=> SortedQueue : handles sorted sets
-                       |=> NavigableQueue: handles retrieval of elements based on closest match.
+                   |=> SortedSet : handles sorted sets
+                       |=> NavigableSet: handles retrieval of elements based on closest match.
 
            |=> Queue : handles special type of list, that removes elements from head.
                    |=> Deque : handles double-ended queue.
@@ -322,8 +322,8 @@ Collection Interface:
  |=> Collection:
            |=> List
            |=> Set:
-                   |=> SortedQueue
-                   |=> NavigableQueue
+                   |=> SortedSet
+                   |=> NavigableSet
            |=> Queue
                    |=> Deque
 ===============================================================================================================
