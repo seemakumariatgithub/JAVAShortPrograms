@@ -1,0 +1,16 @@
+Primitive datatypes :
+
+  There are 8 primitive datatypes in Java:
+    Grouped into 4 groups:
+      1. Integer:
+          byte:     8 bits  0
+          short:    16 bits 0
+          int:      32 bits 0
+          long:    64 bits 0
+    2. Floating- point numbers:
+          float: 0.0f
+          double: 0.0d
+    3. Characters:
+          char: /u0000 NULL
+    4.Booleans:
+         boolean : 1 bit FALSE 
