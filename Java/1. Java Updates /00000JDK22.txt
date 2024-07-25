@@ -1,0 +1,120 @@
+JDK11 features:
+=======================================================================================================
+12 .Local Variable Type Inference: 
+var :
+
+    'var' is reserved type.
+    This was intorduced in JDK 10.
+    THis means that the existing code that uses, 'var' as variable, method or package name is not affected.
+    'var' can be used for fllowing types of variable:
+
+    1. Local variable declarations with initializers:
+
+          var list = new ArrayList<String>();    // infers ArrayList<String>
+          var stream = list.stream();            // infers Stream<String>
+          var path = Paths.get(fileName);        // infers Path
+          var bytes = Files.readAllBytes(path);  // infers bytes[]
+
+    2. Enhanced for-loop indexes:
+
+          List<String> myList = Arrays.asList("a", "b", "c");
+          for (var element : myList) {...}  // infers String
+
+    3. Index variables declared in traditional for loops:
+
+          for (var counter = 0; counter < 10; counter++)  {...}   // infers int
+
+    4. try-with-resources variable:
+
+          try (var input = new FileInputStream("validation.txt")) {...}   // infers FileInputStream
+
+    5. Formal parameter declarations of implicitly typed lambda expressions:
+        A lambda expression whose formal parameters have inferred types is implicitly typed:
+
+          BiFunction<Integer, Integer, Integer> = (a, b) -> a + b;
+
+          This can be written after JDK11 as:
+
+            (var a, var b) -> a + b;
+
+    NOTE:
+        1. we cannot mix inferred formal parameters and var-declared formal parameters in implicitly typed lambda expressions 
+        2. Nor can you mix var-declared formal parameters and manifest types in explicitly typed lambda expressions
+          Eg: 
+
+            (var x, y) -> x.process(y)      // Cannot mix var and inferred formal parameters
+                                            // in implicitly typed lambda expressions
+            (var x, int y) -> x.process(y)  // Cannot mix var and manifest types
+                                            // in explicitly typed lambda expressions
+==============================================================================================
+
+11. Text Blocks:
+      - This was introduced in JDK15, LTV JDK17
+       - This is an alernative representation of String.
+       - This can be used anywhere where double quote String literals can be used.
+          For Eg:
+          // Using a literal string
+          String dqName = "Pat Q. Smith";
+          
+          // Using a text block
+          String tbName = """
+                          Pat Q. Smith""";
+
+        - The object produced by text block is of type , java.lang.String
+              with same characteristcs as the traditional double quote string literal.
+        - So, 'equals()' and '==' will return true for above dqName and tbName.
+  
+            // Both dqName and tbName are strings of equal value
+            dqName.equals(tbName)    // true
+            
+            // Both dqName and tbName intern to the same string
+            dqName == tbName         // true
+
+          - As text block can be used in same way as double quote String literals,
+                hence text blocks can be intermixed with string literals, in String concatenation.
+
+                String str = "The old";
+                String tb = """
+                            the new""";
+                String together = str + " and " + tb + ".";
+          - Text blocks may be used as a method argument:
+
+                System.out.println("""
+                    This is the first line
+                    This is the second line
+                    This is the third line
+                    """);
+            - Reference Link :https://docs.oracle.com/en/java/javase/22/text-blocks/index.html
+            -
+            - ==========================================================
+            - TEXT BLOCK SYNTEX:
+            Text Block have below mentioned rules to be followed:
+                 1. A text block begins with three double-quote characters followed by a line terminator.
+                 2. We can't put a text block on a single line.
+                 3. We cannot put the contents of the text block follow the three opening double-quotes without an intervening line terminator.
+                      i.e : // ERROR
+                                  String name = """Pat Q. Smith""";
+                                  
+                                  // ERROR
+                                  String name = """red
+                                                   green
+                                                   blue
+                                                   """;
+                                  
+                                  // OK
+                                  String name = """
+                                      red
+                                      green
+                                      blue
+                                      """;
+
+                  4. There is no need to escape the embedded double quotes:
+                          String source = """
+                                        String message = "Hello, World!";
+                                        System.out.println(message);
+                                        """;
+                  5. 
+
+
+
+                 
