@@ -433,16 +433,91 @@ ITERATORS AND STERAMS:
                                     
       
                         Example Code: Stream04_Spliterator2.java
+=============================================================================================
+Collectors Class:
+            This is defeined in the package:
 
+                        java.util.stream
 
+            This class implements 'Collector' interface.
+            This class proides implementation of various reduction operations
+                  such as accumulating elements into collection, or summarizing the elements based on various crieteria.
+
+            Various Methods defined in this classes are :
+                  All these methods are static.
+                  Go to Link :  https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html
+
+                  1. static <T> Collector<T,?,Double> averagingDouble(ToDoubleFunction<? super T> mapper):
+Returns a Collector that produces the arithmetic mean of a double-valued function applied to the input elements.
       
+                  static <T> Collector<T,?,Double>	averagingInt(ToIntFunction<? super T> mapper)
+                  Returns a Collector that produces the arithmetic mean of an integer-valued function applied to the input elements.
+
+                  static <T> Collector<T,?,Double>	averagingLong(ToLongFunction<? super T> mapper)
+                  Returns a Collector that produces the arithmetic mean of a long-valued function applied to the input elements.
 
 
+                  2. collectingAndThen(Collector<T,A,R> downstream, Function<R,RR> finisher)
+                        Adapts a Collector to perform an additional finishing transformation.
+
+                  3.static <T> Collector<T,?,Long>	counting():
+                        Returns a Collector accepting elements of type T that counts the number of input elements.
+
+                  4. static <T,K> Collector<T,?,Map<K,List<T>>>	groupingBy(Function<? super T,? extends K> classifier)
+                        Returns a Collector implementing a "group by" operation on input elements of type T, 
+                        grouping elements according to a classification function,
+                        and returning the results in a Map.
+
+                  5. static Collector<CharSequence,?,String>	joining():
+                        Returns a Collector that concatenates the input elements into a String, in encounter order.
+
+                        OTHER VARIENT ARE:
+                  static Collector<CharSequence,?,String>	joining(CharSequence delimiter):
+
+                              Returns a Collector that concatenates the input elements, 
+                              separated by the specified delimiter, in encounter order.
+
+                  static Collector<CharSequence,?,String>	joining(CharSequence delimiter, CharSequence prefix, CharSequence suffix):
+
+                              Returns a Collector that concatenates the input elements, 
+                              separated by the specified delimiter, with the specified prefix and suffix, in encounter order.
+
+            6. static <T,U,A,R> Collector<T,?,R> mapping(Function<? super T,? extends U> mapper, Collector<? super U,A,R> downstream)
+Adapts a Collector accepting elements of type U to one accepting elements of type T by applying a mapping function to each input element before accumulation.
+
+static <T> Collector<T,?,Optional<T>>	maxBy(Comparator<? super T> comparator)
+Returns a Collector that produces the maximal element according to a given Comparator, described as an Optional<T>.
+
+static <T> Collector<T,?,Optional<T>>	minBy(Comparator<? super T> comparator)
+Returns a Collector that produces the minimal element according to a given Comparator, described as an Optional<T>.
 
 
+      7. static <T> Collector<T,?,Optional<T>>	reducing(BinaryOperator<T> op)
+         static <T> Collector<T,?,T>	reducing(T identity, BinaryOperator<T> op)
+         static <T,U> Collector<T,?,U>	reducing(U identity, Function<? super T,? extends U> mapper, BinaryOperator<U> op)
+
+static <T> Collector<T,?,DoubleSummaryStatistics>	summarizingDouble(ToDoubleFunction<? super T> mapper)
+Returns a Collector which applies an double-producing mapping function to each input element, and returns summary statistics for the resulting values.
+static <T> Collector<T,?,IntSummaryStatistics>	summarizingInt(ToIntFunction<? super T> mapper)
+Returns a Collector which applies an int-producing mapping function to each input element, and returns summary statistics for the resulting values.
+static <T> Collector<T,?,LongSummaryStatistics>	summarizingLong(ToLongFunction<? super T> mapper)
+Returns a Collector which applies an long-producing mapping function to each input element, and returns summary statistics for the resulting values.
+static <T> Collector<T,?,Double>	summingDouble(ToDoubleFunction<? super T> mapper)
+Returns a Collector that produces the sum of a double-valued function applied to the input elements.
+static <T> Collector<T,?,Integer>	summingInt(ToIntFunction<? super T> mapper)
+Returns a Collector that produces the sum of a integer-valued function applied to the input elements.
+static <T> Collector<T,?,Long>	summingLong(ToLongFunction<? super T> mapper)
+Returns a Collector that produces the sum of a long-valued function applied to the input elements.
 
 
+8. static <T,C extends Collection<T>> Collector<T,?,C>	toCollection(Supplier<C> collectionFactory)
+Returns a Collector that accumulates the input elements into a new Collection, in encounter order.
 
+
+9. static <T> Collector<T,?,List<T>>	toList(): 
+   static <T,K,U> Collector<T,?,Map<K,U>>	toMap(Function<? super T,? extends K> keyMapper, Function<? super T,? extends U> valueMapper):
+   static <T> Collector<T,?,Set<T>>	toSet(): 
+     
 
 
 
