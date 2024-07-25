@@ -1,4 +1,4 @@
-JDK11 features:
+JDK features Till JDK22:
 =======================================================================================================
 12 .Local Variable Type Inference: 
 var :
@@ -116,5 +116,24 @@ var :
                   5. 
 
 
+=====================================================================
+8 RECORD CLASSES:
 
+    - This was intorduced in JDK 15 .
+    - These are special kind of class which help to model plain data aggregates with less ceremony than normal class.
+    - A recorde declaration is specified in the header
+    - In the header a description of it content is specified.
+    - The appropriate accessor, constructors, methods, equals, toString, hashCode are created automaticall
+
+
+    - Link Refenrece : https://docs.oracle.com/en/java/javase/22/language/records.html
                  
+
+
+
+
+
+
+
+
+
