@@ -14,3 +14,53 @@ Primitive datatypes :
           char: /u0000 NULL
     4.Booleans:
          boolean : 1 bit FALSE 
+=======================================================================================================
+var :
+
+    'var' is reserved type.
+    This was intorduced in JDK 10.
+    THis means that the existing code that uses, 'var' as variable, method or package name is not affected.
+    'var' can be used for fllowing types of variable:
+
+    1. Local variable declarations with initializers:
+
+          var list = new ArrayList<String>();    // infers ArrayList<String>
+          var stream = list.stream();            // infers Stream<String>
+          var path = Paths.get(fileName);        // infers Path
+          var bytes = Files.readAllBytes(path);  // infers bytes[]
+
+    2. Enhanced for-loop indexes:
+
+          List<String> myList = Arrays.asList("a", "b", "c");
+          for (var element : myList) {...}  // infers String
+
+    3. Index variables declared in traditional for loops:
+
+          for (var counter = 0; counter < 10; counter++)  {...}   // infers int
+
+    4. try-with-resources variable:
+
+          try (var input = new FileInputStream("validation.txt")) {...}   // infers FileInputStream
+
+    5. Formal parameter declarations of implicitly typed lambda expressions:
+        A lambda expression whose formal parameters have inferred types is implicitly typed:
+
+          BiFunction<Integer, Integer, Integer> = (a, b) -> a + b;
+
+          This can be written after JDK11 as:
+
+            (var a, var b) -> a + b;
+
+    NOTE:
+        1. we cannot mix inferred formal parameters and var-declared formal parameters in implicitly typed lambda expressions 
+        2. Nor can you mix var-declared formal parameters and manifest types in explicitly typed lambda expressions
+          Eg: 
+
+            (var x, y) -> x.process(y)      // Cannot mix var and inferred formal parameters
+                                            // in implicitly typed lambda expressions
+            (var x, int y) -> x.process(y)  // Cannot mix var and manifest types
+                                            // in explicitly typed lambda expressions
+        
+
+
+
