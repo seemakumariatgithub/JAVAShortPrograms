@@ -250,9 +250,22 @@ length() and capacity() methods of StringBuffer:
         getChars():          void getChars(int sourceStart, int sourceEnd, char[] target, int targetStart)
         append(): 
         insert(): 
-        reverse():
-        delete():
-        deleteCharAt():
+        reverse():            StringBuffer reverse()
+        delete():             StringBuffer delete(int startIndex,int endIndex)
+        deleteCharAt():        StringBuffer deleteCharAt(int location)
+        replace():             StringBuffer replace(int startIndex,int endIndex,String str)
+        subString():            StringBuffer subString(int startIndex)
+                                StringBuffer subString(int startIndex,int endIndex)
+
+etcs.
+==========================================================================================================
+StringBuilder class:
+
+        - This class is defined as final class in package: java.lang
+        - This was introduced in JDK5
+        - This class is same as Stringbuffer, except this is not sychronized.
+        - Hence it is not thread safe.
+
 
 
         
