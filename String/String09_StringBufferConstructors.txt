@@ -1,0 +1,20 @@
+import static java.lang.System.out;
+public class String09_StringBufferConstructors{
+    public static void main(String[] args){
+         StringBuffer mySb=new StringBuffer("Hello JAVA");
+         StringBuffer mySb2=new StringBuffer(4);
+         StringBuffer mySb3=new StringBuffer();
+         
+         out.println("For Constructor StringBuffer(String str)");
+         out.println("Length of StringBuffer object: "+mySb.length());
+         out.println("capacity of StringBuffer object: "+mySb.capacity());
+         
+         out.println("\nFor Constructor StringBuffer(int size)");
+         out.println("Length of StringBuffer object: "+mySb2.length());
+         out.println("capacity of StringBuffer object: "+mySb2.capacity());
+         
+         out.println("\nFor Constructor StringBuffer()");
+         out.println("Length of StringBuffer object: "+mySb3.length());
+         out.println("capacity of StringBuffer object: "+mySb3.capacity());
+    }
+}
