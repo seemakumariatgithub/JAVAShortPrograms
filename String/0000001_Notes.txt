@@ -202,6 +202,64 @@ join()
         1. static String join(charSequence delim,charSequence... str)
         2. static String join()
 
+Eg: 
+
+    import static java.lang.System.out;
+    public class String08_joinMethod{
+        public static void main(String[] args){
+             String myString="Aa   Now is";
+             String myString2="the time.";
+             out.println(String.join(".....",myString,myString2));
+             out.println(myString.isEmpty());
+        }
+    }
+
+==================================================================================================
+StringBuffer Class:
+
+    - This is defined in the package:  java.lang
+    - This class represents growable and writable character sequence.
+    - This type of object can have characters or substring inserted in the middle or appended at the end.
+    - StringBuffer Constructors:
+        It have four constructors:
+                StringBuffer()
+                StringBuffer(int size)
+                StringBuffer(String str)
+                StringBuffer(CharSequence chars)
+    - The no argument constructor bydefault reserve room for 16 characters.
+    - The second constructor, creates object with size specified for the buffer.
+    - The third constructor, creates StringBuffer object with specified string as initial content 
+            and reserve room for 16 more characters without realocation.
+    - The fourth constructor, creates StringBuffer object that conatain specified char sequences and
+            reserve room for 16 more characters without reallocation.
+
+====================================================================================================
+length() and capacity() methods of StringBuffer:
+
+    length() -> provides the current length of StringBuffer.
+    capacity() -> proides the total allocated capacity to the StringBuffer object.
+    - Their general forms are:
+            int length()
+            int capacity()
+
+    - Other methods are:
+        ensureCapacity():    void ensureCapacity(int minCapacity)
+        setLength():         void setLength(int ln)
+        charAt():            char charAt(int where)
+        setCharAt():         void setCharAt(int where,char ch)
+        getChars():          void getChars(int sourceStart, int sourceEnd, char[] target, int targetStart)
+        append(): 
+        insert(): 
+        reverse():
+        delete():
+        deleteCharAt():
+
+
+        
+
+
+
+
 
 
 
