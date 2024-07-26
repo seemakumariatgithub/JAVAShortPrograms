@@ -177,16 +177,16 @@ DATA CONVERSION USING valueOf():
 
     This is a static method defined in String class.
     This is overloaded for all Java's build in types.
-            - so that each type can be conerted properly to String.
-    This is als overlaoded for Object type.
+            - so that each type can be converted properly to String.
+    This is also overlaoded for Object type.
     This method convertes an object from its internal formate to human readable form.
 
-    NOTE: this method is called when string representation of other datatype is needed.
+    NOTE: This method is called when string representation of other datatype is needed.
 
-    When an obect of passed to 'valueOf()', it will return result of call to object's toString().
-    Calling directly toString() will give same result too.
+    When an object is passed to 'valueOf()', it will return result of call to object's toString().
+    Calling directly toString() will give same result as well.
 
-    few general forms are:
+    Few general forms are:
         static String valueOf(double num)
         static String valueOf(char char[])
         static String valueOf(Object obj)
