@@ -9,3 +9,198 @@ The class or method that operates on parameterized type is calledd 'generic' as 
 Generic added type safety.
 Now it is no longer necessary to explicitly employ cast.
 with generic all casts are automatic and implicit.
+=========================================================================
+SIMPLE EXAMPLE :
+
+import static java.lang.System.out;
+
+public class Generic01_demo{
+    
+    public static void main(String[] args){
+        // Creating a reference to Generic_class for Integer => genClass
+        // Then Create the Generic_class object and assign its reference to object genClass 
+        Generic_class<Integer> genClass= new Generic_class<Integer>(8);
+
+        // Show the type of data used by genClass object.
+        genClass.showObjType();
+        
+    }
+}
+class Generic_class<T>{
+    T obj;
+    Generic_class(T ob){
+        obj=ob;
+    }
+    public void showObjType(){
+        out.println("Type of T bject is : "+ obj.getClass().getName());
+    }
+}
+
+==================================================================================================
+How this works:
+Before moving on, it’s necessary to state that the Java compiler does not actually create
+different versions of Gen, or of any other generic class. Although it’s helpful to think in
+these terms, it is not what actually happens. Instead, the compiler removes all generic type
+information, substituting the necessary casts, to make your code behave as if a specific
+version of Gen were created. Thus, there is really only one version of Gen that actually
+exists in your program. The process of removing generic type information is called erasure,
+and we will return to this topic later in this chapter
+
+==================================================================================================
+1. Generic ensures type safty.
+    If in the above example we try to assign 
+    
+    genObject=new Generic_class<Double>(8.0);
+    
+    This will throw compile time error
+
+2. Generic works only with reference type.
+    We cannot pass primitive type to generic.
+    
+    For Eg:
+      obj=new Generic_class<int>(8);  // will throw error
+3. Generic Types differ based on their type arguments.
+    Means, the reference to one specific version of generic type is not type cmpatible
+        with the reference with another version of same generic type.
+====================================================================================================
+How Generics Improve Type Safety:
+
+At this point, you might be asking yourself the following question: Given that the same
+functionality found in the generic Gen class can be achieved without generics, by simply
+specifying Object as the data type and employing the proper casts, what is the benefit of
+making Gen generic? The answer is that generics automatically ensure the type safety of all
+operations involving Gen. In the process, they eliminate the need for you to enter casts and
+to type-check code by hand.
+
+To understand the benefits of generics, first consider the following program that
+creates a non-generic equivalent of Gen:
+                // NonGen is functionally equivalent to Gen
+                // but does not use generics.
+                class NonGen {
+                 Object ob; // ob is now of type Object
+                 // Pass the constructor a reference to
+                 // an object of type Object
+                 NonGen(Object o) {
+                 ob = o;
+                 }
+                 // Return type Object.
+                 Object getob() {
+                 return ob;
+                
+                 // Show type of ob.
+                 void showType() {
+                 System.out.println("Type of ob is " +
+                 ob.getClass().getName());
+                 }
+                }
+                // Demonstrate the non-generic class.
+                class NonGenDemo {
+                 public static void main(String args[]) {
+                 NonGen iOb;
+                 // Create NonGen Object and store
+                 // an Integer in it. Autoboxing still occurs.
+                 iOb = new NonGen(88);
+                 // Show the type of data used by iOb.
+                 iOb.showType();
+                 // Get the value of iOb.
+                 // This time, a cast is necessary.
+                 int v = (Integer) iOb.getob();
+                System.out.println("value: " + v);
+                 System.out.println();
+                 // Create another NonGen object and
+                 // store a String in it.
+                 NonGen strOb = new NonGen("Non-Generics Test");
+                 // Show the type of data used by strOb.
+                 strOb.showType();
+                 // Get the value of strOb.
+                 // Again, notice that a cast is necessary.
+                
+                String str = (String) strOb.getob();
+                 System.out.println("value: " + str);
+                 // This compiles, but is conceptually wrong!
+                 iOb = strOb;
+                 v = (Integer) iOb.getob(); // run-time error!
+                 }
+                }
+There are several things of interest in this version. First, notice that NonGen replaces all
+uses of T with Object. This makes NonGen able to store any type of object, as can the generic
+version. However, it also prevents the Java compiler from having any real knowledge about
+the type of data actually stored in NonGen, which is bad for two reasons. First, explicit casts
+must be employed to retrieve the stored data. Second, many kinds of type mismatch errors
+cannot be found until run time. Let’s look closely at each problem.
+Notice this line:
+    int v = (Integer) iOb.getob();
+Because the return type of getob( )  is Object, the cast to Integer is necessary to enable
+that value to be auto-unboxed and stored in v. If you remove the cast, the program will
+not compile. With the generic version, this cast was implicit. In the non-generic version,
+the cast must be explicit. This is not only an inconvenience, but also a potential source
+of error.
+Now, consider the following sequence from near the end of the program:
+      // This compiles, but is conceptually wrong!
+      iOb = strOb;
+      v = (Integer) iOb.getob(); // run-time error!
+Here, strOb is assigned to iOb. However, strOb refers to an object that contains a string,
+not an integer. This assignment is syntactically valid because all NonGen references are
+the same, and any NonGen reference can refer to any other NonGen object. However, the
+statement is semantically wrong, as the next line shows. Here, the return type of getob( ) is
+cast to Integer, and then an attempt is made to assign this value to v. The trouble is that
+iOb now refers to an object that stores a String, not an Integer. Unfortunately, without the
+use of generics, the Java compiler has no way to know this. Instead, a run-time exception
+occurs when the cast to Integer is attempted. As you know, it is extremely bad to have
+run-time exceptions occur in your code!
+
+The preceding sequence can’t occur when generics are used. If this sequence were
+attempted in the generic version of the program, the compiler would catch it and report
+an error, thus preventing a serious bug that results in a run-time exception. The ability to
+create type-safe code in which type-mismatch errors are caught at compile time is a key
+advantage of generics. Although using Object references to create “generic” code has
+always been possible, that code was not type safe, and its misuse could result in run-time
+exceptions. Generics prevent this from occurring. In essence, through generics, run-time
+errors are converted into compile-time errors. This is a major advantage.
+==============================================================================================================
+
+GENERIC CLASS WITH TWO TYPE PARAMETER
+
+We can declare more that one type parameter in generic type.
+Simply use comma seperated list of parameters.
+Eg: 
+    class Generic_class<T,V>{}
+
+=====================================================================================
+GENERAL SYNTAX FOR GENERIC:
+
+class class_name<type-paramer-list>{
+}
+
+Syntax for declaring reference to generic class:
+
+class_name<type-paramet-list> var_name= new class_name<type-parmater-list>(constructor-argument-list)
+==================================================================================================
+
+BOUNDED TYPE:
+
+In examples so far, we can replace type paramter by any class type.
+But in some cases, we need to limit the type that can be passed.
+This can be acheived by , while creating the type parameter, 
+  we can create an upper bound that declares the superclass from which type argument must be derived.
+This can be done as , with below syntax for type parameter :
+      <T extends superclass_name>
+
+  Here, it means, 
+      T can only be replaced by 'superclass_name' or subclass of 'supperclass_name'.
+      Hence here 'superclass_name' defined the incluive upper limit.
+
+NOTE: 1. If we donot do this , a compile-time error will occur, 
+        if we try to handle specific type by method in Generic_class.
+
+      2. - We can also use interface for bound type.
+         - We can also specify more than one interfaces for bound type.
+          -We can specify, both class, and one or more interfaces.
+              In above case ,class type should be specified first.
+          -We use '&' operator to connect more than on interface or class and interface.
+          -When we bound by interface, then only type argument that implement interface type is legal as parameter type.
+
+      class Generic_class<T extends MyClass & MyInterface1 & MyInterface2>{ }
+
+==============================================================================================================
+
