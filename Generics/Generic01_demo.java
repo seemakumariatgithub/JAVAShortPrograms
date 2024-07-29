@@ -4,7 +4,10 @@ public class Generic01_demo{
     
     public static void main(String[] args){
         Generic_class<Integer> genClass= new Generic_class<Integer>(8);
-        genClass.showObjType();        
+        genClass.showObjType();  
+
+        Generic_class<String> genStringObj=new Generic_class<String>("Hello String");        
+        genStringObj.showObjType();
     }
 }
 class Generic_class<T>{
