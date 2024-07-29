@@ -1,0 +1,11 @@
+Generics Introduction:
+========================================================================
+
+Introducted in JDK 5.
+This made creation of classes, method and interfaces in which type of data upon which they operate is specfied as a parameter.
+The term 'generic' here means, 'parameterized types'. 
+The class or method that operates on parameterized type is calledd 'generic' as in 'generic class' or 'generic method'.
+
+Generic added type safety.
+Now it is no longer necessary to explicitly employ cast.
+with generic all casts are automatic and implicit.
