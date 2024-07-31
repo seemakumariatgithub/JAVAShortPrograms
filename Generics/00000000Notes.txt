@@ -190,7 +190,7 @@ This can be done as , with below syntax for type parameter :
       T can only be replaced by 'superclass_name' or subclass of 'supperclass_name'.
       Hence here 'superclass_name' defined the incluive upper limit.
 
-NOTE: 1. If we donot do 1this , a compile-time error will occur, 
+NOTE: 1. If we donot do this , a compile-time error will occur, 
         if we try to handle specific type by method in Generic_class.
 
       2. - We can also use interface for bound type.
@@ -202,7 +202,112 @@ NOTE: 1. If we donot do 1this , a compile-time error will occur,
 
       class Generic_class<T extends MyClass & MyInterface1 & MyInterface2>{ }
 
+============================================================================================================
+import static java.lang.System.out;
+
+public class Generic03_boundedType{
+    
+    public static void main(String[] args){
+        Integer[] myArray={1,2,3,4,5,6};
+        Generic_class<Integer> genObject=new Generic_class<Integer>(myArray);
+        out.println("Average of given array: "+genObject.average());
+        
+        // String[] myArray2={"1","2","3","4","5","6"};
+        // Generic_class<String> genObject2=new Generic_class<String>(myArray2);
+        // out.println("Average of given array: "+genObject2.average());
+        //Above line will give below compile time error
+//         /tmp/zZLB7samai/Generic03_boundedType.java:11: error: type argument String is not within bounds of type-variable T
+//         Generic_class<String> genObject2=new Generic_class<String>(myArray2);
+//                       ^
+//   where T is a type-variable:
+//     T extends Number declared in class Generic_class
+// ERROR!
+        
+    }
+}
+
+class Generic_class<T extends Number>{
+    T[] obj;
+    
+    Generic_class(T[] obt){
+        obj=obt;
+    }
+    double average(){
+        
+        double sum=0.0;
+        
+        for(int i=0;i<obj.length;i++){
+            sum+=obj[i].doubleValue();
+        }
+        return sum/obj.length;
+    }
+}
+
+
+
 ==============================================================================================================
 USING WILDCARD ARGUMENT:
+
+The wildcard argument is specified by '?'.
+This represents unknown type.
+
+Eg: 
+            // Determine if two averages are the same.
+             // Notice the use of the wildcard.
+             boolean sameAvg(Stats<?> ob) {
+                 if(average() == ob.average())
+                     return true;
+                 return false;
+             }
+NOTE: The wildcard doesnot affect the type of Generic_class object that can be created.
+        THis is govern by extends
+    Wildecard simple matches the valid Generic_class object.
+======================================================================================================
+
+BOUNDED Wildcard
+
+Wildcard can be bounded in same as normal type paramter.
+This is needed when we want to operate on class hierarchy.
+A bounded wildcard specifies either an upper bound or a lower bound for the type argument.
+This enables us to restrict the types of objects upon which a method will operate.
+The most common bounded wildcard is the upper bound, which is created using an 'extends'.
+
+Syntax for upper bound:
+    <? extends superclass>
+
+Syntax for lower bound:
+    <? super subclass>
+
+Note: Both of above bound are inclusive clause.
+=======================================================================================
+Creating Generic Method:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
