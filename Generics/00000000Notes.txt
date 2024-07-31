@@ -190,7 +190,7 @@ This can be done as , with below syntax for type parameter :
       T can only be replaced by 'superclass_name' or subclass of 'supperclass_name'.
       Hence here 'superclass_name' defined the incluive upper limit.
 
-NOTE: 1. If we donot do this , a compile-time error will occur, 
+NOTE: 1. If we donot do 1this , a compile-time error will occur, 
         if we try to handle specific type by method in Generic_class.
 
       2. - We can also use interface for bound type.
@@ -203,4 +203,6 @@ NOTE: 1. If we donot do this , a compile-time error will occur,
       class Generic_class<T extends MyClass & MyInterface1 & MyInterface2>{ }
 
 ==============================================================================================================
+USING WILDCARD ARGUMENT:
 
+    
