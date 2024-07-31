@@ -282,9 +282,30 @@ Note: Both of above bound are inclusive clause.
 =======================================================================================
 Creating Generic Method:
 
+    A generic method can be inside both , a generic class and non generic class.
+    A generic method can be static or non static, there no restricon this .
+    Syntax:
 
+        <type-param-list> return-type method-name(parm-list){}
 
+    Here: type-param-list : will be comma seperated list.
 
+NOTE: for generic method the type paramter list preceded the return type.
+==========================================================================================
+Generic constructor:
+
+    We can have a generc constructor even if class is not generic.
+    Syntax is same as for generic method.
+ ========================================================================================
+Generic Interface:
+
+    Generic interfaces are defined just like generic class.
+    Syntax: 
+        interface interface-name<type-param-list>
+
+When this interface is implemented by a class, its syntax is :
+
+        class class-name <type-param-list> implements interface-name<type-argument-list>
 
 
 
