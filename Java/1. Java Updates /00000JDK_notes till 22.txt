@@ -122,14 +122,121 @@ var :
     - This was intorduced in JDK 15 .
     - These are special kind of class which help to model plain data aggregates with less ceremony than normal class.
     - A recorde declaration is specified in the header
-    - In the header a description of it content is specified.
-    - The appropriate accessor, constructors, methods, equals, toString, hashCode are created automaticall
+    - In the header a description of its content is specified.
+    - The appropriate accessor, constructors, methods, equals, toString, hashCode are created automatically.
+    - record's fields are always final, as these classes are intended as a 'data carrier'.
+
+        Eg:
+            record Rectangle(double length, double width) { }
+
+A record class declaration consists of a name; optional type parameters (generic record declarations are supported); a header, which lists the "components" of the record; and a body.
+A record class declares the following members automatically:
+
+For each component in the header, the following two members:
+A private final field with the same name and declared type as the record component. This field is sometimes referred to as a component field.
+A public accessor method with the same name and type of the component; in the Rectangle record class example, these methods are Rectangle::length() and Rectangle::width().
+A canonical constructor whose signature is the same as the header. This constructor assigns each argument from the new expression that instantiates the record class to the corresponding component field.
+Implementations of the equals and hashCode methods, which specify that two record classes are equal if they are of the same type and contain equal component values.
+An implementation of the toString method that includes the string representation of all the record class's components, with their names.
+As record classes are just special kinds of classes, you create a record object (an instance of a record class) with the new keyword, for example:
 
 
     - Link Refenrece : https://docs.oracle.com/en/java/javase/22/language/records.html
                  
+=================================================================================================================
+6. Sealed Class:
+        This was added in JDK15, LTV JDK17
+        By sealing a class, 
+            we can specify which classes are allowed/permitted to extend this class,
+            and prevent any arbitrary class from doing so.
 
+Syntax:
+    for declaring a class as seal, 
+        1. add 'sealed' modifier, in class declaration.
+        2. Then after any 'extends' and 'implements' clause add 'permits' clause
+                    This clause specifies the classes that may extend this sealed class.
 
+            Eg: 
+                    public sealed class Shape
+                        permits Circle, Square, Rectangle {
+                    }
+        3. Define the permitted class in the same module or in same package as sealed class is in.
+            permitted class can be final:
+            Eg: 
+                    public final class Circle extends Shape {
+                        public float radius;
+                    }
+        4. Defining nonsealed class:
+            Eg: 
+                    public non-sealed class Square extends Shape {
+                       public double side;
+                    } 
+        5. Subclass can also me a sealed class:
+            Eg: 
+                    public sealed class Rectangle extends Shape permits FilledRectangle {
+                            public double length, width;
+                        }
+
+        6. If we define permitted class in same file then 'permits' clause can be omitted
+            Eg: 
+                    package com.example.geometry;
+                        public sealed class Figure
+                            // The permits clause has been omitted
+                            // as its permitted classes have been
+                            // defined in the same file.
+                        { }
+                        
+                        final class Circle extends Figure {
+                            float radius;
+                        }
+                        non-sealed class Square extends Figure {
+                            float side;
+                        }
+                        sealed class Rectangle extends Figure {
+                            float length, width;
+                        }
+                        final class FilledRectangle extends Rectangle {
+                            int red, green, blue;
+                        }
+
+CONSTRAINTS ON PERMITTED SUBCLASSES:
+1. Permitted subclasses have following constraints:
+    1.a.THey must be accessbile by the sealed class at compile time.
+            Eg:     
+                In order to compile 'shape.java' class, 
+                    the compiler must be able to access all of the permitted classes of shape.
+                    (Cirle.java, Square.java, Rectangle.java).
+                In addition , since Rectanlge class is sealed class,
+                    the compiler also needs to have access to its permitted classes.
+                        (FilledRectangle.java).
+                
+2. They must directly extend the sealed class.
+3. They must have exactly one of the following modifiers:
+    - final: Cannot be extended further
+    - sealed: Can only be extened by its permitted subclasses
+    - non-sealed: Can be extended by any nknown subclasses,
+                    -a sealed class cannot prevent its permitted subclasses from doing this.
+    These modifiers describes how these subclasses continues the sealing initiated by their superclass.
+4. Subclasses must be in the same module as the sealed class.
+    Or in the same package.
+         For Eg:
+                Below code will compile, only if all the permitted classes are in the same module.
+                    
+                    package com.example.graphics;
+                    public sealed class Shape 
+                        permits com.example.polar.Circle,
+                                com.example.quad.Rectangle,
+                                com.example.quad.simple.Square { }
+5 Record classes can be part of permitted list classes of sealed class.
+
+APIs Related to sealed classes:
+==============================
+In java, the package java.lang.class , has provided two new methods related to sealed classes and interfaces.
+1. java.lang.class.ClassDesc[] permittedSubclasses()  :
+            returns an array of all the permitted subclass of this sealed class.
+            returns empty array if class is not sealed.
+2. boolean isSealed()   : returns true if class or interface is sealed.
+                            otherwise returns false.
 
 
 
