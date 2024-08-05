@@ -14,3 +14,153 @@ Features added in JDK 17:
  13-  414: Vector API(Second Incubator)    
  14-  415: Context-Specific Deserialization Filters 
 ==========================================================================
+
+Features added in JDK21:
+
+1. Language Feature
+2. Libraries Improvements
+3. Performance Improvements
+4. Tools Improvements
+5. Java Emoji Support Tools
+6. Enhanced Lifecycle Management with HttpClient:
+7. Enhanced Repeated Appending in StringBuilder and StringBuffer
+8. Advancing Java collections with Sequenced Interface:
+
+1. Language Feature
+     The Language feature holds the record patterns like enhanced the pattern matching for the switch expressions and the statements.
+     In this new version, it will allow you to break down or ‘deconstruct’ the complex data that is called record.
+     It is updated with the ‘pattern matching’ in switch cases, now the developer will be able to match the patterns directly instead of checking the conditions.
+     JDK 21 has a new ‘String Template’ features that Java has introduced a new way of using the string in other words, in Java 21 it will allow you to mix the expression and code together,
+     For example: As of now, developer used to write in the following way –
+      // Before Java 21
+         “Hello” + name + “, welcome to the GeeksForGeeks!”        
+         But now with this update you might be able to write this in an easier way, something like
+         // After Java 21
+         ‘Hello {your actual variable value} welcome to the GeeksForGeeks!’       
+     In the unnamed patterns and variables, sometimes in coding you don’t need to give the name or type of the particular data. Now, Java lets you use the underscore ‘_’ to ignore that once you don’t need it.
+
+2. Libraries Improvements
+      1. Virtual threads: JDK 21 has introduced virtual threads to the Java platform, 
+                           where as they can do tasks quickly without allocating much 
+                            resources and space in the memory.
+
+      2. Sequenced collections: Java 21 has introduced new ways to work with collections, 
+                                   which is an interface to represent collections in a set of order,
+                                   where the developer will always get to know which item is first, second, third, and so on.
+                             The developer can quickly see the first and last items.
+                             The developer can go through the items which are backward, if needed.
+      3.Key encapsulation mechanisms (KEMs): JDK 21 has introduced an API for key encapsulation mechanisms (KEM), 
+                                   this tool will help in storing secret keys safely.
+      4. Vector API: Java 21 offers an API and vector tools which will help you 
+                    to get fastest performance in such tasks like graphics rendering, or scientific calculations.
+
+3. Performance Improvements
+       Java has the feature of Z Garbage Collection (ZBC) 
+          which performs all the expensive works concurrently, 
+           without stopping the execution of application threads.
+       Now with the improvement of this cleaning tool called ‘ZBC’, it cleans up the unused memory.
+       It sorts stuff in the memory into ‘new’ and ‘old’ notes.
+       For example: Every program you run on your computer uses something called ‘memory’
+           to store and manage information. As the program runs, it creates objects like notes 
+           in this memory. Over time, many of these notes aren’t needed anymore during the development, 
+          and if they’re not removed, they’ll clog up or block the memory, like unused papers filling up a desk, 
+          and making everything slower. So ZGC separates them into ‘new’ and ‘old’ notes. 
+           Where it works as in the following manner- newer notes are often not needed after a short time, 
+          while older ones might still be important. 
+           So, by targeting and cleaning up the new notes more frequently, 
+           it ensures that the memory desk remains less complex and more efficient.
+
+4. Tools Improvements
+       Java 21 has enhanced its tools such as ‘Runtime.exec’ and ‘ProcessBuilder’ which are used to start new processes like running a new program.
+       Java program that frequently starts new processes using ‘Runtime.exec’ or ‘ProcessBuilder’, this feature helps you track or log these activities.
+       You would generally have a logger setup for your application, with this new feature, you’d specifically want to monitor the logger named ‘java.lang.ProcessBuilder’ as shown below.
+
+     System.Logger logger = System.getLogger("java.lang.ProcessBuilder"); 
+     Let’s say you want to run a simple ping command for testing using the ‘ProcessBuilder’.
+
+ProcessBuilder processBuilder = new ProcessBuilder(); 
+processBuilder.command("ping", "www.google.com"); 
+Once you run the process, the specified details would automatically be logged based on the logger’s level. If the logger level is set to DEBUG or TRACE, the details will be recorded accordingly.
+
+Suppose, you had set the logger level to TRACE:
+logger.log(System.Logger.Level.TRACE, "Starting process..."); 
+Process process = processBuilder.start(); 
+
+
+
+5. Java Emoji Support Tools
+
+      Java has introduced the method in the ‘java.lang.Character’ class to work with different types of emoji’s properties, 
+          it’s defined by the Unicode Standard (unicode emoji technical standard) UTS#51.
+      Let’s take an example, checking whether the given code points to a unique number representing a character as an emoji.
+      boolean isEmojiChar = Character.isEmoji('????');
+      (This would return true, indicating that ‘????’ is an emoji.)
+
+Let’s take another example, determining that the given code point can have an emoji modifier applied to it like, the hand emoji can have different skin tones applied.
+boolean canHaveModifier = Character.isEmojiModifierBase('✋');
+( Determines if the given code point can have an emoji modifier applied to it. For instance, the hand emoji can have different skin tones applied.)
+
+6. Enhanced Lifecycle Management with HttpClient:
+
+       The ‘HttpClient’ being ‘AutoCloseable’ means you can now use it within a try-with-resources block in Java, which automatically handles the closing of resources once they are no longer needed.
+       JDK 21 has added such methods in the new version like: close() method which waits for any ongoing requests to finish before closing, once the task has finish it easily closes the HttpClient.
+       HttpClient client = HttpClient.newHttpClient(); 
+       // ... use the client for various tasks 
+       client.close();
+       The other method is`shutdown()` that starts closing the HttpClient quickly without waiting for all tasks to end.”
+       HttpClient client = HttpClient.newHttpClient(); 
+       // ... maybe after some operations 
+       client.shutdown();
+       The method shutdownNow() tries to shut down the HttpClient immediately, even if operations are ongoing.
+       HttpClient client = HttpClient.newHttpClient(); 
+       // For instant shutdown, without waiting: 
+       client.shutdownNow(); 
+       The awaitTerminationDuration waits for the client to shut down within a specific time duration.
+       HttpClient client = HttpClient.newHttpClient(); 
+       client.shutdown(); 
+       if (client.awaitTermination(Duration.ofMinutes(1))) { 
+           System.out.println("Client terminated successfully."); 
+       } else { 
+           System.out.println("Client termination took longer than expected."); 
+       }
+       isTerminated() is the method which checks if the HttpClient has fully shut down.
+       HttpClient client = HttpClient.newHttpClient(); 
+       client.shutdown(); 
+       // ... after some time 
+       if (client.isTerminated()) { 
+           System.out.println("Client has terminated."); 
+       } 
+
+7. Enhanced Repeated Appending in StringBuilder and StringBuffer
+    
+    JDK 21 has added methods to ‘java.lang.StringBuilder’ and ‘java.lang.StringBuffer’.
+    The int codePoint method adds the same character multiple times to StringBuilder or StringBuffer using its Unicode number.
+     StringBuilder sb1 = new StringBuilder(); 
+     sb1.repeat(42, 10);  // Appends "**********" to sb1
+
+    The CharSequence method lets you add a word or phrase multiple times to StringBuilder or StringBuffer.
+      StringBuilder sb2 = new StringBuilder(); 
+      sb2.repeat("-=", 20);  // Appends "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" to sb2
+
+      Instead of using loops to append the repeated characters or sequences, 
+        these methods are much better and offer an easier and more concise way to achieve the same.
+    This will lead your code to more cleaner and maintainable code.
+    The ‘repeat’ methods to ‘StringBuilder’ and ‘StringBuffer’ makes the task of appending repeated characters or sequences more streamlined and efficient, which will also eliminate the need for manual loops and improve the code readability.
+
+8. Advancing Java collections with Sequenced Interface:
+
+        The JDK 21 version brings new interfaces to the Java collections framework which is enhancing the collection framework and providing the clear sequence order.
+        It allows a collection where you can easily add or remove items from both the beginning and the end.
+        Consider a queue where you might want to inspect or pull from either the front or the back. With enhanced methods, you can easily get or remove elements from both ends.
+        Deque<String> deque = new ArrayDeque<>(); 
+        deque.addFirst("JDK 17"); 
+        deque.addLast("JDK 21"); 
+        String front = deque.getFirst();  // "JDK 17" 
+        String back = deque.getLast();    // "JDK 21"
+        It lets you look at and go through lists from the end to the start, just imagine you have a list of events in chronological order but want to display them from the most recent to the oldest.
+        List<String> events = Arrays.asList("Event1", "Event2", "Event3"); 
+        ListIterator<String> reverseIterator = events.listIterator(events.size()); 
+        while (reverseIterator.hasPrevious()) { 
+            System.out.println(reverseIterator.previous()); 
+        } 
+        However, these changes come with compatibility concerns that developers should be aware of when integrating the new features. As of the JDK 21 has refined the collections framework by making sequenced collections more intuitive and powerful.
