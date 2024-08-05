@@ -1,0 +1,16 @@
+Features added in JDK 17:
+ 1-   306: Restore Always-Strict Floating-Point Semantics     
+ 2-   356: Enhanced pseudo-Random Number Generators    
+ 3-   382: New macOS Rendering pipelines    
+ 4-   391: macOS/AArch64 Port    
+ 5-   398: Deprecate the Applet API for Removal    
+ 6-   403: Strongly Encapsulated JDK Internals    
+ 7-   406: Pattern matching for Switch(Preview)    
+ 8-   407: Removal RMI Activation    
+ 9-   409: Sealed Classes     
+ 10-  410: Removal Experimental AOT and JIT Compiler     
+ 11-  411: Deprecate the Security manager for Removal    
+ 12-  412: Foreign Functions & memory API(Incubator)    
+ 13-  414: Vector API(Second Incubator)    
+ 14-  415: Context-Specific Deserialization Filters 
+==========================================================================
