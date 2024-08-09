@@ -1,8 +1,8 @@
 THE COLLECTION CLASSES:
 
-    Some collection classes have full implementation of bove interfaces and the y can be used as-is.
+    Some collection classes have full implementation of above interfaces and they can be used as-is.
     Others classes are abstract, they have provided sckeleton implementation,
-            That can be used as starting pint for creating concrete classes.
+            That can be used as starting point for creating concrete classes.
 
 NOTE: In general collections classes are not synchronized.
         But it is possible to obtain the synchronized version. 
