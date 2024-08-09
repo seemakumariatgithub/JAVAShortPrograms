@@ -1,9 +1,9 @@
 java.util PACKAGE:
 ===============================================================================================
-This is versy powerful package, that contains large assortment of classes and interfaces,
+This is very powerful package, that contains large assortment of classes and interfaces,
 That support a broad range of functionality.
 For Example:
-    To name few: classes that can :
+    To name few: it provide classes that can :
         1. generate pseudorandom number
         2. manage date and time
         3. observve events
@@ -11,7 +11,7 @@ For Example:
         5. tokenize strings
         6. handle formatted data
 
-java.util package also containes one ot the Java's most powerful subsystems: 
+java.util package also contains one of the Java's most powerful subsystems: 
     The COLLECTIONS Framewwork.
 
 A list of top level Classes in java.util package is:
@@ -129,10 +129,10 @@ GOAL for defining COLLETIONS FRAMEWORK:
     2. To allow different types of collections to work in simillar manner.
             To have high degree of interoperability.
     3. Extending and adapting a collections whould be easy.
-    4. Algorithm is also an important part of Collection Farmaework.
+    4. Algorithm is also an important part of Collection Framework.
             These are defined as static method within the Collections class.
                 Hence they are available to all collections.
-            This Alogorithms have provided a standard way to manipulate the data in collections.
+            These Alogorithms have provided a standard way to manipulate the data in collections.
             Algorithms here operate on collections.
     5. Iterator interface:
         An iterator have defined a generalized and standard way for accessing the elements in the collections
@@ -142,13 +142,13 @@ GOAL for defining COLLETIONS FRAMEWORK:
             hence elements of any colections can be accessed through the methods provided by Iterator.
 
 We can also implement our own collection.
-Various special purpose implementations are created for convineince of use,
-And along with it some partial implementationss are provded that make creating our own collection class easier.
-And a mechanism were added, in Collections Framwork that allow the integration of standard arrays into the Colletions Framework
+Various special purpose implementations are created for convinience of use,
+And along with it some partial implementations are provded that make creating our own collection class easier.
+And a mechanism were added, in Collections Framework that allow the integration of standard arrays into the Colletions Framework
 
 
-    6. In addition to collections, Collections Framework has also defined seeral map Interfaces and classes.
-            Although maps are part of Collections Framework, thy are not 'collections'.
+    6. In addition to collections, Collections Framework has also defined several map Interfaces and classes.
+            Although maps are part of Collections Framework, they are not 'collections'.
 
 ====================================================================================================
 JDK5 has changed the Collections Framework:
