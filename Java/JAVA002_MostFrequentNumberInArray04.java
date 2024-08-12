@@ -21,7 +21,7 @@ class JAVA002_MostFrequentNumberInArray04 {
             count=Collections.frequency(array,delement.get(i));
             if(count>maxCount){
                 maxCount=count;
-                result=array.get(i);
+                result=delement.get(i);
             }
         }      
        return result;
