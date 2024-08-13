@@ -214,7 +214,7 @@ CONSTRAINTS ON PERMITTED SUBCLASSES:
 3. They must have exactly one of the following modifiers:
     - final: Cannot be extended further
     - sealed: Can only be extened by its permitted subclasses
-    - non-sealed: Can be extended by any nknown subclasses,
+    - non-sealed: Can be extended by any unknown subclasses,
                     -a sealed class cannot prevent its permitted subclasses from doing this.
     These modifiers describes how these subclasses continues the sealing initiated by their superclass.
 4. Subclasses must be in the same module as the sealed class.
