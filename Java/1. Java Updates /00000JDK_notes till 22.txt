@@ -171,7 +171,7 @@ Syntax:
                     public non-sealed class Square extends Shape {
                        public double side;
                     } 
-        5. Subclass can also me a sealed class:
+        5. Subclass can also be a sealed class:
             Eg: 
                     public sealed class Rectangle extends Shape permits FilledRectangle {
                             public double length, width;
