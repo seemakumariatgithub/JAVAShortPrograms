@@ -15,10 +15,10 @@ public class Collections_class_methods05 {
       out.println(ncp);
       out.println(Collections.replaceAll(inputList,7,2));
       out.println(Collections.replaceAll(inputList,5,2));
-      out.println("InputList (after): "+ inputList);
+      out.println("InputList (after replaceAll): "+ inputList);
       List<Integer> inputList2=Arrays.asList(1,2,4,7,7,3);
       out.println("InputList2 (before): "+ inputList2);
       Collections.reverse(inputList2);
-      out.println("InputList2 (after): "+ inputList2);
+      out.println("InputList2 (after reverse): "+ inputList2);
     }
 }
