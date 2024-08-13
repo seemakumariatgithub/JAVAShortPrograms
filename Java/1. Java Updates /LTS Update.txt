@@ -1,3 +1,8 @@
+Features added in JDK 11:
+
+1. List.of and List.copyOf() : creates immutable List collection.
+                               Introduced in JDK9..
+=======================================
 Features added in JDK 17:
  1-   306: Restore Always-Strict Floating-Point Semantics     
  2-   356: Enhanced pseudo-Random Number Generators    
