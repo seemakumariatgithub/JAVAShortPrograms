@@ -2,6 +2,7 @@ Features added in JDK 11:
 
 1. List.of and List.copyOf() : creates immutable List collection.
                                Introduced in JDK9..
+2. Local Variable Type Inference:  var : 'var' is reserved type. This was intorduced in JDK 10.
 =======================================
 Features added in JDK 17:
  1-   306: Restore Always-Strict Floating-Point Semantics     
@@ -18,6 +19,12 @@ Features added in JDK 17:
  12-  412: Foreign Functions & memory API(Incubator)    
  13-  414: Vector API(Second Incubator)    
  14-  415: Context-Specific Deserialization Filters 
+
+ ----Text Blocks:
+      - This was introduced in JDK15, LTV JDK17
+       - This is an alernative representation of String.
+-----RECORD CLASSES:
+    - This was intorduced in JDK 15 
 ==========================================================================
 
 Features added in JDK21:
