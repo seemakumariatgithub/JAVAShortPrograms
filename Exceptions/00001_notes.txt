@@ -24,7 +24,7 @@ JAVA Exceptions are managed by using five keywords:
   4. throws
   5. finally
 
-  1. try  - The Block of code that we want to monitor for exceptions is contained within try block
+  1. try  - The Block of code that we want to be monitored for exceptions is contained within try block
   2. catch - Exception thrown by try block is handled within catch block
   3. throw - To manually throw an exception "thorw" keyword is used
   4. throws - The exception that have to be thrown out of the method, should be specified by "throws" clause
