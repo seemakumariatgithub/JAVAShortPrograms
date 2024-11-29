@@ -13,6 +13,19 @@ Ans : Class Lock: In java, each and every class has a unique lock usually referr
                }    
              } 
         } 
+
+            OR 
+      //Static synchronized block
+      public class ClassLevelLockExample  
+        {    
+            public static syncronized void classLevelLockMethod()  
+             {       
+               synchronized (ClassLevelLockExample.class)  
+               {         
+                    //DO your stuff here       
+               }    
+             } 
+        } 
         Object Lock: In java, each and every object has a unique lock usually referred to as an object-level lock.
         These locks are achieved using the keyword ‘synchronized’ and can be used to protect non-static data.
         It is generally used when one wants to synchronize a non-static method or block so that only the thread 
