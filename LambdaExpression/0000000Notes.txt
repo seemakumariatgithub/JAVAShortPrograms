@@ -1,12 +1,12 @@
 Intoduction:
 
-    JDK8, added Lambda Expressions, that significantly ehance Java , beacuse of the tw reasons:
+    JDK8, added Lambda Expressions, that significantly enhance Java , beacuse of the two reasons:
       1. This added new syntax, that increased the expressive power of languge.
-          This streamline the way some common constructs ar implemented.
-      2. Addition of this added new capacbilities being incorporated into the API Library.
-          Among these capability one is Paralle processing to take advantage of multicore processor,
-          and second is new 'stream' API, which supposrt pipeline operation on data.
-      3. THis expression also acted as catalyst for some features like:
+          This streamline the way some common constructs are implemented.
+      2. Addition of this, added new capabilities, being incorporated into the API Library.
+          Among these capability one is Parallel processing to take advantage of multicore processor,
+          and second is new 'stream' API, which support pipeline operation on data.
+      3. This expression also acted as catalyst for some features like:
               default method in interface
               method referencing
 
@@ -24,7 +24,7 @@ There are two important contructs here:
             Lambda expression is also known as 'closures'. 
 
     2. Functional Interface:
-            A functional interface is an interface that contains, one and ony one abstract method.
+            A functional interface is an interface that contains, one and only one abstract method.
             Normally this method specifies the intended perpose of interface.
             Thus a functional interface typically represents a single action.
                 Example: 
