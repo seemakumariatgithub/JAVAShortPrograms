@@ -1,0 +1,5 @@
+to convert int arrays to set:
+     Set<Integer> tempSet=Arrays.stream(nums).boxed().collect(Collectors.toSet());
+
+to convert set to int array:
+        nums=tempSet.stream().mapToInt(Number::intValue).toArray();
