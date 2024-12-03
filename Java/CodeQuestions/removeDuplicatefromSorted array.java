@@ -30,5 +30,13 @@ class Main {
         }
         return i+1;
     }
+
+         int i=2;
+        for(int j=2;j<nums.length;j++){
+            if(nums[j]!=nums[i-2]){
+                nums[i++]=nums[j];
+            }
+        }
+        return i;
 }
 }
