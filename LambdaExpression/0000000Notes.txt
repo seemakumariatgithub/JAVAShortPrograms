@@ -72,7 +72,8 @@ declared by functional interface.
     Thus lambda expression gives us way to transform a code segment into an object.
 
 NOTE: 
-        In order for an lambda expression to be used in a target context, the type of abstract method and the type of lambda expression must be compatible.
+        In order for an lambda expression to be used in a target context, the type of abstract method 
+and the type of lambda expression must be compatible.
         In general:
             1. the type and number of the lambda expression's parameters must be compatible with the method's parameter.
             2. the return types must be compatible
