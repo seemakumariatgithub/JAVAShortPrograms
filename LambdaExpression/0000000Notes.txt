@@ -78,7 +78,8 @@ and the type of lambda expression must be compatible.
             1. the type and number of the lambda expression's parameters must be compatible with the method's parameter.
             2. the return types must be compatible
             3. any exceptions thrown by the lambda expression must be acceptable to the method.
-            4. If we explicitly declare the type of parameter in lambda expression,, ten all of the parameters must have declared types.
+            4. If we explicitly declare the type of parameter in lambda expression,
+                then all of the parameters must have declared types.
 
 
 Example Code: Lambda01_firstExample.java  
