@@ -66,7 +66,8 @@ FUNCTIONAL INTERFACE:
                 return statements
                 method arguments etc.
     When lambda expression occurs in a taget type context, an instance of a class is automatically created.
-        This implements the functional interface, with the lambda expression defininf the behavior of the abstract method decares by functional interface.
+        This implements the functional interface, with the lambda expression defining the behavior of the abstract method
+declared by functional interface.
     When that method is called through the target, the lambda expression is executed.
     Thus lambda expression gives us way to transform a code segment into an object.
 
