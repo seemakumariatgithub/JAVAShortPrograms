@@ -12,7 +12,7 @@ The Key aspects of stream API is its ability to perform sophisticated operations
 STREAM:
 
     The term 'stream' here means conduit of data
-    Thus stream here reresents sequence of data.
+    Thus stream here represents sequence of data.
     A stream operates on data source, like: an array or a collection
 
 NOTE:
