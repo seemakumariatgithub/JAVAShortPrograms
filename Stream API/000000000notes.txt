@@ -17,7 +17,7 @@ STREAM:
 
 NOTE:
       1. A stream itself never provide storage of data.
-            It just movs the data, or filters the data, or sorts the data or operats on the dat suring process.
+            It just moves the data, or filters the data, or sorts the data or operats on the data during process.
       2. A stream operation by itself doesnot modifies the data.
              For example:
                   Sorting the data doesnot change the data at source.
