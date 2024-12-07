@@ -227,7 +227,7 @@ OBTAINING a STREAM:
       4. Stream to I/O source by calling line() of BufferedReader
       5. And many other way.
 
-      1. for a Collection:
+      1. from a Collection:
             There are two methods defined in Collection interface for obtaining stream:
                   1. default Stream<E> stream() :  This returns a sequential stream.
                   2. default Stream<E> parallelStream(): This returns the parallel stream.
@@ -254,7 +254,7 @@ Reduction Operation:
             min()
             max()
             count()
-      stream API have generalized this concept by proiding a method:
+      stream API have generalized this concept by providing a method:
             reduce()
             This method returns a value from the stream based on any criteria.
 
