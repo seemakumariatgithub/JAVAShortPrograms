@@ -291,8 +291,8 @@ Reduction Operation:
 ============================================================================================================
 Using Parallel Stream:
 
-      MoreOver, a Parallel programing can be complex and errr prone.
-      One benefit that stream library provides for parallel programing is, ablity to easily and reliably paralle process certian operations.
+      MoreOver, a Parallel programing can be complex and error prone.
+      One benefit that stream library provides for parallel programing is, ablity to easily and reliably parallel process certian operations.
 
       Parallel processing is quite simple, just use parallel stream.
 
