@@ -18,5 +18,11 @@ public class Stream03_CollectingIntStream{
         Stream.of(1,2,3,4,5,6,7,8,9)
         .reduce(0,(a,b) -> a+b);
         out.println("\n"+mySumOfStream);
+
+        int[] arr={1,4,5,7,8,9,3};
+        List resultList=Arrays.stream(arr)
+            .filter(a->a<3).boxed()
+            .collect(Collectors.toList());
+        System.out.println(resultList);
     }
 }
