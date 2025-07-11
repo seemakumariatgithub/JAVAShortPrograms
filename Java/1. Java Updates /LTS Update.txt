@@ -176,3 +176,99 @@ boolean canHaveModifier = Character.isEmojiModifierBase('✋');
             System.out.println(reverseIterator.previous()); 
         } 
         However, these changes come with compatibility concerns that developers should be aware of when integrating the new features. As of the JDK 21 has refined the collections framework by making sequenced collections more intuitive and powerful.
+
+=============================
+Arrange the below lines:
+
+
+New Features added in Java 21
+Java 21, released in September 2023 as a Long-Term Support (LTS) version, introduced several exciting new features, enhancements, and preview/incubating APIs. Here are the key additions:
+
+1. String Templates (Preview - JEP 430)
+Simplifies string interpolation by allowing embedded expressions.
+
+Example:
+
+java
+String name = "Java";
+String message = STR."Hello \{name}!";
+2. Sequenced Collections (JEP 431)
+Introduces new interfaces to represent collections with a defined encounter order:
+
+SequencedCollection, SequencedSet, SequencedMap
+
+Provides uniform methods like addFirst(), addLast(), getFirst(), getLast().
+
+3. Virtual Threads (Final - JEP 444)
+Lightweight threads (project Loom) for improved concurrency.
+
+Now a permanent feature (no longer in preview).
+
+Example:
+
+java
+Thread.startVirtualThread(() -> System.out.println("Running in a virtual thread!"));
+4. Pattern Matching for switch (Final - JEP 441)
+Extends pattern matching in switch for more concise code.
+
+Example:
+
+java
+Object obj = "Hello";
+String result = switch (obj) {
+    case Integer i -> "Integer: " + i;
+    case String s -> "String: " + s;
+    default -> "Unknown";
+};
+5. Record Patterns (Final - JEP 440)
+Deconstructs records in pattern matching.
+
+Example:
+
+java
+record Point(int x, int y) {}
+if (obj instanceof Point(int x, int y)) {
+    System.out.println(x + ", " + y);
+}
+6. Unnamed Patterns and Variables (Preview - JEP 443)
+Allows _ (underscore) for unused variables/patterns.
+
+Example:
+
+java
+try { ... }
+catch (Exception _) { /* ignore exception */ }
+7. Generational ZGC (JEP 439)
+Enhances the Z Garbage Collector with generational memory management for better performance.
+
+8. Key Encapsulation Mechanism API (JEP 452)
+A new API for post-quantum cryptography (KEM algorithms).
+
+9. Deprecation of Windows 32-bit x86 Port
+Removes support for 32-bit Windows (x86).
+
+10. Structured Concurrency (Final - JEP 453)
+Simplifies error handling and cancellation in concurrent tasks.
+
+Example:
+
+java
+try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+    Future<String> user = scope.fork(() -> findUser());
+    Future<Integer> order = scope.fork(() -> fetchOrder());
+    scope.join();
+    System.out.println(user.resultNow() + ": " + order.resultNow());
+}
+11. Scoped Values (Preview - JEP 446)
+A modern alternative to ThreadLocal for immutable, thread-confined data.
+
+12. Foreign Function & Memory API (Final - JEP 442)
+Replaces JNI with a safer API for native interop (Project Panama).
+
+Other Improvements
+Collections.shuffle() now uses a better randomization algorithm.
+
+Math.clamp() introduced for clamping values.
+
+Performance improvements in G1 garbage collector.
+
