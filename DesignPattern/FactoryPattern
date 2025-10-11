@@ -1,0 +1,177 @@
+Abstract Factory Pattern :
+
+      The Abstract Factory Pattern is a creational design pattern that 
+        provides an interface for creating families of related objects,
+            without specifying their concrete classes.
+====================
+example Implementaion using java 21 (sealed , record, switch)
+
+Example Scenario:
+  Suppose you’re building a cross-platform UI library that supports:
+        🪟 Windows components (Button, Checkbox)
+        🍎 Mac components (Button, Checkbox)
+  You want your app to easily switch between Windows and Mac versions without changing client code.
+
+Step 1:     Define Product Interfaces (Base Interfaces)
+
+      package com.example.abstractfactory.ui;
+
+          public sealed interface Button permits WindowsButton, MacButton {
+              void render();
+          }
+
+      package com.example.abstractfactory.ui;
+      
+        public sealed interface Checkbox permits WindowsCheckbox, MacCheckbox {
+            void render();
+        }
+
+
+🔸 Step 2: Implement Concrete Products
+                package com.example.abstractfactory.ui;
+                
+                public final class WindowsButton implements Button {
+                    @Override
+                    public void render() {
+                        System.out.println("Rendering Windows style button 🪟");
+                    }
+                }
+                ------------------------------------------
+                package com.example.abstractfactory.ui;
+                
+                public final class MacButton implements Button {
+                    @Override
+                    public void render() {
+                        System.out.println("Rendering Mac style button 🍎");
+                    }
+                }
+                ------------------------------------------
+                package com.example.abstractfactory.ui;
+                
+                public final class WindowsCheckbox implements Checkbox {
+                    @Override
+                    public void render() {
+                        System.out.println("Rendering Windows style checkbox 🪟");
+                    }
+                }
+                ------------------------------------------
+                package com.example.abstractfactory.ui;
+                
+                public final class MacCheckbox implements Checkbox {
+                    @Override
+                    public void render() {
+                        System.out.println("Rendering Mac style checkbox 🍎");
+                    }
+                }
+
+🔸 Step 3: Create the Abstract Factory Interface
+              package com.example.abstractfactory.factory;
+              
+              import com.example.abstractfactory.ui.Button;
+              import com.example.abstractfactory.ui.Checkbox;
+              
+              public sealed interface GUIFactory permits WindowsFactory, MacFactory {
+                  Button createButton();
+                  Checkbox createCheckbox();
+              }
+🔸 Step 4: Implement Concrete Factories:
+
+              package com.example.abstractfactory.factory;
+              
+              import com.example.abstractfactory.ui.*;
+              
+              public final class WindowsFactory implements GUIFactory {
+                  @Override
+                  public Button createButton() {
+                      return new WindowsButton();
+                  }
+              
+                  @Override
+                  public Checkbox createCheckbox() {
+                      return new WindowsCheckbox();
+                  }
+              }
+              ----------------------------------------
+              package com.example.abstractfactory.factory;
+              
+              import com.example.abstractfactory.ui.*;
+              
+              public final class MacFactory implements GUIFactory {
+                  @Override
+                  public Button createButton() {
+                      return new MacButton();
+                  }
+              
+                  @Override
+                  public Checkbox createCheckbox() {
+                      return new MacCheckbox();
+                  }
+              }
+
+🔸 Step 5: Factory Producer (Factory of Factories): 
+
+            package com.example.abstractfactory;
+            
+            import com.example.abstractfactory.factory.*;
+            
+            public class FactoryProducer {
+                public static GUIFactory getFactory(String type) {
+                    return switch (type.toLowerCase()) {
+                        case "windows" -> new WindowsFactory();
+                        case "mac" -> new MacFactory();
+                        default -> throw new IllegalArgumentException("Unknown OS type: " + type);
+                    };
+                }
+            }
+
+🔸 Step 6: Client Code (Usage Example)
+
+
+        package com.example.abstractfactory;
+        
+        import com.example.abstractfactory.factory.GUIFactory;
+        import com.example.abstractfactory.ui.Button;
+        import com.example.abstractfactory.ui.Checkbox;
+        
+        public class AbstractFactoryDemo {
+            public static void main(String[] args) {
+                GUIFactory factory = FactoryProducer.getFactory("windows");
+        
+                Button button = factory.createButton();
+                Checkbox checkbox = factory.createCheckbox();
+        
+                button.render();
+                checkbox.render();
+            }
+        }
+
+Output:
+If you pass "window":
+Rendering Windows style button 🪟
+Rendering Windows style checkbox 🪟
+
+If you pass "mac":
+Rendering Mac style button 🍎
+Rendering Mac style checkbox 🍎
+
+
+======================
+
+🧠 3️⃣ How It Works
+Component	Responsibility
+Button, Checkbox	Product interfaces
+WindowsButton, MacButton	Concrete product implementations
+GUIFactory	Abstract factory interface
+WindowsFactory, MacFactory	Concrete factories that produce families of related objects
+FactoryProducer	Returns the correct factory based on configuration
+Client	Uses abstract interfaces, not concrete implementations
+
+
+
+
+
+
+
+
+
+
