@@ -1,0 +1,260 @@
+🧩 1️⃣ What Is the Builder Pattern?
+    The Builder Pattern is a creational design pattern that 
+      lets you construct complex objects in step by step manner, 
+        (instead of using a long or confusing constructor with too many parameters.)
+  
+  - It solves the “Telescoping Constructor Problem.”
+  - The Builder pattern separates the construction of a complex object from its representation
+  - It allows the step-by-step creation of objects, 
+     - providing greater control over the construction process 
+     - enabling the production of different representations of an object using the same construction code.
+  - This pattern is particularly useful when an object requires multiple steps to be created 
+    - or when the construction process involves numerous parameters.
+
+    ========================================================
+    💡 The Problem
+      // Bad example
+      User user = new User("Seema", "Kumari", 30, "India", true, "Engineer", "seema@example.com");
+
+  - You can’t tell what these arguments mean, and it’s hard to maintain when some fields are optional.
+
+  =====================================
+  💡 The Solution: Builder Pattern
+
+    You use a builder object to set fields clearly and build the final object:
+    
+    User user = new User.Builder()
+            .firstName("Seema")
+            .lastName("Kumari")
+            .age(30)
+            .country("India")
+            .occupation("Engineer")
+            .build();
+            
+   Now your code is readable, flexible, and safe.
+=================
+  Here we will master the Builder Pattern — one of the most practical and frequently used patterns in Java 
+  (especially in modern frameworks like Spring, Lombok, and Jackson).
+
+  We’ll cover everything: 
+    concept, use cases, structure, 
+    Java 21 enhancements, 
+    and a full implementation (manual + record-based + Lombok-style).
+
+===========================================
+🧱 2️⃣ Structure of Builder Pattern
+Component	            Responsibility
+Product (User)	      The complex object to be created
+Builder	              Defines methods for setting product parts
+Concrete Builder	    Implements those methods and builds the product
+Director (Optional)	  Controls the building process (optional in Java)
+
+
+
+=========================================
+⚙️ 3️⃣ Classic Implementation (Manual) — Java 21 Style
+
+package com.example.builder;
+
+public class User {
+
+    private final String firstName;
+    private final String lastName;
+    private final int age;
+    private final String country;
+    private final String occupation;
+    private final boolean active;
+
+    // Private constructor — only Builder can create
+    private User(Builder builder) {
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.age = builder.age;
+        this.country = builder.country;
+        this.occupation = builder.occupation;
+        this.active = builder.active;
+    }
+
+          // ✅ Static inner Builder class
+          public static class Builder {
+              private String firstName;
+              private String lastName;
+              private int age;
+              private String country;
+              private String occupation;
+              private boolean active;
+      
+              public Builder firstName(String firstName) {
+                  this.firstName = firstName;
+                  return this; // chaining
+              }
+      
+              public Builder lastName(String lastName) {
+                  this.lastName = lastName;
+                  return this;
+              }
+      
+              public Builder age(int age) {
+                  this.age = age;
+                  return this;
+              }
+      
+              public Builder country(String country) {
+                  this.country = country;
+                  return this;
+              }
+      
+              public Builder occupation(String occupation) {
+                  this.occupation = occupation;
+                  return this;
+              }
+      
+              public Builder active(boolean active) {
+                  this.active = active;
+                  return this;
+              }
+      
+              public User build() {
+                  // optional validation logic
+                  if (firstName == null || lastName == null) {
+                      throw new IllegalArgumentException("First and last name are required");
+                  }
+                  return new User(this);
+              }
+    }
+
+    @Override
+    public String toString() {
+        return STR."User[firstName=\{firstName}, lastName=\{lastName}, age=\{age}, country=\{country}, occupation=\{occupation}, active=\{active}]";
+    }
+}
+
+✅ Usage:
+public class BuilderDemo {
+    public static void main(String[] args) {
+        User user = new User.Builder()
+                .firstName("Seema")
+                .lastName("Kumari")
+                .age(30)
+                .country("India")
+                .occupation("Engineer")
+                .active(true)
+                .build();
+
+        System.out.println(user);
+    }
+}
+
+=========================================
+🚀 4️⃣ Using record (Java 21+)
+
+Records are immutable data carriers, perfect for builders.
+package com.example.builder;
+
+public record Product(String name, double price, String category, boolean available) {
+
+    public static class Builder {
+        private String name;
+        private double price;
+        private String category;
+        private boolean available;
+
+        public Builder name(String name) { this.name = name; return this; }
+        public Builder price(double price) { this.price = price; return this; }
+        public Builder category(String category) { this.category = category; return this; }
+        public Builder available(boolean available) { this.available = available; return this; }
+
+        public Product build() {
+            return new Product(name, price, category, available);
+        }
+    }
+}
+✅ Usage:
+Product product = new Product.Builder()
+        .name("Laptop")
+        .price(75000)
+        .category("Electronics")
+        .available(true)
+        .build();
+
+System.out.println(product);
+==================================
+
+🧠 5️⃣ When to Use Builder Pattern
+| Scenario                 | Why Builder helps                 |
+| ------------------------ | --------------------------------- |
+| Many optional fields     | Avoids constructor overloads      |
+| Immutable objects        | Can set all fields once safely    |
+| Readable object creation | Method names make intent clear    |
+| Validation required      | You can validate before `build()` |
+| When using JSON → Object | Useful for mapping libraries      |
+===================================================================
+
+🧰 6️⃣ Real-Life Use in Spring Boot & Frameworks
+
+       1.     Lombok — @Builder annotation generates builder automatically
+            
+            @Builder
+              public record Employee(String name, int age, String role) {}
+             
+            Usage:
+              Employee emp = Employee.builder().name("Seema").age(30).role("Dev").build();
+
+
+    2. Spring WebClient / RestTemplate
+          
+          WebClient client = WebClient.builder()
+              .baseUrl("https://api.example.com")
+              .defaultHeader("Authorization", "Bearer token")
+              .build();
+
+
+    3. JUnit / Mockito
+          Builders often used in creating test data easily.
+
+🧪 7️⃣ Optional: Unit Test Example
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class UserBuilderTest {
+
+    @Test
+    void testBuilderCreatesValidUser() {
+        var user = new User.Builder()
+                .firstName("Seema")
+                .lastName("Kumari")
+                .age(30)
+                .build();
+
+        assertEquals("Seema", user.toString().contains("Seema") ? "Seema" : null);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
