@@ -158,13 +158,17 @@ Rendering Mac style checkbox 🍎
 ======================
 
 🧠 3️⃣ How It Works
-Component	Responsibility
-Button, Checkbox	Product interfaces
-WindowsButton, MacButton	Concrete product implementations
-GUIFactory	Abstract factory interface
-WindowsFactory, MacFactory	Concrete factories that produce families of related objects
-FactoryProducer	Returns the correct factory based on configuration
-Client	Uses abstract interfaces, not concrete implementations
+Component	                                                Responsibility
+--------------                                               ---------------------
+Button, Checkbox	                                          Product interfaces
+WindowsButton, MacButton	                              Concrete product implementations
+
+GUIFactory	                                                Abstract factory interface
+WindowsFactory, MacFactory	                              Concrete factories that produce families of related objects
+
+FactoryProducer	                                          Returns the correct factory based on configuration
+
+Client	                                                Uses abstract interfaces, not concrete implementations
 
 
 
