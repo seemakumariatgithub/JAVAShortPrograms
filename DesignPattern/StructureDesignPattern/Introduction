@@ -8,3 +8,21 @@ Structural Design Pattern:
         Facade Design Pattern
         Flyweight Design Pattern
         Mixin Design Pattern
+==============================================================
+Composite Design Pattern:
+                for creating tree like structure of object .
+
+                The objectives of the composite pattern are:
+                
+                Provide a way to treat individual objects and their compositions uniformly.
+                Simplify the client code by consistently handling the objects.
+                Make it easy to add new components without changing the existing code.
+
+=====================
+        Adapter Design Pattern
+        Bridge Design Pattern
+        Proxy Design Pattern
+        Decorator Design Pattern
+        Facade Design Pattern
+        Flyweight Design Pattern
+        Mixin Design Pattern        
