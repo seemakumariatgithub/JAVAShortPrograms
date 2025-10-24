@@ -1,0 +1,241 @@
+🧩 What is the Adapter Design Pattern?
+  📖 Intent
+      The Adapter Pattern allows two incompatible interfaces to work together.
+      It acts as a bridge between an existing class (legacy system) and the code that expects a different interface.
+    
+  In other words:
+      You have some existing functionality (that you can’t or don’t want to change)
+      You want to reuse it in a new system that expects a different interface
+      ➡️ You write an Adapter class to connect the two.
+
+    - Essentially, the Adapter pattern takes an object with one type of interface 
+        and wraps it in another interface that a different object can understand, 
+        enabling seamless interaction.
+
+🎯 Example Analogy
+
+Imagine:
+      You have a European plug (two pins)
+      But your socket is Indian (three pins)
+      You can’t plug it directly.
+      So you use a plug adapter to make them fit.
+
+    That’s exactly what the Adapter pattern does in software.
+
+========================================
+🧠 The Adapter pattern consists of four main components:
+
+      Target: The interface that the client expects to use.
+      Adaptee: The existing interface that needs to be adapted.
+      Adapter: The class that implements the target interface and translates the adaptee’s methods to the target interface.
+      Client: The class that uses the adapter to interact with the adaptee indirectly.
+=========================================
+💬 Real-World Use Case
+
+You have:
+      A new payment gateway interface your app expects (PaymentProcessor) 
+      A legacy class for payments (OldBankAPI) with a different method signature
+      → Use an Adapter to make OldBankAPI fit into the new system.
+==========================================
+Objectives of the Adapter Pattern:
+    - Compatibility: Make incompatible interfaces work together without modifying the involved classes.
+    - Reusability: Enable reuse of existing classes that otherwise cannot be reused due to incompatible interfaces.
+    - Flexibility: Allow new adapters to be created easily, supporting future compatibility needs.
+
+
+==========================================
+🧑‍💻 Java 21 Example — Payment System Adapter
+Step 1: Define Target Interface
+        package com.example.adapter;
+        
+        public sealed interface PaymentProcessor permits PaymentGatewayAdapter {
+            void pay(double amount);
+        }
+
+
+Step 2: Define Existing Incompatible Class (Adaptee)
+
+        package com.example.adapter;
+        
+        public final class OldBankAPI {
+            public void makePayment(String accountNumber, double amount) {
+                System.out.println("Processing payment of ₹" + amount + " via OldBankAPI for account " + accountNumber);
+            }
+        }
+
+              ➡️ Notice:
+                        It requires an account number
+                        It has a method name makePayment() instead of pay()
+                        So it doesn’t match our PaymentProcessor interface.
+
+
+Step 3: Create Adapter Class
+            package com.example.adapter;
+            
+            public final class PaymentGatewayAdapter implements PaymentProcessor {
+            
+                private final OldBankAPI oldBankAPI;
+                private final String accountNumber;
+            
+                public PaymentGatewayAdapter(OldBankAPI oldBankAPI, String accountNumber) {
+                    this.oldBankAPI = oldBankAPI;
+                    this.accountNumber = accountNumber;
+                }
+            
+                @Override
+                public void pay(double amount) {
+                    // Adapt the new interface call to the old API
+                    oldBankAPI.makePayment(accountNumber, amount);
+                }
+            }
+
+
+
+
+  🧩 The Adapter:
+              Implements PaymentProcessor (Target)
+              Holds a reference to OldBankAPI (Adaptee)
+              Translates pay(amount) → makePayment(accountNumber, amount)
+
+Step 4: Client Code
+              package com.example.adapter;
+              
+              public class AdapterDemo {
+                  public static void main(String[] args) {
+              
+                      OldBankAPI legacyBank = new OldBankAPI();
+                      PaymentProcessor processor = new PaymentGatewayAdapter(legacyBank, "ACC12345");
+              
+                      // Client only knows about PaymentProcessor interface
+                      processor.pay(5000.0);
+                  }
+              }
+
+🖨️ Output
+Processing payment of ₹5000.0 via OldBankAPI for account ACC12345
+====================================================
+
+🧩 Real-World Usage Examples:
+       1.  Java I/O Streams
+          InputStreamReader adapts a InputStream (byte-based) to a Reader (character-based).
+        
+            Reader reader = new InputStreamReader(System.in);
+        
+        2. Collections Framework
+          Arrays.asList() adapts an array to a List.
+        
+       3.  Spring Framework
+          Adapters like HandlerAdapter allow different controller types to be handled uniformly.
+        
+        4. Database Drivers (JDBC)
+          The JDBC driver acts as an adapter between your code and the specific database protocol.
+
+
+
+=========================================================
+
+⚙️ Two Types of Adapter Patterns
+
+| Type           | Implementation Style                                                           | Uses                                                                    |
+| -------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Object Adapter | Uses composition (HAS-A) — Adapter holds a reference to the Adaptee.           | Works even if Adapter and Adaptee are from different class hierarchies. |
+| Class Adapter  | Uses inheritance (IS-A) — Adapter inherits from Adaptee and implements Target. | Works only when Adapter can extend Adaptee (single inheritance).        |
+
+
+
+
+🧩 UML Comparison
+1️⃣ Object Adapter (Composition)
+   ┌─────────────┐      uses      ┌───────────────┐
+   │  Adapter    │──────────────▶│   Adaptee     │
+   │ implements  │               └───────────────┘
+   │   Target    │
+   └─────────────┘
+2️⃣ Class Adapter (Inheritance)
+   ┌─────────────┐
+   │  Adapter    │
+   │ extends     │
+   │   Adaptee   │
+   │ implements  │
+   │   Target    │
+   └─────────────┘
+=============================================================
+🧱 Let’s Reuse Our Example: Payment System
+
+We’ll now write Class Adapter variant for the same PaymentProcessor interface and OldBankAPI.
+
+🧩 Step 1: Target Interface
+
+          package com.example.adapter;
+          
+          public sealed interface PaymentProcessor permits PaymentGatewayAdapter {
+              void pay(double amount);
+          }
+
+🏦 Step 2: Existing Legacy API (Adaptee)
+        package com.example.adapter;
+        
+        public class OldBankAPI {
+            public void makePayment(String accountNumber, double amount) {
+                System.out.println("Processing payment of ₹" + amount + " via OldBankAPI for account " + accountNumber);
+            }
+        }
+
+🔌 Step 3: Class Adapter (Inheritance-based)
+
+            package com.example.adapter;
+            
+            // Class Adapter: extends OldBankAPI (Adaptee) + implements PaymentProcessor (Target)
+            public final class PaymentGatewayClassAdapter extends OldBankAPI implements PaymentProcessor {
+            
+                private final String accountNumber;
+            
+                public PaymentGatewayClassAdapter(String accountNumber) {
+                    this.accountNumber = accountNumber;
+                }
+            
+                @Override
+                public void pay(double amount) {
+                    // directly use inherited method from OldBankAPI
+                    makePayment(accountNumber, amount);
+                }
+            }
+
+💳 Step 4: Client Code
+          package com.example.adapter;
+          
+          public class ClassAdapterDemo {
+              public static void main(String[] args) {
+                  PaymentProcessor processor = new PaymentGatewayClassAdapter("ACC7890");
+                  processor.pay(10000.0);
+              }
+          }
+
+
+
+===========================================================
+
+🧩 Object vs Class Adapter — Side-by-Side Comparison
+
+| Feature      | Object Adapter (Composition)                    | Class Adapter (Inheritance)                                             |
+| ------------ | ----------------------------------------------- | ----------------------------------------------------------------------- |
+| Relationship | HAS-A (uses reference)                          | IS-A (extends Adaptee)                                                  |
+| Flexibility  | Can adapt **multiple** Adaptees at runtime      | Can adapt **only one** Adaptee (since Java supports single inheritance) |
+| Reusability  | Works with **interfaces** and **final** classes | Doesn’t work if Adaptee is **final**                                    |
+| Maintenance  | Easier to maintain and extend                   | More tightly coupled                                                    |
+| Usage        | **Preferred in Java**                           | Useful in languages with multiple inheritance (e.g. C++)                |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
