@@ -11,12 +11,137 @@ Structural Design Pattern:
 ==============================================================
 Composite Design Pattern:
                 for creating tree like structure of object .
-
-                The objectives of the composite pattern are:
+                🧩 What is the Composite Design Pattern?
                 
-                Provide a way to treat individual objects and their compositions uniformly.
+                - The objectives of the composite pattern are(Intent):
+                        The Composite Pattern allows you to treat individual objects and compositions (groups of objects) uniformly.
+                
+                In simple words —
+                        it lets you represent a tree structure of objects where individual items and groups of items are handled in the same way.
+
                 Simplify the client code by consistently handling the objects.
                 Make it easy to add new components without changing the existing code.
+
+        - Components of Composite Pattern:
+                1. Component: An abstract class/interface that defines the operations for both composite and leaf objects.
+                2. Leaf: A class representing a single object (e.g., a file).
+                3. Composite: A class representing a collection of objects (e.g., a directory), which can contain both leaves and other composites.
+          ┌───────────────────────┐
+          │   Component (interface)│
+          │ + showDetails(): void  │
+          └─────────▲─────────────┘
+                    │
+    ┌───────────────┴───────────────┐
+    │                               │
+┌──────────────┐            ┌────────────────┐
+│ Leaf (File)  │            │ Composite(Folder)│
+│ + showDetails│            │ + add(Component) │
+│              │            │ + showDetails()  │
+└──────────────┘            └────────────────┘
+
+🧑‍💻 Example: File System Representation (Java 21)
+Step 1: Define Component interface
+
+                package com.example.composite;
+                
+                public sealed interface FileSystemComponent
+                        permits FileLeaf, DirectoryComposite {
+                
+                    void showDetails(String indent);
+                }
+
+                //We use a sealed interface so only FileLeaf and DirectoryComposite can implement it (a Java 17+ feature).
+
+
+Step 2: Create Leaf Class
+                package com.example.composite;
+                
+                public final class FileLeaf implements FileSystemComponent {
+                    private final String name;
+                
+                    public FileLeaf(String name) {
+                        this.name = name;
+                    }
+                
+                    @Override
+                    public void showDetails(String indent) {
+                        System.out.println(indent + "📄 File: " + name);
+                    }
+                }
+
+Step 3: Create Composite Class
+        package com.example.composite;
+        
+        import java.util.ArrayList;
+        import java.util.List;
+        
+        public final class DirectoryComposite implements FileSystemComponent {
+            private final String name;
+            private final List<FileSystemComponent> children = new ArrayList<>();
+        
+            public DirectoryComposite(String name) {
+                this.name = name;
+            }
+        
+            public void add(FileSystemComponent component) {
+                children.add(component);
+            }
+        
+            public void remove(FileSystemComponent component) {
+                children.remove(component);
+            }
+        
+            @Override
+            public void showDetails(String indent) {
+                System.out.println(indent + "📁 Directory: " + name);
+                for (FileSystemComponent child : children) {
+                    child.showDetails(indent + "   ");
+                }
+            }
+        }
+
+Step 4: Client Code (Demo)
+        
+        package com.example.composite;
+        
+        public class CompositeDemo {
+            public static void main(String[] args) {
+        
+                // Leaf nodes
+                FileSystemComponent file1 = new FileLeaf("resume.pdf");
+                FileSystemComponent file2 = new FileLeaf("photo.png");
+                FileSystemComponent file3 = new FileLeaf("notes.txt");
+        
+                // Composite nodes
+                DirectoryComposite documents = new DirectoryComposite("Documents");
+                DirectoryComposite pictures = new DirectoryComposite("Pictures");
+                DirectoryComposite root = new DirectoryComposite("Root");
+        
+                // Build tree structure
+                documents.add(file1);
+                pictures.add(file2);
+                root.add(documents);
+                root.add(pictures);
+                root.add(file3);
+        
+                // Print structure
+                root.showDetails("");
+            }
+        }
+
+🧾 Output:
+        📁 Directory: Root
+           📁 Directory: Documents
+              📄 File: resume.pdf
+           📁 Directory: Pictures
+              📄 File: photo.png
+           📄 File: notes.txt
+
+
+⚙️ Advantages
+        ✅ Uniform treatment of objects (Leaf and Composite)
+        ✅ Easily extensible (add new types of components)
+        ✅ Good for representing hierarchical data structures
 
 =====================
         Adapter Design Pattern
