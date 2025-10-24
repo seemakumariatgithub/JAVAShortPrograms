@@ -44,7 +44,7 @@ Step 1: Define Component interface
 
                 package com.example.composite;
                 
-                public sealed interface FileSystemComponent
+                public sealed interface FileSystemNode
                         permits FileLeaf, DirectoryComposite {
                 
                     void showDetails(String indent);
@@ -54,20 +54,16 @@ Step 1: Define Component interface
 
 
 Step 2: Create Leaf Class
-                package com.example.composite;
+               package com.example.composite;
                 
-                public final class FileLeaf implements FileSystemComponent {
-                    private final String name;
-                
-                    public FileLeaf(String name) {
-                        this.name = name;
-                    }
+                public record FileLeaf(String name) implements FileSystemNode {
                 
                     @Override
                     public void showDetails(String indent) {
                         System.out.println(indent + "📄 File: " + name);
                     }
                 }
+        // record gives us:final fields,constructor,equals/hashCode/toString auto-generated.
 
 Step 3: Create Composite Class
         package com.example.composite;
@@ -97,6 +93,34 @@ Step 3: Create Composite Class
                 for (FileSystemComponent child : children) {
                     child.showDetails(indent + "   ");
                 }
+            }
+        }
+💡 Instead of mutating the children list,
+add() returns a new DirectoryComposite with the additional node — making it persistent and side-effect-free.
+
+        package com.example.composite;
+        
+        import java.util.List;
+        
+        public record DirectoryComposite(String name, List<FileSystemNode> children)
+                implements FileSystemNode {
+        
+            public DirectoryComposite {
+                // Defensive copy for immutability
+                children = List.copyOf(children);
+            }
+        
+            @Override
+            public void showDetails(String indent) {
+                System.out.println(indent + "📁 Directory: " + name);
+                children.forEach(child -> child.showDetails(indent + "   "));
+            }
+        
+            // Functional 'add' method returning a new directory
+            public DirectoryComposite add(FileSystemNode node) {
+                var newChildren = new java.util.ArrayList<>(children);
+                newChildren.add(node);
+                return new DirectoryComposite(name, newChildren);
             }
         }
 
@@ -129,6 +153,30 @@ Step 4: Client Code (Demo)
             }
         }
 
+
+client code when using record files :
+                package com.example.composite;
+                
+                import java.util.List;
+                
+                public class CompositeDemo {
+                    public static void main(String[] args) {
+                
+                        FileSystemNode file1 = new FileLeaf("resume.pdf");
+                        FileSystemNode file2 = new FileLeaf("photo.png");
+                        FileSystemNode file3 = new FileLeaf("notes.txt");
+                
+                        // Build structure immutably
+                        var documents = new DirectoryComposite("Documents", List.of(file1));
+                        var pictures = new DirectoryComposite("Pictures", List.of(file2));
+                        var root = new DirectoryComposite("Root", List.of(documents, pictures, file3));
+                
+                        // Display structure
+                        root.showDetails("");
+                    }
+                }
+
+
 🧾 Output:
         📁 Directory: Root
            📁 Directory: Documents
@@ -142,6 +190,16 @@ Step 4: Client Code (Demo)
         ✅ Uniform treatment of objects (Leaf and Composite)
         ✅ Easily extensible (add new types of components)
         ✅ Good for representing hierarchical data structures
+⚠️ Disadvantages
+        ❌ Can make code complex when the hierarchy is deep
+        ❌ Hard to restrict certain operations only to leaf nodes
+
+🧩 Use Cases in Real Life
+        GUI components (Buttons, Panels, Containers)
+        XML/HTML Document Object Models (DOM) 
+        Organization charts (Employee → Manager → Department)
+        File Systems
+        Menus and submenus in UI frameworks
 
 =====================
         Adapter Design Pattern
