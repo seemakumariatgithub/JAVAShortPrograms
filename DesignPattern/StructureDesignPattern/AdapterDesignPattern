@@ -226,7 +226,11 @@ We’ll now write Class Adapter variant for the same PaymentProcessor interface 
 | Usage        | **Preferred in Java**                           | Useful in languages with multiple inheritance (e.g. C++)                |
 
 
-
+================================================================
+⚠️ Things to Keep in Mind
+          - Each Adapter should adapt one Adaptee — but your system can have many adapters for different Adaptees.
+          - The client should work with the common interface (Notifier), not the concrete adapters.  
+          - If you want to dynamically choose an adapter at runtime (say, based on user settings), you can use a Factory or Strategy pattern along with the Adapter.
 
 
 
