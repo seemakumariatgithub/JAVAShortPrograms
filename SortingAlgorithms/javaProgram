@@ -29,6 +29,18 @@ public class Main
             swap(arr, usi, minIndex);
         }
     }
+    
+    public static void insertionSort(int[] arr)
+    {
+        for(int usi=0;usi<arr.length; usi++){
+            int key=arr[usi];
+            int curr;
+            for( curr=usi-1; curr>=0 && arr[curr]>key; curr--){
+                arr[curr+1]=arr[curr];
+            }
+            arr[curr+1]=key;
+        }
+    }
     public static void swap(int[] arr, int i,int j){
         arr[i]=arr[i] +arr[j]- (arr[j]=arr[i]);
     }
@@ -58,13 +70,25 @@ public class Main
 		System.out.println("After selectionSort");
 		display(arr1);
 		
+		System.out.println();
+		System.out.println("==============");
+	    int [] arr2={2,5,7,3,1,8,9};
+		System.out.println("before insertionSort");
+		display(arr2);
+		
+		insertionSort(arr2);
+		System.out.println();
+		System.out.println("After insertionSort");
+		display(arr2);
+		
 		
 	}
 }
 
-OUTPUT:
 
-before bubbleSort
+
+
+OUTPUT:
 2 5 7 3 1 8 9 
 After bubbleSort
 1 2 3 5 7 8 9 
@@ -73,6 +97,8 @@ before selectionSort
 2 5 7 3 1 8 9 
 After selectionSort
 1 2 3 5 7 8 9 
-
-
-OUT
+==============
+before insertionSort
+2 5 7 3 1 8 9 
+After insertionSort
+1 2 3 5 7 8 9 
