@@ -18,10 +18,10 @@ THREAD PRIORITIES:
     This defines how a thread should be treated with respect to other threads.
     Thread priority is the integer value, that defines the reltive priority of one thread to other.
     As an absolute value, a thread priority is meaningless.
-    A higher-priority thread doesn't rum any faster than a lower-priority thread, if it is the only thread running.
+    A higher-priority thread doesn't run any faster than a lower-priority thread, if it is the only thread running.
     Instead, a thread's priority is used to decide when to switch from one running thread to the next thread.
         This switching is called context switch.
-        The rules that determines whhen a context switch will take place is simple:
+        The rules that determines when a context switch will take place is simple:
             1. "A thread can voluntarily relinquish control".
             2. "A thread can be preempted by a higher- priority thread".
 
