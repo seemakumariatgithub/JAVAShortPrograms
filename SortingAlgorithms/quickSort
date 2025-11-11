@@ -1,0 +1,69 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class Main
+{
+    public static void swap(int[] arr, int i ,int j){
+        arr[i]=arr[i]+arr[j]-(arr[j]=arr[i]);
+        
+    }
+    public static int partition(int[] arr,int start,int end){
+        int pivotElement=arr[end];
+        int i= start, j=start;
+        
+        while(i<end){
+            if(arr[i]<=pivotElement){
+                swap(arr,i,j);
+                i++;
+                j++;
+            }else{
+                i++;
+            }
+        }
+        swap(arr,i,j);
+        return j;
+    }
+    
+    public static void quickSort(int[] arr, int start , int end){
+        if(start>=end) return;
+        
+        int pi=partition(arr, start, end);
+        quickSort(arr,start,pi-1);
+        quickSort(arr,pi+1,end);
+        
+    }
+    public static void display(int[] arr){
+        for(int i =0; i< arr.length;i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+	public static void main(String[] args) {
+		int [] arr1={2,4,6,8,5,3,9,7,11};
+		
+		System.out.println("before sort");
+		display(arr1);
+
+		System.out.println();
+		System.out.println("After sort");
+		quickSort(arr1,0,arr1.length-1);
+		display(arr1);
+		
+	}
+}
+
+OUTPUT:
+
+before sort
+2 4 6 8 5 3 9 7 11 
+After sort
+2 3 4 5 6 7 8 9 11 
+
+
+
+
+OUTP
