@@ -1,0 +1,75 @@
+🎯 11. One-Line Definition:
+
+              A virtual thread is a lightweight, JVM-managed thread
+              that makes blocking operations cheap and lets Java scale to millions of concurrent tasks 
+                without changing the traditional thread-based programming model.
+
+
+==========================================
+
+There are 3 ways to create virtual threads:
+
+    1. Thread.startVirtualThread( () -> {})
+    2. Thread.ofVirtual().start( ()->{} )
+    3. try( var executor= Executors.newVirtualThreadPerTaskExecutor() ) {
+                executor.submit( () -> work() );
+        }
+
+
+==========================================
+✅ 8. Example: Handling 1 million tasks
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    for (int i = 0; i < 1_000_000; i++) {
+        executor.submit(() -> {
+            Thread.sleep(1000);
+            return null;
+        });
+    }
+}
+
+
+This is completely impossible using platform threads.
+
+============================================
+✅ 9. How It Helps in Spring Boot
+            - Spring Boot 3.2+ supports virtual threads.
+
+          Configuration:
+          
+            @Bean
+            public Executor taskExecutor() {
+                return Executors.newVirtualThreadPerTaskExecutor();
+            }
+
+        - Your REST APIs automatically become highly scalable.
+
+===========================================
+✅ Where is a Virtual Thread stored?
+    1️⃣ The virtual thread object itself
+    
+    ✔ Stored in the Java Heap
+        (because it's a normal java.lang.Thread object)
+     Just like any other Java object.
+
+===========================================
+2️⃣ What about the stack?
+      For platform threads:
+            They have a fixed-size stack (typically 1–2 MB)
+            Allocated in native memory (not heap)
+
+    For virtual threads:
+        They do NOT have a fixed native stack
+        Instead, their stack is continuation-based, stored as:
+        Small chunks ("stack frames") in the Java Heap
+        Grown and shrunk dynamically
+        Garbage-collected like normal objects
+
+  Therefore:
+    ✔ Virtual thread stack resides in the heap as objects
+    ❌ Not in the native stack of OS threads
+    ❌ Not pre-allocated 1–2 MB
+
+
+
+
+
