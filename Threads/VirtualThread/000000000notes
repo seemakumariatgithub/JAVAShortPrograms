@@ -5,16 +5,62 @@
                 without changing the traditional thread-based programming model.
 
 
+  - Virtual Threads in Java (introduced in Java 21 – Project Loom)
+
+=========================================
+
+Virtual Thread in short
+
+      Managed by JVM, not by OS.
+      Extremely lightweight (thousands → millions).
+      Designed for high-concurrency workloads.
+      Blocking is cheap — JVM simply unmounts the thread.
+      Created fast and garbage collected quickly.
+
 ==========================================
+
+✅ 3. How Virtual Threads Work Internally
+              It uses:
+                  Carrier threads (few OS threads)
+                  Scheduler (ForkJoinPool-like)
+                  Continuation-based suspension
+              
+              Process:
+                  A virtual thread runs on a carrier OS thread.
+                  When it blocks (e.g., DB call) → JVM "unmounts" it.
+                  Carrier thread becomes free to run another virtual thread.
+                  When blocking ends → JVM "remounts" it on any carrier.
+              
+              - This is why blocking is cheap.
+===========================================
 
 There are 3 ways to create virtual threads:
 
-    1. Thread.startVirtualThread( () -> {})
-    2. Thread.ofVirtual().start( ()->{} )
-    3. try( var executor= Executors.newVirtualThreadPerTaskExecutor() ) {
+    1. Option 1: New factory (most common)
+            Thread.startVirtualThread( () -> {})
+
+    2. Option 2: Use Thread.ofVirtual()
+            Thread.ofVirtual().start( ()->{} )
+
+    3. Option 3: ExecutorService with virtual threads
+
+            try( var executor= Executors.newVirtualThreadPerTaskExecutor() ) {
                 executor.submit( () -> work() );
         }
+===========================================
+✅ 5. When Should You Use Virtual Threads?
 
+          Best for:
+            High-concurrency servers
+            REST APIs
+            JDBC database calls
+            File I/O
+            Message-driven systems
+            Thread-per-request architecture
+            
+          Not useful for:
+              CPU-heavy tasks (use platform threads instead)
+              Very tight loops
 
 ==========================================
 ✅ 8. Example: Handling 1 million tasks
@@ -70,6 +116,20 @@ This is completely impossible using platform threads.
     ❌ Not pre-allocated 1–2 MB
 
 
+===========================================
+B. Virtual Thread Executor (NEW way)
+ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
+for (int i = 0; i < 1000; i++) {
+    executor.submit(() -> {
+        Thread.sleep(1000);  // blocking is cheap
+        return null;
+    });
+}
+
+
+✔ Creates 1000 virtual threads immediately
+✔ Each task suspends without blocking carrier threads
+✔ Huge scalability (up to millions)
 
 
