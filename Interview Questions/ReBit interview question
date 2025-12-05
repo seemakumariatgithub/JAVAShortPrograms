@@ -1,0 +1,9 @@
+Top 3 student based on percentage
+
+
+stream().sort(Comparator.reveresOrder(percentage)).limit(3);
+Difference between abstract class and interface
+@primary @qualifier 
+@bean and java object difference
+How to identify the issue for miscroservice down scenario
+How to reduce the load in hibernate
