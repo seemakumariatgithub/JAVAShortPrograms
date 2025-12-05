@@ -1,3 +1,5 @@
 
 1. What is the use of @service and what are other aulternative for this 
 2. What is return type of findAll method
+3. porpose of using ResponseEntity<>
+4. what are other ways to return http status in response
