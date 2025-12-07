@@ -125,7 +125,9 @@ public class User {
 
     @Override
     public String toString() {
-        return STR."User[firstName=\{firstName}, lastName=\{lastName}, age=\{age}, country=\{country}, occupation=\{occupation}, active=\{active}]";
+        return STR."User[firstName=\{firstName}, lastName=\{lastName}, 
+                    age=\{age}, country=\{country}, occupation=\{occupation}, 
+                    active=\{active}]";
     }
 }
 
