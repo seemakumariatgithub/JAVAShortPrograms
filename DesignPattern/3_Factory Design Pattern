@@ -1,0 +1,112 @@
+🏭 FACTORY DESIGN PATTERN — THE COMPLETE GUIDE
+
+  The Factory Pattern belongs to the Creational Design Patterns category.
+  It helps in creating objects without exposing the creation logic to the client.
+===============================================================================
+✅ 1. What Problem Does Factory Pattern Solve?
+
+    When your code does this:
+    
+        if(type.equals("CAR")) return new Car();
+        else if(type.equals("BIKE")) return new Bike();
+        else if(type.equals("BUS")) return new Bus();
+  
+    This introduces problems:
+        ❌ Many if-else or switch statements
+        ❌ Client needs to know concrete classes
+        ❌ Hard to extend (adding new type → modify existing code → violates OCP)
+    
+    The Factory Pattern solves these by:
+          Encapsulating object creation in one place
+          Returning a common interface type
+
+  ============================================================================================================
+  🎯 2. Where Do We Use It? (Real Examples)
+           - Spring uses Factory pattern heavily (BeanFactory)
+           - JDBC uses factories: DriverManager.getConnection()
+           - Logging frameworks: LoggerFactory.getLogger(...)
+           - Executors: Executors.newFixedThreadPool()
+           - WebClient builder: WebClient.builder()
+
+  =============================================================================================================
+  🏭 3. Types of Factory Patterns
+          There are 3 commonly used variants:
+          
+        | Pattern              | Purpose                                            |
+        | -------------------- | -------------------------------------------------- |
+        | Simple Factory       | Central place to create objects for multiple types |
+        | Factory Method       | Subclasses decide which object to create           |
+        | Abstract Factory     | Creates families of related objects                |
+=================================================================================================================
+🧱 3.1      SIMPLE FACTORY (most common)
+        📌 Structure
+
+          Client → Factory → Product Interface → Concrete Products
+          
+================================================================================================================
+🟦 Example: Notification Factory
+      1️⃣ Product interface:-
+        
+              public interface Notification {
+                  void send(String message);
+              }
+
+    2️⃣ Concrete implementations:-
+                
+                public class EmailNotification implements Notification {
+                    public void send(String message) {
+                        System.out.println("Email: " + message);
+                    }
+                }
+
+                public class SMSNotification implements Notification {
+                    public void send(String message) {
+                        System.out.println("SMS: " + message);
+                    }
+                }
+                
+                public class PushNotification implements Notification {
+                    public void send(String message) {
+                        System.out.println("Push: " + message);
+                    }
+                }
+                
+        3️⃣ Factory class:-
+        
+                  public class NotificationFactory {
+                  
+                      public static Notification getNotification(String type) {
+                          return switch (type.toUpperCase()) {
+                              case "EMAIL" -> new EmailNotification();
+                              case "SMS" -> new SMSNotification();
+                              case "PUSH" -> new PushNotification();
+                              default -> throw new IllegalArgumentException("Unknown type");
+                          };
+                      }
+                  }
+
+          4️⃣ Client:-
+            
+          public class ClientClass {
+              public static void main(String[] args) {
+                  Notification n = NotificationFactory.getNotification("email");
+                  n.send("Hello World!");
+              }
+          }
+      ============================================
+      🎯 Advantages:
+                   ✔ Cleaner code, no complex if-else
+                   ✔ Encapsulates object creation
+                   ✔ Single responsibility
+                   ✔ Easy to extend → add new classes without changing client
+                    
+      ⚠️ Disadvantages:
+                   ❌ Factory grows large if too many object types
+                   ❌ Still violates OCP if modified frequently (Factory Method fixes this)
+
+
+
+
+
+
+          
