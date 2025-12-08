@@ -103,6 +103,27 @@
       ⚠️ Disadvantages:
                    ❌ Factory grows large if too many object types
                    ❌ Still violates OCP if modified frequently (Factory Method fixes this)
+=============================================================================================================================================
+🏗 3.2 FACTORY METHOD PATTERN
+                Here the factory itself is abstract, and subclasses decide what to create.
+        
+        📌 Structure:
+                  Creator (abstract)
+                       ↑
+                  Concrete Creators
+                       ↓
+                  Products
+
+
+
+
+
+
+
+
+
+
+
 
 
 
