@@ -113,6 +113,55 @@
                   Concrete Creators
                        ↓
                   Products
+              
+  ============================================================================================
+              Example: Document creator (Word / PDF)
+              1️⃣ Product
+                        public interface Document {
+                            void open();
+                        }
+              
+              2️⃣ Concrete Products
+                          public class WordDocument implements Document {
+                              public void open() {
+                                  System.out.println("Opening Word...");
+                              }
+                          }
+              
+                          public class PdfDocument implements Document {
+                              public void open() {
+                                  System.out.println("Opening PDF...");
+                              }
+                          }
+              
+              3️⃣ Creator (abstract)
+                          public abstract class DocumentCreator {
+                              public abstract Document createDocument();
+                          
+                              public void openDocument() {
+                                  Document doc = createDocument();
+                                  doc.open();
+                              }
+                          }
+              
+              4️⃣ Concrete Creators
+                          public class WordDocumentCreator extends DocumentCreator {
+                              public Document createDocument() {
+                                  return new WordDocument();
+                              }
+                          }
+                          
+                          public class PdfDocumentCreator extends DocumentCreator {
+                              public Document createDocument() {
+                                  return new PdfDocument();
+                              }
+                          }
+                          
+              5️⃣ Client
+                          DocumentCreator creator = new PdfDocumentCreator();
+                          creator.openDocument();
+============================================================================================================
+🌐 6. ABSTRACT FACTORY PATTERN
 
 
 
