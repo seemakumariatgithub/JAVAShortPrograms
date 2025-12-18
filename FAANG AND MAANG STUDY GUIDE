@@ -12,17 +12,25 @@
               Avoid random problem solving.
 
 📌 Recommended Practice Order
-          Arrays + Hashing
-          Two pointers
-          Sliding window
-          Stack
-          Binary search
-          Trees / Graphs
-          Dynamic Programming
+          1. Arrays & Strings
+          2. Hashing
+          3. Two pointers
+          4. Sliding window
+          5. Stack
+          6. Binary search
+          7. Trees
+          8. Graphs
+          9. Dynamic Programming
 
 🏆 Final Interview One-Liner
               FAANG interviews test pattern recognition more than syntax—mastering problem patterns guarantees faster and correct solutions.
-
+🧠 HOW FAANG EXPECTS YOU TO THINK
+          Interviewers check:
+          
+          ✔ Pattern recognition
+          ✔ Time & space optimization
+          ✔ Edge cases
+          ✔ Clean explanation
 ===================
     1️⃣ Two Pointers
           🔹 When to use
@@ -136,6 +144,9 @@
             🔹 When to use
                      All possible combinations
                      Decision trees
+          🔹 Typical Clues
+                    “all combinations”
+                    “all permutations”
             
             🔹 Typical Problems
                     Subsets
@@ -147,6 +158,11 @@
           🔹 When to use
                   Overlapping subproblems
                   Optimal substructure
+
+          🔹 Typical Clues
+                    “maximum / minimum”
+                    “number of ways”
+                    “can we reach”
           
           🔹 Typical Problems
                   Climbing stairs
@@ -165,16 +181,39 @@
               
     1️⃣3️⃣ Graph Traversal (BFS / DFS)
             🔹 When to use
-            Connectivity
-            Path existence
-            Tree / graph structure
+                      Connectivity
+                      Path existence
+                      Tree / graph structure
+
+               🔹 Typical Clues
+                         “connected”
+                         “shortest path”
+                         “dependency”
             
             🔹 Typical Problems
-           Number of islands
-           Clone graph
-            Course schedule
-            Word ladder
-            
+                          Number of islands
+                          Clone graph
+                           Course schedule
+                           Word ladder
+
+
+      8️⃣ Tree DFS / BFS Pattern
+
+               Use when:
+                         Hierarchical structure.
+               
+               🔹 Typical Clues
+                        “tree”
+                        “level”
+                         “path”
+               
+               🔹 Common Problems
+                        Level order traversal
+                        Diameter of binary tree
+                        Lowest common ancestor
+                        Path sum
+
+
   1️⃣4️⃣ Heap / Priority Queue
           🔹 When to use
               Top K problems
@@ -199,6 +238,9 @@
           🔹 When to use
                 XOR tricks
                 Space optimization
+          🔹 Typical Clues
+                “single number”
+                “power of two”
           
           🔹 Typical Problems
                  Single number
