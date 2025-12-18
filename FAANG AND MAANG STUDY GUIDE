@@ -1,0 +1,220 @@
+🔥 Core DSA Problem Patterns for FAANG / MAANG
+========================================================
+     
+🧠 Master Strategy for FAANG
+    ✅ 1. Identify the pattern first
+            “Is this sliding window or hashing?”
+    
+    ✅ 2. Recall template
+              Every pattern has 2–3 templates only.
+    
+    ✅ 3. Practice pattern-wise
+              Avoid random problem solving.
+
+📌 Recommended Practice Order
+          Arrays + Hashing
+          Two pointers
+          Sliding window
+          Stack
+          Binary search
+          Trees / Graphs
+          Dynamic Programming
+
+🏆 Final Interview One-Liner
+              FAANG interviews test pattern recognition more than syntax—mastering problem patterns guarantees faster and correct solutions.
+
+===================
+    1️⃣ Two Pointers
+          🔹 When to use
+                    Sorted array
+                    Pairs / triplets
+                    Palindrome checks
+          
+          🔹 Typical Problems
+                    Two Sum (sorted)
+                    3 Sum / 4 Sum
+                    Trapping Rain Water
+                    Container With Most Water
+                    Remove duplicates from array
+                
+          🔹 Key idea
+                  Move pointers based on condition to reduce search space.
+
+  2️⃣ Sliding Window
+          🔹 When to use
+                  Subarray / substring
+                  Contiguous elements
+                  Fixed or variable window size
+          
+          🔹 Typical Problems
+                Longest substring without repeating characters
+                Maximum sum subarray of size K
+                Minimum window substring
+                Find all anagrams
+          
+          🔹 Key idea
+               Expand window → process → shrink window
+          
+    3️⃣ Hashing / Frequency Map
+              🔹 When to use
+                      Counting occurrences
+                      Fast lookup
+                      Duplicates / frequency-based problems
+              
+              🔹 Typical Problems
+                    First non-repeating character
+                    Most frequent element
+                    Two Sum (unsorted)
+                    Group Anagrams
+
+  4️⃣ Prefix Sum
+            🔹 When to use
+                 Range sum queries
+                 Subarray sum problems
+            
+            🔹 Typical Problems
+                Subarray sum equals K
+                Continuous subarray sum
+                Product of array except self
+            
+  5️⃣ Binary Search (and Variants)
+              🔹 When to use
+                    Sorted data
+                    Search space reduction
+                    Monotonic condition
+              
+              🔹 Typical Problems
+                     Search in rotated sorted array
+                     First/last occurrence
+                     Koko Eating Bananas
+                     Peak element
+              
+    6️⃣ Merge Intervals
+              🔹 When to use
+                    Overlapping ranges
+                    Scheduling problems
+              
+              🔹 Typical Problems
+                    Merge intervals
+                    Insert interval
+                    Meeting rooms
+                    Employee free time
+              
+    7️⃣ Stack-Based Pattern
+            🔹 When to use
+                    Nearest greater/smaller element
+                    Balanced parentheses
+                    Histogram problems
+            
+            🔹 Typical Problems
+                   Valid parentheses
+                   Next greater element
+                   Largest rectangle in histogram
+                   Daily temperatures
+            
+    8️⃣ Monotonic Stack / Queue
+            🔹 When to use
+                  Sliding window max/min
+                  Range-based dominance
+            
+            🔹 Typical Problems
+                  Sliding window maximum
+                  Trapping rain water
+                  Stock span problem
+            
+    9️⃣ Fast & Slow Pointers (Cycle Detection)
+            🔹 When to use
+                    Linked lists
+                    Cycles / loops
+            
+            🔹 Typical Problems
+                    Detect cycle in linked list
+                    Find middle of linked list
+                    Happy number
+            
+    🔟 Recursion & Backtracking
+            🔹 When to use
+                     All possible combinations
+                     Decision trees
+            
+            🔹 Typical Problems
+                    Subsets
+                    Permutations
+                    Combination Sum
+                   N-Queens
+            
+    1️⃣1️⃣ Dynamic Programming (DP)
+          🔹 When to use
+                  Overlapping subproblems
+                  Optimal substructure
+          
+          🔹 Typical Problems
+                  Climbing stairs
+                   House robber
+                   Longest increasing subsequence
+                   Knapsack
+          
+    1️⃣2️⃣ Greedy
+              🔹 When to use
+                  Local optimal choice leads to global optimal
+              
+              🔹 Typical Problems
+                  Jump game
+                  Gas station
+                   Activity selection
+              
+    1️⃣3️⃣ Graph Traversal (BFS / DFS)
+            🔹 When to use
+            Connectivity
+            Path existence
+            Tree / graph structure
+            
+            🔹 Typical Problems
+           Number of islands
+           Clone graph
+            Course schedule
+            Word ladder
+            
+  1️⃣4️⃣ Heap / Priority Queue
+          🔹 When to use
+              Top K problems
+              Continuous max/min
+          
+          🔹 Typical Problems
+              Top K frequent elements
+              Kth largest element
+              Merge K sorted lists
+          
+  1️⃣5️⃣ Trie
+        🔹 When to use
+              Prefix-based searching
+              Dictionary words
+        
+        🔹 Typical Problems
+              Implement Trie
+               Word search
+               Auto-complete
+        
+  1️⃣6️⃣ Bit Manipulation
+          🔹 When to use
+                XOR tricks
+                Space optimization
+          
+          🔹 Typical Problems
+                 Single number
+                 Missing number
+                 Power of two
+    =======================================
+If you want:
+
+Pattern-wise LeetCode list
+
+Java 21 templates for each pattern
+
+90-day FAANG prep roadmap
+
+Low-level + DSA combined plan
+
+Just tell me 👍
+
+I prefer this response
