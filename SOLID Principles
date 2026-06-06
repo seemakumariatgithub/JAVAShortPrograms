@@ -1,0 +1,156 @@
+SOLID Principles - Complete Interview & Design
+Guide (Java 21 & Spring Boot)
+
+      SOLID is a collection of five object-oriented design principles that help engineers build
+      maintainable, testable, extensible and loosely coupled systems. These principles are heavily used
+      in enterprise Java, Spring Boot applications, microservices, and system design interviews.
+
+===========================================================================
+S - Single Responsibility Principle (SRP)
+        
+        -Definition: A class should have only one reason to change.
+
+       - Benefits:
+          • Easier maintenance
+          • Better testability
+          • Lower coupling
+          • Higher cohesion
+
+        -Java Example:
+            class UserRepository {
+            void save(User user) {}
+            }
+            class EmailService {
+            void sendWelcomeEmail(User user) {}
+            }
+            class UserService {
+            private final UserRepository repository;
+            private final EmailService emailService;
+            }
+
+        -Interview Question:
+            How do you identify SRP violations?
+        -Answer: When a class handles multiple business concerns such as persistence,
+        validation, notifications and reporting simultaneously.
+
+==================================================
+O - Open Closed Principle (OCP)
+      
+      -Definition: Software entities should be open for extension but closed for modification.
+
+      -Example:
+        interface DiscountStrategy {
+        double apply(double amount);
+        }
+        class PremiumDiscount implements DiscountStrategy {}
+        class GoldDiscount implements DiscountStrategy {}
+
+      -Adding a new discount requires a new implementation rather than changing existing code.
+
+      -Interview Question:
+          How does Strategy Pattern support OCP?
+      -Answer: New behavior is added through new implementations.
+
+====================================================================
+L - Liskov Substitution Principle (LSP)
+
+      -Definition: Derived classes should be replaceable for base classes.
+
+      -Bad Example:
+          Bird -> fly()
+          Penguin extends Bird -> cannot fly
+          Better Design:
+          interface Bird {}
+          interface FlyingBird extends Bird { void fly(); }
+
+      -Interview Question:
+          What happens when LSP is violated?
+      -Answer: Runtime surprises and broken polymorphism.
+
+============================================================
+I - Interface Segregation Principle (ISP)
+    
+    -Definition: Clients should not depend on methods they do not use.
+
+    -Bad:
+      interface Worker {
+      work();
+      eat();
+      }
+    -Better:
+        interface Workable { work(); }
+        interface Eatable { eat(); }
+
+    -Interview Question:
+      Difference between SRP and ISP?
+
+    -Answer: SRP focuses on classes; ISP focuses on interfaces.
+===============================================================
+
+D - Dependency Inversion Principle (DIP)
+  
+      -Definition:
+        High-level modules should depend on abstractions rather than concrete implementations.
+
+      -Example:
+          interface Database {
+          void save(String data);
+          }
+          class MySqlDatabase implements Database {}
+          class UserService {
+          private final Database database;
+          }
+
+      -Benefits:
+        • Mocking in unit tests
+        • Loose coupling
+        • Easier replacement of implementations
+      SOLID Relationship Diagram
+      SOLID
+|
+-------------------------------------------------
+| | | | |
+SRP OCP LSP ISP DIP
+| | | | |
+Cohesion Extensible Correct Focused Loose
+Design Inheritance APIs Coupling
+Spring Boot Implementation Example
+@RestController
+@RequiredArgsConstructor
+public class UserController {
+private final UserService userService;
+}
+@Service
+@RequiredArgsConstructor
+public class UserService {
+private final UserRepository repository;
+private final NotificationService notificationService;
+}
+public interface NotificationService {
+void notifyUser(User user);
+}
+@Service
+public class EmailNotificationService implements NotificationService {
+}
+How SOLID is Applied:
+SRP -> Controller, Service and Repository have separate responsibilities.
+OCP -> New notification channels can be added.
+LSP -> Any NotificationService implementation can replace another.
+ISP -> Small focused interfaces.
+DIP -> Service depends on NotificationService abstraction.
+Frequently Asked Interview Questions
+1. Explain SOLID with real-world examples.
+2. Which SOLID principle is most important?
+3. Difference between OCP and DIP?
+4. What is the relation between SOLID and Design Patterns?
+5. How does Spring Dependency Injection support DIP?
+6. Give an example of LSP violation.
+7. Explain ISP with a practical example.
+8. Why is SRP commonly violated?
+9. Composition vs Inheritance?
+10. How would you redesign a legacy God Class?
+System Design Perspective
+In large systems such as WhatsApp, Amazon, or Google-scale applications, SOLID helps isolate
+business logic, improve testing, reduce deployment risks, and enable independent evolution of
+components. Combined with design patterns, clean architecture, and microservices, SOLID forms
+the foundation of maintainable enterprise software.
