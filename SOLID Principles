@@ -105,52 +105,75 @@ D - Dependency Inversion Principle (DIP)
         • Mocking in unit tests
         • Loose coupling
         • Easier replacement of implementations
-      SOLID Relationship Diagram
-      SOLID
-|
--------------------------------------------------
-| | | | |
-SRP OCP LSP ISP DIP
-| | | | |
-Cohesion Extensible Correct Focused Loose
-Design Inheritance APIs Coupling
+
+=======================================================================
+                        SOLID Relationship Diagram
+                              S  O  L  I  D
+                                   |
+-----------------------------------------------------------------------
+|                   |             |                   |            |
+SRP                OCP            LSP                 ISP         DIP
+|                   |             |                   |             |
+Cohesion         Extensible     Correct             Focused       Loose
+                  Design       Inheritance             APIs       Coupling
+
+==========================================================================
 Spring Boot Implementation Example
-@RestController
-@RequiredArgsConstructor
-public class UserController {
-private final UserService userService;
-}
-@Service
-@RequiredArgsConstructor
-public class UserService {
-private final UserRepository repository;
-private final NotificationService notificationService;
-}
-public interface NotificationService {
-void notifyUser(User user);
-}
-@Service
-public class EmailNotificationService implements NotificationService {
-}
+                  
+                  @RestController
+                  @RequiredArgsConstructor
+                  public class UserController {
+                  private final UserService userService;
+                  }
+
+                  @Service
+                  @RequiredArgsConstructor
+                  public class UserService {
+                  private final UserRepository repository;
+                  private final NotificationService notificationService;
+                  }
+
+                  public interface NotificationService {
+                  void notifyUser(User user);
+                  }
+
+                  @Service
+                  public class EmailNotificationService implements NotificationService {
+                  }
+
+========================================================================
 How SOLID is Applied:
-SRP -> Controller, Service and Repository have separate responsibilities.
-OCP -> New notification channels can be added.
-LSP -> Any NotificationService implementation can replace another.
-ISP -> Small focused interfaces.
-DIP -> Service depends on NotificationService abstraction.
+            
+            SRP -> Controller, Service and Repository have separate responsibilities.
+
+            OCP -> New notification channels can be added.
+
+            LSP -> Any NotificationService implementation can replace another.
+
+            ISP -> Small focused interfaces.
+
+            DIP -> Service depends on NotificationService abstraction.
+
+============================================================
 Frequently Asked Interview Questions
-1. Explain SOLID with real-world examples.
-2. Which SOLID principle is most important?
-3. Difference between OCP and DIP?
-4. What is the relation between SOLID and Design Patterns?
-5. How does Spring Dependency Injection support DIP?
-6. Give an example of LSP violation.
-7. Explain ISP with a practical example.
-8. Why is SRP commonly violated?
-9. Composition vs Inheritance?
-10. How would you redesign a legacy God Class?
+            1. Explain SOLID with real-world examples.
+            2. Which SOLID principle is most important?
+            3. Difference between OCP and DIP?
+            4. What is the relation between SOLID and Design Patterns?
+            5. How does Spring Dependency Injection support DIP?
+            6. Give an example of LSP violation.
+            7. Explain ISP with a practical example.
+            8. Why is SRP commonly violated?
+            9. Composition vs Inheritance?
+            10. How would you redesign a legacy God Class?
+
+=======================================================
 System Design Perspective
-In large systems such as WhatsApp, Amazon, or Google-scale applications, SOLID helps isolate
-business logic, improve testing, reduce deployment risks, and enable independent evolution of
-components. Combined with design patterns, clean architecture, and microservices, SOLID forms
-the foundation of maintainable enterprise software.
+
+            In large systems such as WhatsApp, Amazon, or Google-scale applications, 
+            SOLID helps isolate
+                  business logic, improve testing, reduce deployment risks, and enable independent evolution of
+                  components. C
+
+            ombined with design patterns, clean architecture, and microservices, SOLID forms
+            the foundation of maintainable enterprise software.
