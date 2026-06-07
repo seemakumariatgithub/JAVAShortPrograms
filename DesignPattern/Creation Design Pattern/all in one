@@ -14,13 +14,128 @@
                     }
                 }
 
+          Usage:
+                    
+                    DatabaseConnection db = DatabaseConnection.getInstance();
+
           Real World:
               Logger
               Cache manager
               Configuration manager
 
-        Spring Boot Equivalent
+        Spring Boot Equivalent:   Spring Beans are Singleton by default
+
+===================================================================================
+2. Factory Pattern
+          Purpose:    Hide object creation logic.
+          
+          Problem:
+                    Payment payment = new CreditCardPayment();
+          
+                -Adding more types becomes messy.
+          
+          Solution:
+
+          interface Payment {
+              void pay();
+          }
+          class CreditCardPayment
+                  implements Payment {
+          }
+          class UpiPayment
+                  implements Payment {
+          }
+          
+          Factory:
+          
+                    public class PaymentFactory {
+                    
+                        public static Payment getPayment(
+                                String type) {
+                    
+                            if(type.equals("UPI"))
+                                return new UpiPayment();
+                    
+                            return new CreditCardPayment();
+                        }
+                    }
+          
+          Usage:
+                     Payment payment =  PaymentFactory.getPayment("UPI");
+
+          Interview Question:   Why Factory?
+          
+          Answer:
+                    Encapsulates creation logic
+                    Reduces coupling
+                    Supports OCP
+
+=================================================================================
+3. Abstract Factory Pattern
+
+          Creates related objects together.
+          
+          Example:    Different UI families
+                              
+                    Windows:
+                              Button
+                              Checkbox
+                              Textbox
+                    
+                    Mac:
+                              MacButton
+                              MacCheckbox
+                              MacTextbox
+                    
+                    Factory:
+                              GUIFactory Can generate entire UI family.
+
+          Used In: 
+                    Cross-platform frameworks
+                    UI libraries
+
+=============================================================================
+4. Builder Pattern
+          Purpose:   Create complex objects step-by-step.
+
+          Problem:
+              User user = new User("John",
+                             25,
+                             "Pune",
+                             "India",
+                             true,
+                             false,
+                             true);
+
+          Hard to read.
+
+          Solution:
+                    User user =
+                    User.builder()
+                        .name("John")
+                        .age(25)
+                        .city("Pune")
+                        .build();
+
+           Lombok
+                    @Builder
+                    public class User {
+                    }
+                    Common Interview Question
+
+          Difference between Builder and Factory?
+                              
+          Builder	          Factory
+          Complex object	Object creation
+          Step-by-step	One step
 
 
-        
-        Spring Beans are Singleton by default
+
+
+
+
+
+
+
+
+
