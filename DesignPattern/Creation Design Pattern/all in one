@@ -1,0 +1,26 @@
+1. Singleton Pattern
+          Purpose:   Ensure only one instance exists.
+          
+          Example:
+                public class DatabaseConnection {
+                
+                    private static final DatabaseConnection INSTANCE =
+                            new DatabaseConnection();
+                
+                    private DatabaseConnection() {}
+                
+                    public static DatabaseConnection getInstance() {
+                        return INSTANCE;
+                    }
+                }
+
+          Real World:
+              Logger
+              Cache manager
+              Configuration manager
+
+        Spring Boot Equivalent
+
+
+        
+        Spring Beans are Singleton by default
