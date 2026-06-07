@@ -57,6 +57,24 @@ Classification of Design Patterns
     9. Visitor	:                Add operations without changing classes
    10. Iterator	:                Sequential traversal
 
+===============================================================================
+
+Design Pattern Selection Cheat Sheet
+
+          | Problem                     | Pattern                 |
+          | --------------------------- | ----------------------- |
+          | One instance only           | Singleton               |
+          | Object creation logic       | Factory                 |
+          | Complex object construction | Builder                 |
+          | Runtime algorithm selection | Strategy                |
+          | Event notification          | Observer                |
+          | Third-party integration     | Adapter                 |
+          | Add behavior dynamically    | Decorator               |
+          | Simplify subsystem          | Facade                  |
+          | Access control              | Proxy                   |
+          | Request processing pipeline | Chain of Responsibility |
+          | Workflow skeleton           | Template Method         |
+
 
 
 
