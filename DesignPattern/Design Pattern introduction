@@ -1,0 +1,74 @@
+Design Patterns in Software Development :
+  (Complete Guide for Java & System Design Interviews)
+
+  - Design Patterns are proven, reusable solutions to recurring software design problems.
+    They are not ready-made code but templates that help developers build scalable, maintainable, and extensible applications.
+
+  - Design patterns were popularized by the 
+      Gang of Four (GoF) in their book Design Patterns: Elements of Reusable Object-Oriented Software.
+      
+===================================================
+
+Classification of Design Patterns
+  
+1. Creational Patterns
+
+      Focus on object creation.
+      
+      Pattern	Purpose:
+  
+      1. Singleton	:            One object only
+      2. Factory Method: 	       Create objects without exposing creation logic
+      3. Abstract Factory :      Create families of related objects
+      4. Builder	:              Build complex objects step-by-step
+      5. Prototype	:            Clone existing objects
+
+
+2. Structural Patterns
+
+      Focus on object composition.
+      
+      Pattern	Purpose:
+      
+      1. Adapter	:    Make incompatible interfaces work together
+      2. Bridge	:      Separate abstraction from implementation
+      3. Composite:    Tree structures
+      4. Decorator:    Add behavior dynamically
+      5. Facade	:      Simplified interface
+      6. Flyweight:    Reduce memory usage
+      7. Proxy	:      Control access
+
+
+
+3. Behavioral Patterns
+
+    Focus on communication and responsibilities.
+    
+    Pattern	Purpose
+        
+    1. Strategy	:                Switch algorithms dynamically
+    2. Observer	:                Publish-subscribe mechanism
+    3. Command	:                Encapsulate requests
+    4. State	:                  Change behavior based on state
+    5. Chain of Responsibility:	 Pass request through handlers
+    6. Template Method:          Define workflow skeleton
+    7. Mediator	:                Centralized communication
+    8. Memento:                  Save object state
+    9. Visitor	:                Add operations without changing classes
+   10. Iterator	:                Sequential traversal
+
+
+
+
+        
+
+
+
+
+      
+
+
+
+
+
+      
