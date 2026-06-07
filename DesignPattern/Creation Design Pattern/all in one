@@ -128,7 +128,14 @@
           Builder	          Factory
           Complex object	Object creation
           Step-by-step	One step
+=====================================================================================
+5. Prototype Pattern
 
+          Clone existing objects.
+          
+          Employee copy = employee.clone();
+          
+          Useful when object creation is expensive.
 
 
 
