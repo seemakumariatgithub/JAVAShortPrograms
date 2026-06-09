@@ -259,6 +259,90 @@ Step 12: Bulkhead Pattern
 ========================================================================================================
 Step 13: Virtual Threads (Java 21)
 
+            If organization prefers synchronous coding style.
+            
+            Enable:
+
+            @Bean
+            TaskExecutor taskExecutor() {
+            
+                return new TaskExecutorAdapter(
+                        Executors.newVirtualThreadPerTaskExecutor());
+            }
+
+Then : 
+
+            CompletableFuture.supplyAsync(
+                    () -> api1(),
+                    executor);
+
+
+      - Virtual threads allow:    100,000+ concurrent requests    with simple code.
+
+=====================================================================================
+Step 14: CompletableFuture Alternative
+
+                  CompletableFuture<CustomerResponse> c1 =   customerApi.call();
+                  
+                  CompletableFuture<LoanResponse> c2 =    loanApi.call();
+                  
+                  CompletableFuture.allOf(c1, c2)
+                                      .join();
+
+
+Java 21 Virtual Threads + CompletableFuture is an excellent enterprise solution.
+===========================================================================================
+
+Step 15: Dynamic Strategy Pattern
+
+            Instead of:
+                  if(api.equals("A"))
+                  if(api.equals("B"))
+                  if(api.equals("C"))
+                  
+            Use:
+            
+                  public interface ApiStrategy {
+                  
+                      String getName();
+                  
+                      Mono<?> execute(Request request);
+                  }
+
+
+-   Implementation : ===
+              @Component
+                  public class CustomerApiStrategy
+                          implements ApiStrategy {
+                  
+                  }
+
+
+-  Registry :====
+
+            @Service
+            public class ApiRegistry {
+            
+                private final Map<String, ApiStrategy> map;
+            
+                public ApiRegistry(
+                    List<ApiStrategy> strategies) {
+            
+                    map = strategies.stream()
+                            .collect(Collectors.toMap(
+                                ApiStrategy::getName,
+                                Function.identity()));
+                }
+            }
+
+=============================================================
+
+Step 16: Response Mapper Layer
+
+
+
+
+
 
 
 
