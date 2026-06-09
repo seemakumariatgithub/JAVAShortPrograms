@@ -30,6 +30,238 @@ For a Google/Amazon/Microsoft-level implementation, the architecture should be:
                           |
                           v
                    Final Response
+==============================================================================
+Step 1: Project Dependencies
+
+For Java 21 + Spring Boot 3.x
+
+Add below dependencies:
+
+            <dependencies>
+            
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-webflux</artifactId>
+                </dependency>
+            
+                <dependency>
+                    <groupId>io.github.resilience4j</groupId>
+                    <artifactId>resilience4j-spring-boot3</artifactId>
+                </dependency>
+            
+                <dependency>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </dependency>
+            
+            </dependencies>
+
+
+      1 : why WEB FLUX? 
+
+                  RestTemplate = Blocking
+                  WebClient = Non Blocking
+
+            -  For 9 + third party APIs
+                  RestTemplate = 9 threads blocked
+
+                  WebClient = Event Loop
+
+            - This makes it Much faster.
+
+
+=================================================================
+Step 2: Create API-Specific Request and Response DTOs
+
+NOTE : 
+            - Every API gets its own DTO.
+            - Never share DTOs.
+
+==================================================================
+Step 3: Generic WebClient Configuration
+
+      @Configuration
+      public class WebClientConfig {
+      
+          @Bean
+          public WebClient webClient() {
+      
+              HttpClient httpClient =
+                      HttpClient.create()
+                              .responseTimeout(Duration.ofSeconds(5));
+      
+              return WebClient.builder()
+                      .clientConnector(
+                              new ReactorClientHttpConnector(httpClient))
+                      .build();
+          }
+      }
+
+========================================================================
+Step 4: Create API Interface
+
+            - This follows Open/Closed Principle.
+
+            public interface ThirdPartyApiClient<T> {
+                    Mono<T> execute(Object request);
+            }
+
+==========================================================================
+Step 5: API: 1 Implementation
+
+            @Service
+            @RequiredArgsConstructor
+            public class CustomerApiClient  implements ThirdPartyApiClient<CustomerApiResponse> {
+            
+                private final WebClient webClient;
+            
+                @Override
+                public Mono<CustomerApiResponse> execute(Object request) {
+            
+                    CustomerApiRequest req =
+                            (CustomerApiRequest) request;
+            
+                    return webClient.post()
+                            .uri("https://api1.com/customer")
+                            .bodyValue(req)
+                            .retrieve()
+                            .bodyToMono(CustomerApiResponse.class);
+                }
+            }
+
+
+Step 6: API 2 Implementation
+
+            @Service
+            @RequiredArgsConstructor
+            public class LoanApiClient implements ThirdPartyApiClient<LoanApiResponse> {
+            
+                private final WebClient webClient;
+            
+                @Override
+                public Mono<LoanApiResponse> execute(Object request) {
+            
+                    LoanApiRequest req = (LoanApiRequest) request;
+            
+                    return webClient.post()
+                            .uri("https://api2.com/loan")
+                            .bodyValue(req)
+                            .retrieve()
+                            .bodyToMono(LoanApiResponse.class);
+                }
+            }
+=================================================================================
+
+Step 7: Parallel API Execution
+
+                  Mono.zip(
+                            api1(),
+                            api2(),
+                            api3(),
+                            api4()
+                        )
+ This will be implemented as below in aggregator Service 
+===============================================================================
+Step 8: Aggregator Service
+
+
+                  @Service
+                  @RequiredArgsConstructor
+                  public class AggregationService {
+                  
+                      private final CustomerApiClient customerApi;
+                      private final LoanApiClient loanApi;
+                  
+                      public Mono<AggregatedResponse> aggregate(
+                              AggregateRequest request) {
+                  
+                          Mono<CustomerApiResponse> customer = customerApi.execute(new CustomerApiRequest(request.customerId()));
+                  
+                          Mono<LoanApiResponse> loan = loanApi.execute(new LoanApiRequest(request.loanNumber()));
+                  
+                          return Mono.zip(customer, loan)
+                                  .map(tuple -> {
+                                          CustomerApiResponse c = tuple.getT1();
+                                            LoanApiResponse l = tuple.getT2();
+                  
+                                      return AggregatedResponse.builder()
+                                              .customerName(
+                                                      c.getCustomerName())
+                                              .loanAmount(
+                                                      l.getAmount())
+                                              .build();
+                                  });
+                      }
+                  }
+
+===================================================================================================
+
+Step 9: Circuit Breaker
+                        Third-party APIs fail often.
+                  
+                  @CircuitBreaker(
+                          name = "customer-api",
+                          fallbackMethod = "fallback")
+                  public Mono<CustomerApiResponse> execute(
+                          Object request) {
+                  
+                  }
+
+------ fallback method for customer
+
+                  public Mono<CustomerApiResponse> fallback( Object request, Exception ex) {
+                  
+                      CustomerApiResponse response = new CustomerApiResponse();
+                      response.setCustomerName("N/A");
+                      return Mono.just(response);
+                  }
+
+=======================================================================================================
+
+Step 10: Retry Strategy
+
+.retryWhen( Retry.backoff( 3,Duration.ofSeconds(1)))
+
+            Useful for:
+                  HTTP 500
+                  Connection timeout
+                  Temporary network issue
+
+=======================================================================================================
+Step 11: Timeout Protection :    Never wait forever.
+
+                  use :    .timeout(Duration.ofSeconds(3))
+
+                  below is example
+                  
+                  return webClient.post()
+                          .uri(url)
+                          .retrieve()
+                          .bodyToMono(Response.class)
+                          .timeout(Duration.ofSeconds(3));
+
+==========================================================================================================
+
+Step 12: Bulkhead Pattern
+
+                  resilience4j:
+                    bulkhead:
+                      instances:
+                        customer-api:
+                          maxConcurrentCalls: 20
+                  
+                  fi API becomes slow:
+                          Only 20 calls allowed
+                         21st request rejected
+
+                        instead of crashing JVM.
+
+========================================================================================================
+Step 13: Virtual Threads (Java 21)
+
+
+
+
 
 
 
