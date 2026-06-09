@@ -339,6 +339,83 @@ Step 15: Dynamic Strategy Pattern
 
 Step 16: Response Mapper Layer
 
+      Never expose external responses.
+
+            API Response
+                  ↓
+            Mapper
+                  ↓
+            Internal DTO
+                  ↓
+            Frontend
+
+Example :
+
+            @Component
+            public class CustomerMapper {
+            
+                public CustomerDTO map(
+                    CustomerApiResponse response) {
+            
+                    return CustomerDTO.builder()
+                            .name(
+                                response.getCustomerName())
+                            .build();
+                }
+            }
+
+====================================================================================
+Step 17: Caching
+                        For frequently requested data:
+
+                        @Cacheable("customer")
+                        public CustomerDTO getCustomer(
+                                String id) {
+                        
+                        }
+
+      Use:
+            Redis
+            Hazelcast
+            Caffeine
+      
+      Best:
+            Redis
+      
+      for distributed systems.
+
+
+===========================================================================================
+Step 18: Production-Level Flow
+
+                  Controller
+                     |
+                     v
+                  Aggregation Service
+                     |
+                     +--- Customer API Client
+                     |
+                     +--- Loan API Client
+                     |
+                     +--- Product API Client
+                     |
+                     +--- Risk API Client
+                     |
+                     +--- KYC API Client
+                     |
+                     +--- AML API Client
+                     |
+                     +--- Credit API Client
+                     |
+                     +--- Payment API Client
+                     |
+                     +--- Account API Client
+                     |
+                     v
+                  Response Aggregator
+                     |
+                     v
+                  Final DTO
 
 
 
