@@ -30,6 +30,50 @@ For a Google/Amazon/Microsoft-level implementation, the architecture should be:
                           |
                           v
                    Final Response
+
+================================================================================
+The implementation combines several well-known design patterns rather than relying on a single pattern.
+
+1. Strategy Pattern ⭐ (Most Important)
+2. Factory + Registry Pattern
+3. Adapter Pattern
+4. Facade Pattern ⭐
+
+5. Template Method Pattern (Optional Enhancement)
+
+8. Proxy Pattern
+
+9. Composite Aggregation Pattern
+
+For a production-grade Spring Boot API Aggregator, the architecture typically looks like:
+
+Facade
+   |
+   +---- Factory/Registry
+              |
+              +---- Strategy
+                        |
+                        +---- Template Method
+                        |
+                        +---- Adapter
+                        |
+                        +---- Proxy
+                        |
+                        +---- Decorator
+   |
+   +---- Composite Aggregator
+   |
+   +---- Builder
+Interview Answer (2-minute version)
+
+"For integrating multiple third-party APIs, I would use a combination of Facade, Strategy, Factory/Registry, and Adapter patterns. 
+The Facade acts as the aggregation layer, Strategy encapsulates API-specific logic, 
+Factory/Registry dynamically resolves the correct API client, and Adapter converts external request/response formats into internal DTOs. 
+For resilience, I would apply the Decorator pattern using Resilience4j (Retry, Circuit Breaker, Timeout, Bulkhead). 
+Finally,  I would use the Builder pattern to construct the aggregated response and a Composite-style aggregation approach using CompletableFuture or 
+WebClient parallel execution to achieve optimal performance."
+
+This is the pattern combination commonly seen in large-scale Spring Boot systems handling many external integrations.
 ==============================================================================
 Step 1: Project Dependencies
 
@@ -71,7 +115,9 @@ Add below dependencies:
 
 
 =================================================================
-Step 2: Create API-Specific Request and Response DTOs
+Step 2: Create API-Specific Request and Response DTOs  :(Adapter Pattern)
+
+                  Each external API has a different request/response structure.
 
 NOTE : 
             - Every API gets its own DTO.
@@ -98,7 +144,7 @@ Step 3: Generic WebClient Configuration
       }
 
 ========================================================================
-Step 4: Create API Interface
+Step 4: Create API Interface   Here we are using (Strategy Pattern ⭐ (Most Important)
 
             - This follows Open/Closed Principle.
 
@@ -106,6 +152,12 @@ Step 4: Create API Interface
                     Mono<T> execute(Object request);
             }
 
+
+Purpose:
+
+            Encapsulates API-specific logic.
+            New APIs can be added without changing existing code.
+            Follows Open/Closed Principle.
 ==========================================================================
 Step 5: API: 1 Implementation
 
@@ -162,7 +214,7 @@ Step 7: Parallel API Execution
                         )
  This will be implemented as below in aggregator Service 
 ===============================================================================
-Step 8: Aggregator Service
+Step 8: Aggregator Service :  ( Facade Pattern ⭐ The Aggregation Service acts as a facade.)9. Composite Aggregation Pattern
 
 
                   @Service
@@ -194,6 +246,14 @@ Step 8: Aggregator Service
                       }
                   }
 
+
+Purpose:
+
+Hides complexity.
+Provides a single entry point.
+          
+Single response from many services.
+Final Pattern Combination
 ===================================================================================================
 
 Step 9: Circuit Breaker
@@ -242,7 +302,7 @@ Step 11: Timeout Protection :    Never wait forever.
 
 ==========================================================================================================
 
-Step 12: Bulkhead Pattern
+Step 12: Bulkhead Pattern (. Decorator Pattern (via Resilience4j)
 
                   resilience4j:
                     bulkhead:
@@ -293,7 +353,7 @@ Step 14: CompletableFuture Alternative
 Java 21 Virtual Threads + CompletableFuture is an excellent enterprise solution.
 ===========================================================================================
 
-Step 15: Dynamic Strategy Pattern
+Step 15: Dynamic Strategy Pattern 
 
             Instead of:
                   if(api.equals("A"))
@@ -318,7 +378,7 @@ Step 15: Dynamic Strategy Pattern
                   }
 
 
--  Registry :====
+-  Registry :====2. Factory + Registry Pattern
 
             @Service
             public class ApiRegistry {
@@ -335,6 +395,11 @@ Step 15: Dynamic Strategy Pattern
                 }
             }
 
+
+Purpose:
+
+Dynamically selects the correct API client.
+Eliminates large if-else/switch blocks.
 =============================================================
 
 Step 16: Response Mapper Layer
@@ -417,12 +482,82 @@ Step 18: Production-Level Flow
                      v
                   Final DTO
 
+=====================================================================================
+
+5. Template Method Pattern (Optional Enhancement)
+
+Common API flow:
+
+            Validate Request
+            ↓
+            Call API
+            ↓
+            Handle Error
+            ↓
+            Map Response
+            ↓
+            Return Result
+
+Abstract class:
+
+            public abstract class BaseApiClient {
+                public final Mono<?> execute() {
+                    validate();
+                    callApi();
+                    mapResponse();
+                }
+            }
+
+Purpose:
+
+      Removes duplicated code across API clients.
+
+=======================================================
+
+6. Builder Pattern
+
+      For complex aggregated responses.
+      
+            AggregatedResponse.builder()
+                    .customer(customer)
+                    .loan(loan)
+                    .risk(risk)
+                    .build();
+      
+      Purpose:
+      
+      Cleaner object creation.
+      Especially useful when combining 9+ API responses.
 
 
 
+=============================
+8. Proxy Pattern:   Your API client acts as a proxy.
 
+      CustomerApiClient:   Instead of frontend directly calling:
+      
+      customer-api.com:   the request goes through:
+      
+      Frontend
+         ↓
+      CustomerApiClient
+         ↓
+      External API
+      
+      Purpose:
 
+            Security
+            Logging
+            Monitoring
+            Retry handling
 
+================================================================================
+
+      
+      
+      
+      
+      
 
 
 
