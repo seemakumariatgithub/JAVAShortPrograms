@@ -1,0 +1,45 @@
+When a Spring Boot application must call 9+ third-party APIs, each with different request/response formats, the biggest mistakes are:
+
+      Calling APIs sequentially.
+      Mixing API-specific logic into business services.
+      Using blocking clients (RestTemplate).
+      Not implementing retries, timeouts, circuit breakers.
+      Returning data only after all APIs finish.
+      Not using Java 21 virtual threads or reactive processing.
+======================================================================================
+For a Google/Amazon/Microsoft-level implementation, the architecture should be:
+
+
+                   Client Request
+                          |
+                          v
+                Aggregation Controller
+                          |
+                          v
+                 Aggregation Service
+                          |
+     -------------------------------------------------
+     |       |        |        |       |      |      |
+     v       v        v        v       v      v      v
+  API-1   API-2    API-3    API-4   API-5  API-6  API-7
+     |       |        |        |       |      |      |
+     -------------------------------------------------
+                          |
+                          v
+                Response Aggregator
+                          |
+                          v
+                   Final Response
+
+
+
+
+
+
+
+
+
+
+
+
+
