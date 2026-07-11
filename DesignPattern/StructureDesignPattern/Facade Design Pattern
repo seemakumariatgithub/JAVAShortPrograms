@@ -155,7 +155,7 @@ Client
 The client knows only one class: CheckoutFacade
 
 The controller has only one dependency.
-===============================================================================
+=====================================================================================================================================================================================
 Spring Boot Microservice Example
 
     Advantages
@@ -172,10 +172,23 @@ Spring Boot Microservice Example
             It may hide subsystem features that some clients actually need.
             It introduces an additional layer of abstraction.
 
+=================================================================================================================================================================================
+Common Spring Framework Examples
 
+    Several parts of the Spring ecosystem use the Facade pattern by exposing a simpler API over more complex internals:
 
+            1.JdbcTemplate: Simplifies JDBC by managing connections, statements, exception translation, and resource cleanup.
+            2.RestTemplate (legacy) and WebClient: Provide straightforward APIs for making HTTP calls while hiding connection management, serialization, and protocol details.
+            3.JavaMailSender: Simplifies sending emails compared to using the lower-level Jakarta Mail APIs directly.
+            4.JmsTemplate: Simplifies working with JMS by handling sessions, producers, and resource management.
 
+=================================================================================================================================================================================
 
+Interview Tip
+
+A good way to identify a Facade is to ask:
+
+Does this class mainly coordinate multiple services and expose one simple operation to the client?
 
 
 
